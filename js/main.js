@@ -5,19 +5,20 @@ $(function() {
 	var map = new naver.maps.Map($('#map')[0], {
 		center: new naver.maps.LatLng(36.0207091, 127.9204629), //지도의 초기 중심 좌표(36.0207091, 127.9204629)
 		zoom: 3, //지도의 초기 줌 레벨
-		mapTypes: registry,
+		/*mapTypes: registry,
 		mapTypeControl: true,
 		mapTypeControlOptions: {
 			style: naver.maps.MapTypeControlStyle.BUTTON,
 			position: naver.maps.Position.TOP_RIGHT
-		},
+		},*/
 		minZoom: 3,
 		logoControl: false,
+		mapDataControl: false,
 		disableDoubleClickZoom: true
 	});
 	
-	map.mapTypes.set(naver.maps.MapTypeId.NORMAL, naver.maps.NaverMapTypeOption.getNormalMap());
-	map.mapTypes.set(naver.maps.MapTypeId.HYBRID, naver.maps.NaverMapTypeOption.getHybridMap());
+	//map.mapTypes.set(naver.maps.MapTypeId.NORMAL, naver.maps.NaverMapTypeOption.getNormalMap());
+	//map.mapTypes.set(naver.maps.MapTypeId.HYBRID, naver.maps.NaverMapTypeOption.getHybridMap());
 	
 	var cadastralLayer = new naver.maps.CadastralLayer();			
 
@@ -57,6 +58,16 @@ $(function() {
 		showRightBtn(onOff, $(this));
 	});
 
+	//일반보기
+	$('#btnMapNormal').on('click', function()  {
+		map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+	});
+
+	//위성보기
+	$('#btnMapSatellite').on('click', function()  {
+		map.setMapTypeId(naver.maps.MapTypeId.HYBRID);
+	});
+
 
 	$('#dvIntro').hide();
 	$('#dvTimeview').hide();
@@ -86,3 +97,5 @@ function showTimeviewLayer(onOff, $btn) {
 }
 
 //좌 검색영역 height 계산
+
+
