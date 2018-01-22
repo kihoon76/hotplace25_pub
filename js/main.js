@@ -98,4 +98,6 @@ function showTimeviewLayer(onOff, $btn) {
 
 //좌 검색영역 height 계산
 
+function test() {
+}
 
