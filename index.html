@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8" lang="ko"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="ko"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="ko"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+
+<title>핫플레이스</title>
+<link rel="shortcut icon" href="img/favicon.png"/>
+
+
+
+<link rel="stylesheet" href="vendors/jQuery-Upload-File/4.0.11/uploadfile.css" />
+<!-- jQRangeSlider -->
+<link rel="stylesheet" href="vendors/jQRangeSlider-5.7.2/css/classic.css" />
+<!-- tabulator (table api) -->
+<link rel="stylesheet" href="vendors/tabulator/css/tabulator_simple.min.css" />
+<!-- waitMe (loading bar) -->
+<link rel="stylesheet" href="vendors/waitMe/waitMe.min.css" />
+<!-- bootstrap -->
+<link rel="stylesheet" href="bootstrap/bootstrap.css">
+
+<!-- 모든 디자인을 재선언하는 css -->
+<link rel="stylesheet" href="css/style.css" />
+
+<script type="text/javascript" src="jquery/3.2.1/jquery.min.js" ></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=SgnlyXnzstmDsYDhele7&amp;submodules=panorama"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps-panorama.js"></script>
+
+<script type="text/javascript" src="jquery-ui/1.12.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="bootstrap/bootstrap.min.js" ></script>
+<script type="text/javascript" src="vendors/jQRangeSlider-5.7.2/jQAllRangeSliders-min.js"></script>
+<script type="text/javascript" src="vendors/tabulator/js/tabulator.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript">
+$(document).ready( function() {
+	$("#dvYearRange").rangeSlider({
+		arrows: false,
+	});
+
+	//startTicker(); // news rolling
+	showLnbCont();
+
+	//Modal Popup 오픈이벤트
+	$('#modalPopup').on('shown.bs.modal', function() {
+		$(this).show();
+		setModalMaxHeight(this);
+	});
+
+	//Modal Popup 종료 이벤트	
+	$('#modalPopup').on('hidden.bs.modal', function() {
+	});
+
+	$('#loginBtn').on('click', function(e) {		
+		//alert('1111');
+		var param = new Object();
+		commonPopup('01_01_login.html', '', '1004');
+	});
+
+});
+
+$(window).resize(function() {
+  if ($('.modal.in').length != 0) {
+    setModalMaxHeight($('.modal.in'));
+  }
+});
+
+// news rolling
+function startTicker() {
+	var startInternal;
+	setTimeout(function repeat() {
+		tick();
+		startInternal = setTimeout(repeat, 3000);
+	}, 3000);
+}
+
+function tick() {
+	$('#newsTicker li:first').slideUp(function() {
+		$(this).appendTo($('#newsTicker')).slideDown();
+	});
+}
+
+function showLnbCont() {
+	$('#memuList > li > a').on('click', function() {
+		var parent = $(this).parent('li');
+		var data = $(this).data('name');
+
+		parent.addClass('active');
+		parent.siblings('li').removeClass('active');
+
+		$('#lnbCont > .lnbContWrap').hide();
+		$('#lnbCont > #' + data).show();
+	});
+}
+
+function hideLnbCont(obj){
+	var divObj = null;
+	var parents = $(obj).parents();
+	
+	for (var i=0;i<parents.length;i++) {
+		var parent = parents[i];
+		if ($(parent).hasClass('lnbContWrap')) {
+			divObj = parent;
+			break;
+		}
+	}
+
+	var thisPopId = divObj.id; 
+	$('#' + thisPopId).hide();
+	$('#memuList > li').removeClass('active');
+}
+
+
+function setModalMaxHeight(element) {
+	this.$element     = $(element);  
+	this.$content     = this.$element.find('.modal-content');
+	var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
+	var dialogMargin  = $(window).width() < 768 ? 20 : 60;
+	var contentHeight = $(window).height() - (dialogMargin + borderWidth);
+	var headerHeight  = this.$element.find('.modal-header').outerHeight() || 0;
+	var footerHeight  = this.$element.find('.modal-footer').outerHeight() || 0;
+	var maxHeight     = contentHeight - (headerHeight + footerHeight);
+
+	this.$content.css({
+		'overflow': 'hidden'
+	});
+  
+	this.$element
+		.find('.modal-body').css({
+			'max-height': maxHeight,
+			'overflow-y': 'auto'
+	});
+}
+
+
+function commonPopup(url,  param, width){
+	var eWidth = width; //레이어 팝업의  width 강제설정
+	
+	if(width == null){
+		eWidth = '';
+	}else{
+		eWidth = width;
+	}	
+	
+	$.ajax({
+		type : "get",
+		url : url,
+		data : param,
+		async: true,
+		success : function(data) {
+			$("#modalPopup").html(data);
+		},		
+		complete : function(){
+			//$('#modalPopup').modal();
+			$('#modalPopup').modal().find('.modal-dialog').css({
+				'width': eWidth
+			});
+			$('#modalPopup').append($('.modal-backdrop'));
+		}
+	});	
+};
+	
+</script>
+
+</head>
+
+<body class="">	
+	<!-- top GNB영역 -->
+	<div id="gnbArea" class="gnbArea">
+		<h1><a href="#" class="logo"><span class="hidden">HotPlace25</span></a></h1>
+
+
+		<div class="dvBtnArea">
+			<!-- 타입뷰 Range -->
+			<div id="dvTimeview" class="dvTimeview">
+				<div id="dvAutoYearRange" class="dvAutoYearRange">
+					<label for="btnAutoYear" class="btnAutoYear">
+						<input type="checkbox" id="btnAutoYear" class="hidden" disabled />
+						<i class="btnIcon"></i>
+					</label>
+				</div>
+				<div id="dvYearRange" class="dvYearRange">
+				</div>
+			</div>
+			<!-- 타입뷰 버튼 -->
+			<button id="btnTimeview" class="mapBtn btnTimeview" data-switch="off">타임뷰</button>	
+
+			<!-- 지적도 버튼 -->			
+			<button id="btnJijeok" class="mapBtn btnJijeok" data-switch="off">지적도</button>	
+
+
+			<!-- 일반 버튼 -->	
+			<button id="btnMapNormal" class="mapBtn btnMapNormal">일반</button>
+
+			<!-- 위성 버튼 -->	
+			<button id="btnMapSatellite" class="mapBtn btnMapSatellite">위성</button>
+		</div>
+
+		<div class="dvEtc">
+			<a class="unit contact"><span class="hidden">contact us</span></a>
+			<a class="unit login" id="loginBtn"><span class="hidden">로그인</span></a>
+		</div>
+	</div>
+	
+	<!-- 좌측 LNB영역 -->
+	<div id="lnbArea" class="lnbArea">
+		<button type="button" class="menuToogle"><span class="hidden">메뉴열기/닫기</span></button>
+
+		<ul id="memuList" class="memuList">
+			<li class="active">
+				<a href="#" class="menu01" data-name="menuCont01"><i class="icon"></i><span>주소 검색</span></a>
+			</li>
+			<li>
+				<a href="#" class="menu02" data-name="menuCont02"><i class="icon"></i><span>투자 유망 지역 검색</span></a>
+			</li>
+			<li>
+				<a href="#" class="menu03" data-name="menuCont03"><i class="icon"></i><span>경•공매 물건 검색</span></a>
+			</li>
+			<li class="disabled">
+				<a href="#" class="menu04" data-name="menuCont04"><i class="icon"></i><span>물건보기</span></a>
+			</li>
+			<li>
+				<a href="#" class="menu05" data-name="menuCont05"><i class="icon"></i><span>히트맵보기</span></a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- menu 컨텐츠 노출영역 -->
+	<div id="lnbCont" class="lnbCont">
+		<div id="menuCont01" class="lnbContWrap" style="display:; width:500px;">
+			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+			<!--#include virtual="lnbCont_01.html" -->
+		</div>
+
+		<div id="menuCont02" class="lnbContWrap">
+			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+			<!--#include virtual="lnbCont_02.html" -->
+		</div>
+
+		<div id="menuCont03" class="lnbContWrap">
+			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+			<!--#include virtual="lnbCont_03.html" -->
+		</div>
+
+		<div id="menuCont04" class="lnbContWrap">
+			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+			<!--#include virtual="lnbCont_04.html" -->
+		</div>
+
+		<div id="menuCont05" class="lnbContWrap">
+			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+			<!--#include virtual="lnbCont_05.html" -->
+		</div>
+	</div>
+
+	<!-- map 영역 -->
+	<div id="mapArea" class="mapArea">
+		<!-- naver map -->
+		<div id="map"></div>
+
+		<div class="rightArea">
+			<!-- 면적재기 버튼 -->
+			<button id="btnCalcArea" class="mapBtn btnCalcArea" data-switch="off">면적</button>
+			<!-- 거리재기 버튼 -->
+			<button id="btnCalcDistance" class="mapBtn btnCalcDistance"  data-switch="off">거리</button>		
+		</div>
+		
+		
+	</div>
+
+	
+
+	<!-- 액션이 일어날 동안 화면전체를 막기위해서 설정-->
+	<div id="dimScreen"></div>
+
+	<!-- 네이버 맵 로딩되기전에 보여질 화면 -->
+	<div id="dvIntro"></div>
+
+
+	<!-- bootstrap modal 영역 -->
+	<div class="modal fade" id="modalPopup" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
+		
+	</div>
+	
+	
+</body>
+</html>
