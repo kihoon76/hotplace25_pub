@@ -35,131 +35,70 @@
 
 <script type="text/javascript">
 $(document).ready( function() {
+	$('#dvIntro').hide();
+	$('#dvTimeview').hide();
+	
 	$("#dvYearRange").rangeSlider({
 		arrows: false,
 	});
 
-	//startTicker(); // news rolling
-	showLnbCont();
-
-	//Modal Popup 오픈이벤트
-	$('#modalPopup').on('shown.bs.modal', function() {
-		$(this).show();
-		setModalMaxHeight(this);
-	});
-
-	//Modal Popup 종료 이벤트	
-	$('#modalPopup').on('hidden.bs.modal', function() {
-	});
-
-	$('#loginBtn').on('click', function(e) {		
-		//alert('1111');
-		var param = new Object();
-		commonPopup('01_01_login.html', '', '1004');
-	});
-
-});
-
-$(window).resize(function() {
-  if ($('.modal.in').length != 0) {
-    setModalMaxHeight($('.modal.in'));
-  }
-});
-
-// news rolling
-function startTicker() {
-	var startInternal;
-	setTimeout(function repeat() {
-		tick();
-		startInternal = setTimeout(repeat, 3000);
-	}, 3000);
-}
-
-function tick() {
-	$('#newsTicker li:first').slideUp(function() {
-		$(this).appendTo($('#newsTicker')).slideDown();
-	});
-}
-
-function showLnbCont() {
+	// 좌메뉴 클릭시
 	$('#memuList > li > a').on('click', function() {
-		var parent = $(this).parent('li');
-		var data = $(this).data('name');
-
-		parent.addClass('active');
-		parent.siblings('li').removeClass('active');
-
-		$('#lnbCont > .lnbContWrap').hide();
-		$('#lnbCont > #' + data).show();
+		showLnbCont(this); 
+		mapAreaPosition(this);
 	});
-}
 
-function hideLnbCont(obj){
-	var divObj = null;
-	var parents = $(obj).parents();
-	
-	for (var i=0;i<parents.length;i++) {
-		var parent = parents[i];
-		if ($(parent).hasClass('lnbContWrap')) {
-			divObj = parent;
-			break;
-		}
-	}
-
-	var thisPopId = divObj.id; 
-	$('#' + thisPopId).hide();
-	$('#memuList > li').removeClass('active');
-}
-
-
-function setModalMaxHeight(element) {
-	this.$element     = $(element);  
-	this.$content     = this.$element.find('.modal-content');
-	var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
-	var dialogMargin  = $(window).width() < 768 ? 20 : 60;
-	var contentHeight = $(window).height() - (dialogMargin + borderWidth);
-	var headerHeight  = this.$element.find('.modal-header').outerHeight() || 0;
-	var footerHeight  = this.$element.find('.modal-footer').outerHeight() || 0;
-	var maxHeight     = contentHeight - (headerHeight + footerHeight);
-
-	this.$content.css({
-		'overflow': 'hidden'
+	//Modal 레이어팝업 오픈이벤트 이후
+	$('#modalPopup').on('shown.bs.modal', function() {
+		setModalMaxHeight($('#modalPopup'));
+		$('.modal-backdrop').remove();
 	});
-  
-	this.$element
-		.find('.modal-body').css({
-			'max-height': maxHeight,
-			'overflow-y': 'auto'
+
+	//Modal 레이어팝업 종료 이벤트이후
+	$('#modalPopup').on('hidden.bs.modal', function() {
+		$('#modalPopup').empty();
+		$('#modalPopup').off('shown.bs.modal');
+		$('#modalPopup').on('shown.bs.modal', function() {
+			setModalMaxHeight($('#modalPopup'));
+			$('.modal-backdrop').remove();
+		});
 	});
-}
+
+	//Modal에 모달 레이어팝업 오픈이벤트 이후
+	$('#modalPopup2').on('shown.bs.modal', function() {
+		setModalMaxHeight($('#modalPopup2'));
+		$('.modal-backdrop').remove();
+	});
+
+	//Modal에 모달 레이어팝업 종료 이벤트이후
+	$('#modalPopup2').on('hidden.bs.modal', function() {
+		$('#modalPopup2').empty();
+		$('#modalPopup2').off('shown.bs.modal');
+		$('#modalPopup2').on('shown.bs.modal', function() {
+			setModalMaxHeight($('#modalPopup2'));
+			$('.modal-backdrop').remove();
+		});
+		$('body').addClass('modal-open');
+	});
+
+	
+	//modal test
+	$('#modalTest').on('click', function(e) {	
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('z_modalTest_full.html', '', 'full');
+	});
+
+	//로그인 modal
+	$('#loginBtn').on('click', function(e) {	
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('01_01_login.html', '', '400');
+	});
+
+});
 
 
-function commonPopup(url,  param, width){
-	var eWidth = width; //레이어 팝업의  width 강제설정
-	
-	if(width == null){
-		eWidth = '';
-	}else{
-		eWidth = width;
-	}	
-	
-	$.ajax({
-		type : "get",
-		url : url,
-		data : param,
-		async: true,
-		success : function(data) {
-			$("#modalPopup").html(data);
-		},		
-		complete : function(){
-			//$('#modalPopup').modal();
-			$('#modalPopup').modal().find('.modal-dialog').css({
-				'width': eWidth
-			});
-			$('#modalPopup').append($('.modal-backdrop'));
-		}
-	});	
-};
 	
 </script>
 
@@ -191,15 +130,15 @@ function commonPopup(url,  param, width){
 
 
 			<!-- 일반 버튼 -->	
-			<button id="btnMapNormal" class="mapBtn btnMapNormal">일반</button>
+			<button id="btnMapNormal" class="mapBtn btnMapNormal active">일반</button>
 
 			<!-- 위성 버튼 -->	
 			<button id="btnMapSatellite" class="mapBtn btnMapSatellite">위성</button>
 		</div>
 
 		<div class="dvEtc">
-			<a class="unit contact"><span class="hidden">contact us</span></a>
-			<a class="unit login" id="loginBtn"><span class="hidden">로그인</span></a>
+			<button type="button" class="unit contact" id="modalTest" title="contact us"><span class="hidden">contact us</span></button>
+			<button type="button" class="unit login"  id="loginBtn"   title="로그인"><span class="hidden">로그인</span></button>
 		</div>
 	</div>
 	
@@ -261,9 +200,9 @@ function commonPopup(url,  param, width){
 
 		<div class="rightArea">
 			<!-- 면적재기 버튼 -->
-			<button id="btnCalcArea" class="mapBtn btnCalcArea" data-switch="off">면적</button>
+			<button id="btnCalcArea" class="mapBtn btnCalcArea" data-switch="off" title="면적재기">면적</button>
 			<!-- 거리재기 버튼 -->
-			<button id="btnCalcDistance" class="mapBtn btnCalcDistance"  data-switch="off">거리</button>		
+			<button id="btnCalcDistance" class="mapBtn btnCalcDistance"  data-switch="off" title="거리재기">거리</button>		
 		</div>
 		
 		
@@ -279,7 +218,12 @@ function commonPopup(url,  param, width){
 
 
 	<!-- bootstrap modal 영역 -->
-	<div class="modal fade" id="modalPopup" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
+	<div class="modal" id="modalPopup" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
+		
+	</div>
+
+	<!-- bootstrap modal 영역 -->
+	<div class="modal" id="modalPopup2" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
 		
 	</div>
 	
