@@ -137,6 +137,7 @@ var hideLnbCont = function(obj){
 	$('.mapArea').animate({
 		'left': lnbWidth 
 	},100);
+	$('.mapArea').css({'min-width':'964px'});
 }
 
 // 좌메뉴 컨텐츠 출력에 따른 mapArea 조정
@@ -148,13 +149,14 @@ var mapAreaPosition = function(element){
 	var lnbWidth   = $('#lnbArea').outerWidth();
 	
 	var totalWidth = lnbWidth + contWidth
-	
-	//alert(totalWidth);
+
 	$('.mapArea').animate({
 		'left': totalWidth - 1
 	},100);
 
-	//map.setSize(getMapSize());
+	var minWidth = 964 - contWidth
+	$('.mapArea').css({'min-width':minWidth});
+
 }
 
 
