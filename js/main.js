@@ -60,6 +60,12 @@ $(function() {
 		showRightBtn(onOff, $(this));
 	});
 
+	//거리뷰
+	$('#btnStreetView').on('click', function() {
+		var onOff = $(this).data('switch');
+		showRightBtn(onOff, $(this));
+	});
+
 	//일반보기
 	$('#btnMapNormal').on('click', function()  {
 		map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
@@ -182,7 +188,14 @@ var commonPopup = function(url, param, width){
 			$("#modalPopup").html(data);
 		},		
 		complete : function(){
-			$('#modalPopup').modal().find('.modal-dialog').css({
+			$('#modalPopup').removeClass('in').data('bs.modal', null);
+			$('#modalPopup')
+			.modal({
+				backdrop: 'static', 
+				keyboard: false
+			})
+			.find('.modal-dialog')
+			.css({
 				'width': eWidth
 			});
 		}
@@ -210,7 +223,14 @@ var commonPopup2 = function(url, param, width){
 			$("#modalPopup2").html(data);
 		},		
 		complete : function(){
-			$('#modalPopup2').modal().find('.modal-dialog').css({
+			$('#modalPopup2').removeClass('in').data('bs.modal', null);
+			$('#modalPopup2')
+			.modal({
+				backdrop: 'static', 
+				keyboard: false
+			})
+			.find('.modal-dialog')
+			.css({
 				'width': eWidth
 			});
 		}

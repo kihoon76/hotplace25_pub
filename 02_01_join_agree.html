@@ -1,0 +1,335 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	
+	//회원가입 Step01 동의 하단 다음버튼
+	$('#btnStep01_next').on('click', function(){
+		$('.joinBox').hide();
+		$('#joinStep02').show();
+	});
+
+	//회원가입 Step02 정보입력 하단 이전버튼
+	$('#btnStep02_prev').on('click', function(){
+		$('.joinBox').hide();
+		$('#joinStep01').show();
+	});
+
+	//회원가입 Step02 정보입력 하단 다음버튼
+	$('#btnStep02_next').on('click', function(){
+		var v01 = $('#input01').val();
+		var v02 = $('#input02').val();
+		var v03 = $('#input03').val();
+		var v04 = $('#input04').val();
+		var v05 = $('#input05').val();
+		var v06 = $('#input06').val();
+		var v07 = $('#input07').val();
+		var v08 = $('#input08').val();
+		
+		if(v01 == '' || v02 == '' || v03 == '' || v04 == '' || v05 == '' || v06 == '' || v07 == '' || v08 == '' ){
+			alert('.helpCont 보여주는 단순예제임');
+			//단순예제임
+
+			$('#joinStep02 .helpCont').css('display','block');
+
+		} else {
+			$('.joinBox').hide();
+			$('#joinStep02 .helpCont').css('display','none');
+			$('#joinStep03').show();
+		}
+	});
+
+
+	//회원가입 Step03 정보확인 하단 취소버튼
+	$('#btnStep03_cencel').on('click', function(){
+		$('.joinBox').hide();
+		$('#joinStep01').show();
+	});
+
+	//회원가입 Step03 정보확인 하단 확인버튼
+	$('#btnStep03_ok').on('click', function(){
+		$('.joinBox').hide();
+		$('#joinStep04').show();
+	});
+	
+	//회원가입 Step04 가입완료 하단 로그인페이지로 이동 버튼
+	$('#btnStep04_login').on('click', function(){
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('01_01_login.html', '', '410'); //로그인 페이지는 항상 width가 410
+	});
+});
+</script>
+
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		
+		<div class="modal-header">
+			<h2 class="modal-title">회원가입</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+
+		<div class="modal-body">
+
+			<!-- 회원가입 step01 //////////////////// 동의부분 -->
+			<div id="joinStep01" class="rowBox joinBox joinStep01" style="display:;">			
+				
+				<div class="unit">
+					<div class="unit_tit">
+						<span class="sTit">개인정보 취급방침</span>
+
+						<div class="etcText fr mgT5">
+							<span class="rdchBox">
+								<input type="checkbox" id="checkbox01" name="" />
+								<label for="checkbox01" class="labelCh"><em class="text">동의합니다</em></label>
+							</span>
+						</div>
+					</div>
+					<div class="unit_cont">
+						<div class="termBox">							
+							제1조 개인정보 처리목적<br><br>
+							NICE신용정보는 다음의 목적을 위하여 개인정보를 처리합니다. 처리한 개인정보는 다음의 목적 외의 용도로는 사용되지 않으며 이용 목적이 변경되는 경우에는 개인정보보호법에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.<br>
+							가. 채권추심, 신용조사 등 고객 자산관리 업무 수행<br>
+							나. 고객센터 업무 수행<br>
+							다. 서류 수령 대행업무 수행<br>
+							라. 그 밖의 고객이 위탁하는 업무 수행<br>제2조 개인정보의 처리 및 보유 기간<br><br>
+								NICE신용정보는 법령에 따른 개인정보 보유?이용기간 <br>
+								또는 정보 주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유?이용기간 내에서만 개인정보를 처리?보유하고 정해진 기간 경과 시 즉시 폐기합니다.<br>
+								구체적인 개인정보 처리 및 보유기간은 다음과 같습니다.<br>
+							가. 신용정보 업무처리에 관한 기록 : 3년<br>
+							나. 의뢰 또는 계약철회 등에 관한 기록 : 5년<br>
+							다. 이용자의 불만 또는 분쟁처리에 관한 기록 : 3년	
+						</div>
+
+						
+					</div>
+				</div>
+
+				<div class="unit mgT5">
+					<div class="unit_tit">
+						<span class="sTit">이용약관</span>
+
+						<div class="etcText fr mgT5">
+							<span class="rdchBox">
+								<input type="checkbox" id="checkbox02" name="" />
+								<label for="checkbox02" class="labelCh"><em class="text">동의합니다</em></label>
+							</span>
+						</div>
+					</div>
+					<div class="unit_cont">
+						<div class="termBox">
+							제1조 개인정보 처리목적<br><br>
+							NICE신용정보는 다음의 목적을 위하여 개인정보를 처리합니다. 처리한 개인정보는 다음의 목적 외의 용도로는 사용되지 않으며 이용 목적이 변경되는 경우에는 개인정보보호법에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.<br>
+							가. 채권추심, 신용조사 등 고객 자산관리 업무 수행<br>
+							나. 고객센터 업무 수행<br>
+							다. 서류 수령 대행업무 수행<br>
+							라. 그 밖의 고객이 위탁하는 업무 수행<br>제2조 개인정보의 처리 및 보유 기간<br><br>
+								NICE신용정보는 법령에 따른 개인정보 보유?이용기간 <br>
+								또는 정보 주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유?이용기간 내에서만 개인정보를 처리?보유하고 정해진 기간 경과 시 즉시 폐기합니다.<br>
+								구체적인 개인정보 처리 및 보유기간은 다음과 같습니다.<br>
+							가. 신용정보 업무처리에 관한 기록 : 3년<br>
+							나. 의뢰 또는 계약철회 등에 관한 기록 : 5년<br>
+							다. 이용자의 불만 또는 분쟁처리에 관한 기록 : 3년	
+						</div>
+					</div>
+				</div>
+
+				<div class="unit mgT5">
+					<div class="unit_tit">
+						<span class="sTit">책임한계와 법적고지</span>
+
+						<div class="etcText fr mgT5">
+							<span class="rdchBox">
+								<input type="checkbox" id="checkbox03" name="" />
+								<label for="checkbox03" class="labelCh"><em class="text">동의합니다</em></label>
+							</span>
+						</div>
+					</div>
+					<div class="unit_cont">
+						<div class="termBox">
+							제1조 개인정보 처리목적<br><br>
+							NICE신용정보는 다음의 목적을 위하여 개인정보를 처리합니다. 처리한 개인정보는 다음의 목적 외의 용도로는 사용되지 않으며 이용 목적이 변경되는 경우에는 개인정보보호법에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.<br>
+							가. 채권추심, 신용조사 등 고객 자산관리 업무 수행<br>
+							나. 고객센터 업무 수행<br>
+							다. 서류 수령 대행업무 수행<br>
+							라. 그 밖의 고객이 위탁하는 업무 수행<br>제2조 개인정보의 처리 및 보유 기간<br><br>
+								NICE신용정보는 법령에 따른 개인정보 보유?이용기간 <br>
+								또는 정보 주체로부터 개인정보를 수집시에 동의 받은 개인정보 보유?이용기간 내에서만 개인정보를 처리?보유하고 정해진 기간 경과 시 즉시 폐기합니다.<br>
+								구체적인 개인정보 처리 및 보유기간은 다음과 같습니다.<br>
+							가. 신용정보 업무처리에 관한 기록 : 3년<br>
+							나. 의뢰 또는 계약철회 등에 관한 기록 : 5년<br>
+							다. 이용자의 불만 또는 분쟁처리에 관한 기록 : 3년	
+						</div>
+					</div>
+				</div>
+
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep01_next" class="btnstyle middle blue" style="width:80px;">다음</button>
+				</div>
+
+			</div>
+			<!-- //회원가입 step01 // 동의부분 -->
+
+			<!-- 회원가입 step02 //////////////////// 정보입력 -->
+			<div id="joinStep02" class="rowBox joinBox joinStep02" style="display:none;">			
+				
+				<div class="unit">
+					<div class="unit_tit">
+						<span class="sTit">정보입력</span>
+					</div>
+					<div class="unit_cont lineBox">
+						<table class="tableStyle formStyle left">
+							<colgroup>
+								<col style="width:120px;">
+								<col style="width:*;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>아이디</th>
+									<td>
+										<input type="text" id="input01" class="inp" style="width:60%;" />
+										<button type="button" class="btnstyle middle white">중복검색</button>
+
+										<span class="helpCont">아이디값을 입력하세요</span>
+										<span class="helpCont">아이디 중복체크를 하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>비밀번호</th>
+									<td>
+										<input type="text" id="input02" class="inp" style="width:100%;" />
+										<span class="helpCont">비밀번호를 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>비밀번호확인</th>
+									<td>
+										<input type="text" id="input03" class="inp" style="width:100%;" />
+										<span class="helpCont">비밀번호를 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>이름</th>
+									<td>
+										<input type="text" id="input04" class="inp" style="width:100%;" />
+										<span class="helpCont">이름을 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>이메일 주소</th>
+									<td>
+										<div class="inputGroup">
+											<input type="text" id="input05" class="inp fl" style="width:50%;" />
+											<span class="inline center fl" style="width:5%;" >@</span>
+											<select class="inp fl" style="width:45%;">
+												<option>== 선택하세요 ==</option>
+												<option>naver.com</option>
+												<option>daum.net</option>
+												<option>nate.com</option>
+												<option>직접입력</option>
+											<select>											
+										</div>
+										<span class="helpCont">email을 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>
+										<div class="inputGroup">
+											<input type="text" id="input06" class="inp fl" style="width:30%;" />
+											<span class="inline center fl"  style="width:5%;">-</span>
+											<input type="text" id="input07" class="inp fl" style="width:30%;" />
+											<span class="inline center fl"  style="width:5%;">-</span>
+											<input type="text" id="input08" class="inp fl" style="width:30%;" />
+										</div>
+										<span class="helpCont">숫자를 입력해 주세요</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep02_prev" class="btnstyle middle white" style="width:80px;">이전</button>
+					<button type="button" id="btnStep02_next" class="btnstyle middle blue" style="width:80px;">다음</button>
+				</div>
+
+			</div>
+			<!-- //회원가입 step02 // 정보입력 -->
+
+
+			<!-- 회원가입 step03 //////////////////// 회원가입정보 확인 -->
+			<div id="joinStep03" class="rowBox joinBox joinStep03" style="display:none;">			
+				
+				<div class="unit">
+					<div class="unit_tit">
+						<span class="sTit">가입 정보확인</span>
+					</div>
+					<div class="unit_cont lineBox">
+						<table class="tableStyle formStyle left">
+							<colgroup>
+								<col style="width:120px;">
+								<col style="width:*;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>아이디</th>
+									<td>aaaaaaaaa</td>
+								</tr>
+								<tr>
+									<th>비밀번호</th>
+									<td>**********</td>
+								</tr>
+								<tr>
+									<th>이름</th>
+									<td>핫플레이스</td>
+								</tr>
+								<tr>
+									<th>이메일 주소</th>
+									<td>hotplace@hotplace.com</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>000-0000-0000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="joinOkText">위 입력정보로 가입하겠습니다</div>
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep03_cencel" class="btnstyle middle white" style="width:80px;" data-dismiss="modal">취소</button>
+					<button type="button" id="btnStep03_ok" class="btnstyle middle blue" style="width:80px;">확인</button>
+				</div>
+
+			</div>
+			<!-- //회원가입 step03 // 회원가입정보 확인 -->
+
+
+			<!-- 회원가입 step04 //////////////////// 회원가입 완료 -->
+			<div id="joinStep04" class="rowBox joinBox joinStep04" style="display:none;">			
+				
+				<div class="joinEndText">
+					<strong>"축하합니다"</strong>
+					회원가입이 완료되었습니다.
+				</div>
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep04_login" class="btnstyle middle black" style="">로그인페이지로 이동</button>
+				</div>
+
+			</div>
+			<!-- //회원가입 step04 // 회원가입 완료 -->
+
+		</div>
+
+		<!--<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-dismiss="modal" onclick="javescript:alert('test');">Save changes</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">Close</button>
+		</div>-->
+	</div>
+</div>

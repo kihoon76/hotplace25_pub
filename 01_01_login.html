@@ -1,22 +1,47 @@
-<script>
+<script type="text/javascript">
+$(document).ready( function() {
+	//회원가입 modal 띄우기 자신의 모달 교체
+	$('#joinBtn').on('click', function(e) {	
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('02_01_join_agree.html', '', '600');
+	});
+});
 </script>
+
+
 <div class="modal-dialog" role="document">
 	<div class="modal-content">
+		
 		<div class="modal-header">
-			<h5 class="modal-title">Modal title</h5>
+			<!--<h2 class="modal-title">Modal title</h2>-->
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 			</button>
 		</div>
-		<div class="modal-body">
-			<div style="height:800px;">Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.
-			<br/><br/>
-			<a class="" id="testBtn">모달에서 모달 띄우기 테스트</a>
+		
+		<div class="modal-body bgGray">
+			<div class="loginBox">
+				
+				<div class="title">LOGIN</div>
+				
+				<form class="inputArea" method="" action="">
+					<input type=""text class="inp id"  placeholder="아이디"  />
+					<input type="password" class="inp pw"  placeholder="비밀번호"  />
+
+					<button type="button" class="btnLogin" >LOGIN</button>
+				</form>
+
+				<div class="joinLink">
+					<a href="javascript:void(0);" id="joinBtn" class="underline" data-dismiss="modal">회원가입</a>
+				</div>
+
 			</div>
 		</div>
-		<div class="modal-footer">
+
+		<!--<div class="modal-footer">
 			<button type="button" class="btnstyle middle blue" data-dismiss="modal" onclick="javescript:alert('test');">Save changes</button>
 			<button type="button" class="btnstyle middle gray" data-dismiss="modal">Close</button>
-		</div>
+		</div>-->
 	</div>
 </div>

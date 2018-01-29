@@ -56,12 +56,8 @@ $(document).ready( function() {
 
 	//Modal 레이어팝업 종료 이벤트이후
 	$('#modalPopup').on('hidden.bs.modal', function() {
+		$('#modalPopup').removeClass('in').data('bs.modal', null);
 		$('#modalPopup').empty();
-		$('#modalPopup').off('shown.bs.modal');
-		$('#modalPopup').on('shown.bs.modal', function() {
-			setModalMaxHeight($('#modalPopup'));
-			$('.modal-backdrop').remove();
-		});
 	});
 
 	//Modal에 모달 레이어팝업 오픈이벤트 이후
@@ -72,12 +68,8 @@ $(document).ready( function() {
 
 	//Modal에 모달 레이어팝업 종료 이벤트이후
 	$('#modalPopup2').on('hidden.bs.modal', function() {
+		$('#modalPopup2').removeClass('in').data('bs.modal', null);
 		$('#modalPopup2').empty();
-		$('#modalPopup2').off('shown.bs.modal');
-		$('#modalPopup2').on('shown.bs.modal', function() {
-			setModalMaxHeight($('#modalPopup2'));
-			$('.modal-backdrop').remove();
-		});
 		$('body').addClass('modal-open');
 	});
 
@@ -93,9 +85,8 @@ $(document).ready( function() {
 	$('#loginBtn').on('click', function(e) {	
 		var param = new Object();
 		//commonPopup('url', 'param', 'width');
-		commonPopup('01_01_login.html', '', '400');
+		commonPopup('01_01_login.html', '', '410'); //로그인 페이지는 항상 width가 410
 	});
-
 });
 
 
@@ -115,7 +106,7 @@ $(document).ready( function() {
 			<div id="dvTimeview" class="dvTimeview">
 				<div id="dvAutoYearRange" class="dvAutoYearRange">
 					<label for="btnAutoYear" class="btnAutoYear">
-						<input type="checkbox" id="btnAutoYear" class="hidden" disabled />
+						<input type="checkbox" id="btnAutoYear" class="hidden" />
 						<i class="btnIcon"></i>
 					</label>
 				</div>
@@ -156,7 +147,7 @@ $(document).ready( function() {
 			<li>
 				<a href="#" class="menu03" data-name="menuCont03"><i class="icon"></i><span>경•공매 물건 검색</span></a>
 			</li>
-			<li class="disabled">
+			<li>
 				<a href="#" class="menu04" data-name="menuCont04"><i class="icon"></i><span>물건보기</span></a>
 			</li>
 			<li>
@@ -182,12 +173,12 @@ $(document).ready( function() {
 			<!--#include virtual="lnbCont_03.html" -->
 		</div>
 
-		<div id="menuCont04" class="lnbContWrap">
+		<div id="menuCont04" class="lnbContWrap" style="display:; width:240px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_04.html" -->
 		</div>
 
-		<div id="menuCont05" class="lnbContWrap">
+		<div id="menuCont05" class="lnbContWrap" style="display:; width:240px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_05.html" -->
 		</div>
@@ -202,7 +193,9 @@ $(document).ready( function() {
 			<!-- 면적재기 버튼 -->
 			<button id="btnCalcArea" class="mapBtn btnCalcArea" data-switch="off" title="면적재기">면적</button>
 			<!-- 거리재기 버튼 -->
-			<button id="btnCalcDistance" class="mapBtn btnCalcDistance"  data-switch="off" title="거리재기">거리</button>		
+			<button id="btnCalcDistance" class="mapBtn btnCalcDistance"  data-switch="off" title="거리재기">거리</button>	
+			<!-- 거리뷰 버튼 -->
+			<button id="btnStreetView" class="mapBtn btnStreetView" data-switch="off" title="거리뷰">거리뷰</button>
 		</div>
 		
 		
@@ -218,14 +211,10 @@ $(document).ready( function() {
 
 
 	<!-- bootstrap modal 영역 -->
-	<div class="modal" id="modalPopup" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
-		
-	</div>
+	<div class="modal" id="modalPopup" tabindex="-1" role="dialog"></div>
 
-	<!-- bootstrap modal 영역 -->
-	<div class="modal" id="modalPopup2" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
-		
-	</div>
+	<!-- bootstrap modal에서 modal을 띄울때만 사용 영역 -->
+	<div class="modal" id="modalPopup2" tabindex="-1" role="dialog"></div>
 	
 	
 </body>

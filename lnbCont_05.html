@@ -1,15 +1,81 @@
 <!-- 출력되는 기본 구조 -->
 <div class="headArea">
-	<h2>메뉴제목이 들어가는곳 menuCont05</h2>
+	<h2>HeatMap 보기</h2>
 	<button type="button" class="close" onClick="javascript:hideLnbCont(this);">
 		<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 	</button>
 </div>
 <div class="bodyArea">
-	<div class="" style="height:800px;">
-	</div>
+	<ul class="heatmapList" style="">
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap1" name="hitmap" />
+				<label for="hitmap1" class="labelCh"><em class="text">heatmap 끄기</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap2" name="hitmap" />
+				<label for="hitmap2" class="labelCh"><em class="text">공시지가</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap3" name="hitmap" />
+				<label for="hitmap3" class="labelCh"><em class="text">공시지가 증가율</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap4" name="hitmap" disabled />
+				<label for="hitmap4" class="labelCh"><em class="text">건축허가면적</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap5" name="hitmap" disabled />
+				<label for="hitmap5" class="labelCh"><em class="text">건축허가면적 증가율</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap6" name="hitmap" disabled />
+				<label for="hitmap6" class="labelCh"><em class="text">영업허가면적</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap7" name="hitmap" disabled />
+				<label for="hitmap7" class="labelCh"><em class="text">영업허가면적 증가율</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap8" name="hitmap" disabled />
+				<label for="hitmap8" class="labelCh"><em class="text">개발행위허가면적</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap9" name="hitmap" disabled />
+				<label for="hitmap9" class="labelCh"><em class="text">개발행위허가면적 증가율</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap10" name="hitmap" disabled />
+				<label for="hitmap10" class="labelCh"><em class="text">개발사업면적</em></label>
+			</span>
+		</li>
+		<li>
+			<span class="rdchBox block">
+				<input type="radio" id="hitmap11" name="hitmap" disabled />
+				<label for="hitmap11" class="labelCh"><em class="text">HP등급</em></label>
+			</span>
+		</li>
+	</ul>
 </div>
 <div class="footArea">
-	<button type="button" class="btnstyle middle blue">검색</button>
+	<!--<button type="button" class="btnstyle middle blue">적용</button>-->
 	<button type="button" class="btnstyle middle gray" onClick="javascript:hideLnbCont(this);">닫기</button>
 </div>
