@@ -79,6 +79,8 @@ $(function() {
 		$(this).addClass('active');
 		$('#btnMapNormal').removeClass('active');
 	});
+
+	
 	
 });
 
@@ -119,6 +121,8 @@ var showLnbCont = function(element) {
 
 	$('#lnbCont > .lnbContWrap').hide();
 	$('#lnbCont > #' + data).show();
+
+	lnbContBodyAreaSet();
 }
 
 // 노출된 좌메뉴 컨텐츠 close 
@@ -165,6 +169,18 @@ var mapAreaPosition = function(element){
 
 }
 
+// 좌메뉴 컨텐츠 하단 footerEtcText 있을시 해당 bodyArea의 bottom재설정
+var lnbContBodyAreaSet = function(){
+	if ($('.footerEtcText').length != 0){
+		$('.footerEtcText').each(function() {
+			var thisBody = $(this).parents('.lnbContWrap').find('.bodyArea');
+			var footerH = $(this).parents('.lnbContWrap').find('.footArea').outerHeight();;
+			var thisH = $(this).outerHeight();
+
+			thisBody.css({'bottom': thisH + footerH});
+		});
+	}
+}
 
 ////////////////////////////////////////////////////////////////////////
 // modal 레이어팝업 띄우기
