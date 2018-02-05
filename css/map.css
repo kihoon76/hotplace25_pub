@@ -13,6 +13,7 @@
 .overflow {overflow:auto;}
 
 .bold     {font-weight:500;}
+.f_noraml {font-weight:normal !important;}
 .hidden   {display:none;}
 .ellipsis {text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; overflow:hidden;}
 
@@ -145,7 +146,11 @@ input:disabled {opacity:0.5; cursor:not-allowed;}
 .inp {border:1px solid #ccc; background:#fff; height:30px; line-height:30px; padding:0 5px;}
 
 input.inp:focus,
-select.inp:focus {border:1px solid #666;}
+select.inp:focus,
+textarea.inp:focus{border:1px solid #666;}
+
+textarea,
+textarea.inp {height:auto; padding:6px 5px; line-height:1.5em;}
 
 /* radio , checkbox */
 .rdchBox {display:inline-block; padding:5px 0px; line-height:16px;}
@@ -211,15 +216,41 @@ table.tableStyle.formStyle tr,
 table.tableStyle.formStyle th,
 table.tableStyle.formStyle td  {border-color:#ccc #ccc #ccc #ccc;}
 
+/* table borderStyle */
+table.tableStyle.borderStyle     {border-width:1px 1px 0px 1px; border-style:solid solid none solid;}
+table.tableStyle.borderStyle th,
+table.tableStyle.borderStyle td  {border-width:0px 0px 1px 0px; border-style:none none solid none;} 
 
-::-webkit-input-placeholder {color:#999;}
-:-moz-placeholder           {color:#999; opacity:1;}
-::-moz-placeholder          {color:#999; opacity:1;}
-:-ms-input-placeholder      {color:#999;}
-::placeholder               {color:#999; opacity:1;}
+table.tableStyle.borderStyle     {border-color:#ccc #ccc transparent #ccc;}
+table.tableStyle.borderStyle tr,
+table.tableStyle.borderStyle th,
+table.tableStyle.borderStyle td  {border-color:#ccc #ccc #ccc #ccc;}
+
+table.tableStyle.borderStyle th {background:#f3f3f3; border-right:1px solid #ccc;}
+table.tableStyle.borderStyle td {border-right:1px solid #ccc;}
+
+table.tableStyle.borderStyle tr td:last-child {border-right:none;}
+
+table.tableStyle.borderStyle tbody tr:hover {background:none;}
+table.tableStyle.borderStyle tbody tr:hover td {font-weight:normal;}
+
+/* table gridStyle */
+table.tableStyle.gridStyle thead th {background:#f3f3f3; text-align:center; border-top:1px solid #000;}
+table.tableStyle.gridStyle tbody td {text-align:;}
+table.tableStyle.gridStyle tbody tr:hover td {font-weight:normal;}
+
+::-webkit-input-placeholder {color:#aaa;}
+:-moz-placeholder           {color:#aaa; opacity:1;}
+::-moz-placeholder          {color:#aaa; opacity:1;}
+:-ms-input-placeholder      {color:#aaa;}
+::placeholder               {color:#aaa; opacity:1;}
 
 .bgGray  {background:#eeefef;}
+.bgWhite {background:#fff;}
 .lineBox {border:1px solid #ccc;}
+.color_red   {color:#e73131 !important;}
+.color_blue  {color:#3192e7 !important;}
+.color_black {color:#000000 !important;}
 
 /*************************************/
 /* layout */
@@ -254,29 +285,47 @@ body	 {min-height:600px;}
 
 /* 지도 우측 버튼 */
 .rightArea {font-size:13px; letter-spacing:-0.05em;}
-.rightArea .mapBtn {position:absolute; z-index:1; padding:0px 2px; background-color:#fff; color:#000; border:1px solid #333; height:30px; line-height:28px; cursor:pointer; text-align:center;}
+.rightArea .mapBtn {position:absolute; z-index:1; padding:0px 2px; background-color:#fff; color:#000; border:1px solid #333; height:32px; line-height:28px; cursor:pointer; text-align:center;}
 .rightArea .mapBtn:hover {}
 
 .rightArea .mapBtn.active {background-color:#2a7cdd; color:#fff; border:1px solid #333; opacity:1;}
 
 /* 면적재기 */
-.btnCalcArea     {width:62px; top:15px; right:10px;}
+.btnCalcArea            {width:32px; top:15px; right:10px; overflow:hidden; text-indent:1000px; background:url('../img/mapRight_icon.png') no-repeat; background-position:0px -30px;}
+.btnCalcArea.active     {background-position:-30px -30px;}
 /* 거리재기 */
-.btnCalcDistance {width:62px; top:44px; right:10px;}
+.btnCalcDistance        {width:32px; top:50px; right:10px; overflow:hidden; text-indent:1000px; background:url('../img/mapRight_icon.png') no-repeat; background-position:0px 0px;}
+.btnCalcDistance.active {background-position:-30px 0px;}
 /* 거리뷰 */
-.btnStreetView   {width:62px; top:73px; right:10px;}
+.btnStreetView          {width:32px; top:85px; right:10px; overflow:hidden; text-indent:1000px; background:url('../img/mapRight_icon.png') no-repeat; background-position:0px -60px;}
+.btnStreetView.active   {background-position:-30px -60px;}
+
 
 /*************************************/
 /* mapInnerBox // naverMap custom overlay */
-.mapInnerBox {position:relative; overflow:auto; width:300px;}
-.mibHeader {display:block; border:1px solid #000;}
-.mibBody {display:block; border:1px solid #000;}
+.mapInnerBox {position:relative; overflow:; width:350px; animation:bounceIn 0.25s linear 0s 1 alternate; box-shadow:0 5px 2px rgba(0,0,0,0.5); background:transparent;}
+.mapInnerBox:after {display:block; content:''; width:0; height:0; border-top:12px solid #333336; border-left:8px solid transparent; border-right:8px solid transparent; position:absolute; bottom:-12px; left:50%; margin-left:-8px;}
+.mibHeader {display:block; border:none; padding:15px 15px; background:#f5f6f7; font-weight:500;  border:1px solid rgba(0,0,0,0.4); border-radius:4px 4px 0 0;}
+.mibBody {display:block; overflow:auto; max-height:;  background:#333; border-radius:0 0 0 0;} 
+.mibBody .munuType {overflow:auto; clear:both;}
+.mibBody .munuType .link {display:inline-block;  float:left; width:50%; border-bottom:1px solid #222; position:relative; }
+.mibBody .munuType .link button {display:block; width:100%; padding:0 30px 0 50px; height:60px; text-align:left; color:rgba(255,255,255,0.8); position:relative; line-height:1.2em; font-size:12px; font-weight:500; border-right:1px solid #222;}
+
+.mibBody .munuType .link:last-child {border-bottom:none;}
+.mibBody .munuType .link:hover button {animation:ani_down 0.2s ease-out 0s 1 alternate; color:rgba(255,255,255,1.0); background:#222;}
+
+.mibBody .munuType .link button:before {display:inline-block; content:''; width:30px; height:30px; border-radius:0; position:absolute; left:13px; top:15px; border:0px solid rgba(255,255,255,0.3);}
+.mibBody .munuType .link button:before {background:url('../img/infoWindow_icon.png') no-repeat;}
+.mibBody .munuType .link button.mibIcon_01:before {background-position:0 0;}
+.mibBody .munuType .link button.mibIcon_02:before {background-position:0 -30px;}
+.mibBody .munuType .link button.mibIcon_03:before {background-position:0 -60px;}
+.mibBody .munuType .link button.mibIcon_04:before {background-position:0 -90px;}
 
 /*************************************/
 /* GNB  Area */
 .gnbArea {clear:both; text-align:right;}
 .gnbArea h1{display:inline-block; height:100%; width:auto; margin:0 30px 0 10px; vertical-align:middle; float:left; border:0px solid #fff;}
-.gnbArea h1 .logo {display:block; width:150px; height:100%;}
+.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat;}
 
 .gnbArea .dvNoticeTicker {display:inline-block; display:none; width:400px; overflow:hidden; position:relative; vertical-align:middle;}
 .gnbArea .dvNoticeTicker:before {display:inline-block; content:''; position:absolute; left:0; top:0; width:30px; height:30px;
@@ -294,8 +343,12 @@ body	 {min-height:600px;}
 .gnbArea .dvEtc {display:inline-block;  height:100%;}
 .gnbArea .dvEtc .unit { display:inline-block; border-left:1px solid rgba(255,255,255,0.2); line-height:50px; padding:0 8px;}
 .gnbArea .dvEtc .unit:after {display:inline-block; content:''; width:30px; height:30px; vertical-align:middle; background:url('../img/gnb_icon.png'); line-height:0; margin-top:-4px;  opacity:0.6;}
-.gnbArea .dvEtc .unit.contact:after  {background-position:-30px 0px;}
-.gnbArea .dvEtc .unit.login:after    {background-position:-30px -30px;}
+.gnbArea .dvEtc .unit.contact:after      {background-position:-30px 0px;}
+
+.gnbArea .dvEtc .unit.login:after        {background-position:-30px -150px;}
+.gnbArea .dvEtc .unit.logout:after       {background-position:-30px -180px;}
+.gnbArea .dvEtc .unit.logout {display:none;}
+
 .gnbArea .dvEtc .unit:hover:after {animation:ani_down2 0.2s ease-out 0s 1 alternate;}
 
 
@@ -419,9 +472,10 @@ body	 {min-height:600px;}
 .modal .modal-dialog {display:block; text-align:left;  vertical-align:middle; margin:0 auto; max-width:96%; top:50%;}
 
 .modal .modal-content {display:block; border-radius:2px; margin:0 auto;}
-.modal .modal-header {height:48px; padding:0 0; line-height:48px; width:100%; border-bottom:1px solid #ccc;}
-.modal .modal-header h2 {height:100%; font-size:16px; display:inline-block; margin-left:20px; line-height:1; height:auto; color:#000;}
-.modal .modal-header .close {display:inline-block; width:50px; height:100%; opacity:1;  }
+.modal .modal-header {min-height:48px; padding:15px 0 13px; width:100%; border-bottom:1px solid #ccc;}
+.modal .modal-header h2 {height:auto; font-size:16px; display:inline-block; margin:0 60px 0 20px; line-height:18px; color:#000;}
+.modal .modal-header h2 .sText {font-size:13px; font-weight:normal; letter-spacing:-0.05em; color:#000;}
+.modal .modal-header .close {display:inline-block; width:50px; height:50px; opacity:1;   position:absolute; right:0; top:0;}
 .modal .modal-header .close:hover {background:rgba(0,0,0,0.05);}
 .modal .modal-header .close i {display:block; height:100%; line-height:48px; opacity:0.5;}
 
@@ -446,6 +500,7 @@ body	 {min-height:600px;}
 
 .sTit {display:inline-block; font-size:14px; font-weight:500; padding:0 0 0 10px; position:relative; margin-top:6px; color:#2a7cdd; float:left;}
 .sTit:before {display:inline-block; content:''; width:6px; height:6px; border-radius:3px; background:#2a7cdd; position:absolute; left:0; top:50%; margin-top:-3px;}
+.sTit.circle:before {background:none; border:1px solid #2a7cdd;}
 
 .btnArea {display:block; margin:10px 0;}
 
@@ -495,7 +550,7 @@ body	 {min-height:600px;}
 /*************************************/
 /* alertCont */
 .modal .modal-dialog.alertBox {width:450px;}
-.modal .modal-dialog.alertBox .modal-header {height:0;}
+.modal .modal-dialog.alertBox .modal-header {height:0; min-height:0; padding:0 0;}
 .modal .modal-dialog.alertBox .modal-header .close {width:50px; height:50px; position:absolute; right:0; top:0; z-index:1;}
 .modal .modal-dialog.alertBox .modal-body {background:#fff;}
 .modal .modal-dialog.alertBox .modal-footer {text-align:center; padding:20px 20px; background:#f5f6f7; border-top:none;}
@@ -508,14 +563,39 @@ body	 {min-height:600px;}
 .alertCont .alertSubText {display:none; padding:15px 20px 0px; }
 
 /*************************************/
-/* heatmapList */
+/* heatmapList HeatMap 보기 */
 .heatmapList {border:0px solid #000; overflow:; padding:20px;}
 .heatmapList li {padding:4px 0;}
 .heatmapList li:hover .rdchBox {animation:ani_down 0.2s ease-out 0s 1 alternate;}
 
 /*************************************/
-/* mulgunList */
+/* mulgunList 물건 보기 */
 .mulgunList {border:0px solid #000; overflow:; padding:20px;}
 .mulgunList li {padding:4px 0;}
 .mulgunList li:hover .rdchBox {animation:ani_down 0.2s ease-out 0s 1 alternate;}
 
+/*************************************/
+/* 수지분석 */
+
+
+/*************************************/
+/* dvCateGwansim 관심물건등록 */
+.dvCateGwansim {}
+
+/*************************************/
+/* dvConsultRequest 컨설팅 요청 */
+.dvConsultRequest {}
+
+.topInfoBox {padding:0px 10px 0px 28px; margin-bottom:20px; font-size:13px; line-height:1.6em; letter-spacing:-0.05em; position:relative;}
+.topInfoBox:before {
+	font-family: 'AMB-iconfont' !important; speak:none; font-style:normal; font-weight:normal; font-variant:normal; text-transform:none; line-height:1;
+	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+	display:block; width:30px; height:30px; color:#000; font-size:18px; line-height:30px;
+	position:absolute; left:0; top:-5px;
+	content:'\e92d'; color:#999;
+}
+
+
+/*************************************/
+/* dvTojiUseRegul 토지 이용 규제 현황 보기 */
+.dvTojiUseRegul {}

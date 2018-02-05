@@ -3,8 +3,9 @@ $(function() {
 	var registry = new naver.maps.MapTypeRegistry();
 				
 	var map = new naver.maps.Map($('#map')[0], {
-		center: new naver.maps.LatLng(36.0207091, 127.9204629), //지도의 초기 중심 좌표(36.0207091, 127.9204629)
-		zoom: 3, //지도의 초기 줌 레벨
+		//center: new naver.maps.LatLng(36.0207091, 127.9204629), //지도의 초기 중심 좌표(36.0207091, 127.9204629)
+		center: cityhall,
+		zoom: 10, //지도의 초기 줌 레벨
 		/*mapTypes: registry,
 		mapTypeControl: true,
 		mapTypeControlOptions: {
@@ -31,8 +32,63 @@ $(function() {
 		}
 	}
 
-	
+	///////////////////////////////////////////////////////////////
+	// custom overlay 테스트
+	var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147);
+	var marker = new naver.maps.Marker({
+        map: map,
+        position: cityhall
+    });
 
+	var contentString = [
+        '<div class="mapInnerBox">',
+        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청</div>',
+        '   <div class="mibBody">',
+		'		<div class="munuType">',
+        '			<span class="link"><button type="button" class="mibIcon_01" onclick="javascript:mapInfowindowLink(this)" data-name="수지분석">수지분석</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_02" onclick="javascript:mapInfowindowLink(this)" data-name="관심물건 등록">관심물건 등록</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_03" onclick="javascript:mapInfowindowLink(this)" data-name="컨설팅 요청">컨설팅 요청</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_04" onclick="javascript:mapInfowindowLink(this)" data-name="토지 이용 규제 현황 보기">토지 이용<br/>규제 현황 보기</button></span>',
+		'		</div>',
+        '   </div>',
+        '</div>'
+    ].join('');
+
+	var infowindow = new naver.maps.InfoWindow({
+		content: contentString,
+		//maxWidth: 140,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		//anchorSize: new naver.maps.Size(20, 4),
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+
+	
+	var HOME_PATH = window.HOME_PATH || '.';
+	var marker = new naver.maps.Marker({
+		position: cityhall,
+		map: map,
+		icon: {
+			url: HOME_PATH + '/img/marker_search.png', //50, 68 크기의 원본 이미지
+			size: new naver.maps.Size(25, 34),
+			scaledSize: new naver.maps.Size(25, 34),
+			origin: new naver.maps.Point(0, 0),
+			anchor: new naver.maps.Point(12, 34)
+		}
+	});
+
+	naver.maps.Event.addListener(marker, "click", function(e) {
+		if (infowindow.getMap()) {
+			infowindow.close();
+		} else {
+			infowindow.open(map, marker);
+		}
+	});	
+	///////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////
 
 	//지적도
 	$('#btnJijeok').on('click', function() {
@@ -84,6 +140,28 @@ $(function() {
 	
 });
 
+///////////////////////////////////////////////////////////////
+//map 마커 infoWindow 내부 링크클릭 테스트
+var mapInfowindowLink = function(obj){
+	var $this     = $(obj);
+	var	linkName = $this.data('name');
+
+	if (linkName == '수지분석'){
+		alert('퍼블리싱 진행중입니다');
+		//commonPopup('z_modalTest_full.html', '', 'full');
+	} 
+	else if (linkName == '관심물건 등록'){
+		commonPopup('10_02_cateGwansim.html', '', '500');
+	}
+	else if (linkName == '컨설팅 요청'){
+		commonPopup('10_03_consultRequest.html', '', '500');
+	}
+	else if (linkName == '토지 이용 규제 현황 보기'){
+		commonPopup('10_04_tojiUseRegul.html', '', '1000');
+	}
+	
+}
+///////////////////////////////////////////////////////////////
 
 // 우측 버튼 active 관련
 var showRightBtn = function(onOff, $btn) {		  
@@ -252,6 +330,42 @@ var commonPopup2 = function(url, param, width){
 		}
 	});	
 };
+
+// alert modal 레이어팝업 띄울때
+var alertPopup = function(url, param, width){
+	var eWidth = width; //레이어 팝업의  width 강제설정
+	
+	if(width == null){
+		eWidth = '';
+	}else if (width == 'full'){
+		eWidth = '96%';
+	}else{
+		eWidth = width;
+	}	
+	
+	$.ajax({
+		type : "get",
+		url : url,
+		data : param,
+		async: true,
+		success : function(data) {
+			$("#alrtPopup").html(data);
+		},		
+		complete : function(){
+			$('#alrtPopup').removeClass('in').data('bs.modal', null);
+			$('#alrtPopup')
+			.modal({
+				backdrop: 'static', 
+				keyboard: false
+			})
+			.find('.modal-dialog')
+			.css({
+				'width': eWidth
+			});
+		}
+	});	
+};
+
 
 // modal layerpopup window기준 max-height 재설정 // modal-body에 스크롤 생성
 var setModalMaxHeight = function(element) {

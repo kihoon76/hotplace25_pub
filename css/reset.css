@@ -42,6 +42,7 @@ legend{*width:0}
 table{border-collapse:collapse;border-spacing:0}
 input,textarea,button {-webkit-border-radius:0; border-radius:0;} /* 모바일 webkit 브라우져에서 input등 기본 속성 제거 */
 
+button, html input[type="button"], input[type="reset"], input[type="submit"] {-webkit-appearance:none;}
 * {box-sizing:border-box;}
 
 ::-webkit-scrollbar {width:14px; height:14px;}

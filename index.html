@@ -48,6 +48,16 @@ $(document).ready( function() {
 		mapAreaPosition(this);
 	});
 
+	// 좌메뉴 클릭 특정 id alert modal 띄우기 테스트
+	$('#alertTest').on('click', function() {
+		var param = new Object();
+		alertPopup('00_01_alert.html', '', '');
+	});
+
+
+
+
+
 	//Modal 레이어팝업 오픈이벤트 이후
 	$('#modalPopup').on('shown.bs.modal', function() {
 		setModalMaxHeight($('#modalPopup'));
@@ -73,8 +83,26 @@ $(document).ready( function() {
 		$('body').addClass('modal-open');
 	});
 
+	//alrtPopup 모달 레이어팝업 오픈이벤트 이후
+	$('#alrtPopup').on('shown.bs.modal', function() {
+		setModalMaxHeight($('#alrtPopup'));
+		$('.modal-backdrop').remove();
+	});
+
+	//alrtPopup 모달 레이어팝업 종료 이벤트이후
+	$('#alrtPopup').on('hidden.bs.modal', function() {
+		$('#alrtPopup').removeClass('in').data('bs.modal', null);
+		$('#alrtPopup').empty();
+		if ($('#modalPopup').is(':visible') || $('#modalPopup2').is(':visible')){
+			$('body').addClass('modal-open');
+		}
+	});
+
+
+
+
 	
-	//modal test
+	//modal 레이어 팝업 샘플
 	$('#modalTest').on('click', function(e) {	
 		var param = new Object();
 		//commonPopup('url', 'param', 'width');
@@ -82,15 +110,35 @@ $(document).ready( function() {
 	});
 
 	//로그인 modal
-	$('#loginBtn').on('click', function(e) {	
+	$('#loginBtn').on('click', function(e) {
+
 		var param = new Object();
 		//commonPopup('url', 'param', 'width');
 		commonPopup('01_01_login.html', '', '410'); //로그인 페이지는 항상 width가 410
 	});
+
+	//로그아웃 버튼
+	$('#logoutBtn').on('click', function(e) {		
+		logoutAction();
+	});
+
 });
 
+var loginAction = function() {
+	$('#loginBtn').hide();
+	$('#logoutBtn').show();
+}
+var logoutAction = function() {
+	var conf = confirm('로그아웃 하시겠습니까?');
 
-	
+	if(conf == true){
+		$('#logoutBtn').hide();
+		$('#loginBtn').show();
+	}
+	else if(conf == false){
+		return;
+	}
+}	
 </script>
 
 </head>
@@ -130,6 +178,7 @@ $(document).ready( function() {
 		<div class="dvEtc">
 			<button type="button" class="unit contact" id="modalTest" title="contact us"><span class="hidden">contact us</span></button>
 			<button type="button" class="unit login"  id="loginBtn"   title="로그인"><span class="hidden">로그인</span></button>
+			<button type="button" class="unit logout"  id="logoutBtn"   title="로그아웃"><span class="hidden">로그아웃</span></button>
 		</div>
 	</div>
 	
@@ -139,7 +188,7 @@ $(document).ready( function() {
 
 		<ul id="memuList" class="memuList">
 			<li class="active">
-				<a href="#" class="menu01" data-name="menuCont01"><i class="icon"></i><span>주소 검색</span></a>
+				<a href="#" id="alertTest" class="menu01" data-name="menuCont01"><i class="icon"></i><span>주소 검색</span></a>
 			</li>
 			<li>
 				<a href="#" class="menu02" data-name="menuCont02"><i class="icon"></i><span>투자 유망 지역 검색</span></a>
@@ -173,12 +222,12 @@ $(document).ready( function() {
 			<!--#include virtual="lnbCont_03.html" -->
 		</div>
 
-		<div id="menuCont04" class="lnbContWrap" style="display:; width:240px;">
+		<div id="menuCont04" class="lnbContWrap" style="display:; width:280px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_04.html" -->
 		</div>
 
-		<div id="menuCont05" class="lnbContWrap" style="display:; width:240px;">
+		<div id="menuCont05" class="lnbContWrap" style="display:; width:280px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_05.html" -->
 		</div>
@@ -196,6 +245,11 @@ $(document).ready( function() {
 			<button id="btnCalcDistance" class="mapBtn btnCalcDistance"  data-switch="off" title="거리재기">거리</button>	
 			<!-- 거리뷰 버튼 -->
 			<button id="btnStreetView" class="mapBtn btnStreetView" data-switch="off" title="거리뷰">거리뷰</button>
+		</div>
+
+		<div id="dvStreetView" style="display:;">
+			<div id="dvStreetViewHeader"><a href="#" class="pano-close"><span>×</span></a></div>
+			<div id="dvStreetViewContent"></div>
 		</div>
 		
 		
@@ -215,7 +269,9 @@ $(document).ready( function() {
 
 	<!-- bootstrap modal에서 modal을 띄울때만 사용 영역 -->
 	<div class="modal" id="modalPopup2" tabindex="-1" role="dialog"></div>
-	
+
+	<!-- alert modal을 띄울때만 사용 영역 -->
+	<div class="modal" id="alrtPopup" tabindex="-1" role="dialog"></div>
 	
 </body>
 </html>

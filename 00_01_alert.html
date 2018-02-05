@@ -1,0 +1,37 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	//회원가입 modal 띄우기 자신의 모달 교체
+	$('#btnLinkLogin').on('click', function(e) {	
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('01_01_login.html', '', '410'); //로그인 페이지는 항상 width가 410
+	});
+});
+</script>
+
+
+<div class="modal-dialog alertBox" role="document"><!-- alert//메세지 모달은 반드시 class명 alertBox 추가 -->
+	<div class="modal-content">		
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="alertCont">
+				<span class="iconBlock"></span>
+
+				<p class="alertText">					
+					로그인을 해주세요
+				</p>
+				<p class="alertSubText">
+					현재 이곳은 만약 기본 텍스트말고 sub 설명이 들어가는 곳입니다. 필요시만 사용
+				</p>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<button type="button" id="btnLinkLogin" class="btnstyle middle black" data-dismiss="modal" style="">로그인 하기</button>
+		</div>
+	</div>
+</div>
