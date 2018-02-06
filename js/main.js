@@ -56,11 +56,9 @@ $(function() {
 
 	var infowindow = new naver.maps.InfoWindow({
 		content: contentString,
-		//maxWidth: 140,
 		backgroundColor: "transparent",
 		borderColor: "#666",
 		borderWidth: 0,
-		//anchorSize: new naver.maps.Size(20, 4),
 		anchorSize: new naver.maps.Size(0, 0),
 		anchorSkew: false,  
 		pixelOffset: new naver.maps.Point(0, -12)
@@ -87,6 +85,90 @@ $(function() {
 			infowindow.open(map, marker);
 		}
 	});	
+
+
+	////////////////////////////////////////////
+	var acceptbuildingMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9704147),
+		map: map,
+		title: '건축허가',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker/acceptbuilding.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
+	var bosangMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9734147),
+		map: map,
+		title: '보상물건',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker/bosang.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
+	var gongmaeMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9764147),
+		map: map,
+		title: '공매',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker/gongmae.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
+	var gyeongmaeMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9794147),
+		map: map,
+		title: '경매',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker/gyeongmae.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
+	var pyeonibMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9824147),
+		map: map,
+		title: '편입물건',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker/pyeonib.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
+	var silgeolaeMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9854147),
+		map: map,
+		title: '실거래가',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker/silgeolae.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
+	////////////////////////////////////////////
+
+
 	///////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////
 
