@@ -101,6 +101,41 @@ $(function() {
 		}
 	});
 
+	var  acceptbuildingStr = [
+        '<div class="mapInnerBox">',
+        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청</div>',
+        '   <div class="mibBody">',
+		'		<div class="munuType">',
+        '			<span class="link"><button type="button" class="mibIcon_01" onclick="javascript:mapInfowindowLink(this)" data-name="수지분석">수지분석</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_02" onclick="javascript:mapInfowindowLink(this)" data-name="관심물건 등록">관심물건 등록</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_03" onclick="javascript:mapInfowindowLink(this)" data-name="컨설팅 요청">컨설팅 요청</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_04" onclick="javascript:mapInfowindowLink(this)" data-name="토지 이용 규제 현황 보기">토지 이용<br/>규제 현황 보기</button></span>',
+		'		</div>',
+        '   </div>',
+        '</div>'
+    ].join('');
+;
+	//건축허가 윈도우 창
+	var acceptbuildingInfowindow = new naver.maps.InfoWindow({
+		content: acceptbuildingStr,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+
+	//건축허가 마커 클릭 이벤트
+	naver.maps.Event.addListener(acceptbuildingMarker, "click", function(e) {
+		if (acceptbuildingInfowindow.getMap()) {
+			console.log('pp');
+			acceptbuildingInfowindow.close();
+		} else {
+			acceptbuildingInfowindow.open(map, acceptbuildingMarker);
+		}
+	});	
+
 	var bosangMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9734147),
 		map: map,
