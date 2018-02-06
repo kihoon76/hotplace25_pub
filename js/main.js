@@ -103,7 +103,7 @@ $(function() {
 
 	var  acceptbuildingStr = [
         '<div class="mapInnerBox">',
-        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청<input type="button" onclick="window.acceptbuildingHan()" value="X"></div>',
+        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청<input type="button" onclick="acceptbuildingHan()" value="X"></div>',
         '   <div class="mibBody">',
 		'		<div class="munuType">',
         '			<span class="link"><button type="button" class="mibIcon_01" onclick="javascript:mapInfowindowLink(this)" data-name="수지분석">수지분석</button></span>',
