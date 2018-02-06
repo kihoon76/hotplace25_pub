@@ -63,8 +63,8 @@
   100% {opacity: 1;   transform: scale(1) translate3d(0,0,0);}
 }
 
-body {color:#55;}
-a, a:hover {color:#555; cursor:pointer;}
+body {color:#111; font-weight:400;}
+a, a:hover {color:#111; cursor:pointer;}
 a:focus,
 button:focus {outline:none;}
 
@@ -184,9 +184,9 @@ input[type='checkbox']:checked + label.labelCh:before {background-position:0 top
 
 /* table */
 table {table-layout:fixed; width:100%; text-align:center;}
-table.tableStyle tr {height:40px;}
+table.tableStyle tr {height:34px;}
 table.tableStyle th,
-table.tableStyle td {padding:10px 10px; line-height:1.4em;}
+table.tableStyle td {padding:8px 10px; line-height:1.4em;}
 table.tableStyle th {color:#333;}
 
 /* 라인 스타일 */
@@ -226,7 +226,7 @@ table.tableStyle.borderStyle tr,
 table.tableStyle.borderStyle th,
 table.tableStyle.borderStyle td  {border-color:#ccc #ccc #ccc #ccc;}
 
-table.tableStyle.borderStyle th {background:#f3f3f3; border-right:1px solid #ccc;}
+table.tableStyle.borderStyle th {background:#f5f6f7; border-right:1px solid #ccc;}
 table.tableStyle.borderStyle td {border-right:1px solid #ccc;}
 
 table.tableStyle.borderStyle tr td:last-child {border-right:none;}
@@ -235,9 +235,13 @@ table.tableStyle.borderStyle tbody tr:hover {background:none;}
 table.tableStyle.borderStyle tbody tr:hover td {font-weight:normal;}
 
 /* table gridStyle */
-table.tableStyle.gridStyle thead th {background:#f3f3f3; text-align:center; border-top:1px solid #000;}
+table.tableStyle.gridStyle thead th {background:#f5f6f7; text-align:center; border-top:1px solid #888;}
 table.tableStyle.gridStyle tbody td {text-align:;}
 table.tableStyle.gridStyle tbody tr:hover td {font-weight:normal;}
+
+/* table topBold */
+table.tableStyle.topBold  {border-top-width:1px; border-top-style:solid; border-top-color:#888;}
+
 
 ::-webkit-input-placeholder {color:#aaa;}
 :-moz-placeholder           {color:#aaa; opacity:1;}
@@ -325,7 +329,7 @@ body	 {min-height:600px;}
 /* GNB  Area */
 .gnbArea {clear:both; text-align:right;}
 .gnbArea h1{display:inline-block; height:100%; width:auto; margin:0 30px 0 10px; vertical-align:middle; float:left; border:0px solid #fff;}
-.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat;}
+.gnbArea h1 .logo {display:none; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat;}
 
 .gnbArea .dvNoticeTicker {display:inline-block; display:none; width:400px; overflow:hidden; position:relative; vertical-align:middle;}
 .gnbArea .dvNoticeTicker:before {display:inline-block; content:''; position:absolute; left:0; top:0; width:30px; height:30px;
@@ -455,6 +459,8 @@ body	 {min-height:600px;}
 }
 .searchBtn:hover {background:rgba(0,0,0,0.08);}
 .adressSAreaResult {position:relative; overflow:auto; padding:10px 20px; margin-top:90px; }
+.adressSAreaResult table.tableStyle th, 
+.adressSAreaResult table.tableStyle td {padding-top:10px; padding-bottom:10px;}
 
 
 /*************************************/
@@ -499,14 +505,50 @@ body	 {min-height:600px;}
 .unit_cont:after {display:block; content:''; height:0; line-height:0; padding:0; margin:0; clear:both;}
 
 .sTit {display:inline-block; font-size:14px; font-weight:500; padding:0 0 0 10px; position:relative; margin-top:6px; color:#2a7cdd; float:left;}
-.sTit:before {display:inline-block; content:''; width:6px; height:6px; border-radius:3px; background:#2a7cdd; position:absolute; left:0; top:50%; margin-top:-3px;}
-.sTit.circle:before {background:none; border:1px solid #2a7cdd;}
+.sTit:before {display:inline-block; content:''; width:6px; height:6px; border-radius:3px; background:#2a7cdd; border:1px solid #2a7cdd; position:absolute; left:0; top:50%; margin-top:-3px;}
+.sTit.circle:before {background:none;}
+
+.sTit.color_black {color:#333;}
+.sTit.color_black:before {background:none; border-color:#333;}
+
+.sTit.color_red {color:#e73131;}
+.sTit.color_red:before {background:none; border-color:#e73131;}
+
+.sTit.color_blue {color:#3192e7;}
+.sTit.color_blue:before {background:none; border-color:#3192e7;}
+
+.sTit.noBullt {padding-left:0;}
+.sTit.noBullt:before {display:none;}
 
 .btnArea {display:block; margin:10px 0;}
 
 .inputGroup {display:block; clear:;}
 .inputGroup:after {display:block; content:''; height:0; line-height:0; clear:both;}
 .inputGroup span.inline {line-height:30px;}
+
+/*************************************/
+/* tab Wrap */
+.tabWrap {overflow:auto;}
+.tabWrap:after {display:block; content:''; clear:both; height:0; line-height:0;}
+
+.tabWrap .tab-head {clear:both; overflow:hidden;}
+.tabWrap .nav-tabs {clear:both; position:relative; overflow:hidden;}
+.tabWrap .nav-tabs:after {display:block; content:''; width:100%; height:2px; line-height:0; background:#2a7cdd; position:absolute; bottom:-1px; z-index:1;}
+.tabWrap .nav-tabs .tabLink {display:inline-block; float:left; padding:0 0; margin-right:-1px; height:40px; border:1px solid #d1d1d1; background:#e5e5e5; color:#333;}
+.tabWrap .nav-tabs .tabLink:last-child {margin-right:0;}
+.tabWrap .nav-tabs .tabLink.active {background:#2a7cdd !important; color:#fff; font-weight:500; border:1px solid #2a7cdd !important;}
+.tabWrap .nav-tabs .tabLink > a,
+.tabWrap .nav-tabs .tabLink > button{border:none; background:transparent; display:block; height:100%; padding:3px 25px;}
+.tabWrap .nav-tabs .tabLink .text {display:inline-block; vertical-align:middle; }
+
+.tabWrap .nav-tabs .tabLink:hover {background:#333336; border-color:#333336;}
+.tabWrap .nav-tabs .tabLink:hover .text {font-weight:500; color:#fff;}
+
+.tabWrap .tab-pane {display:none; clear:both; position:relative; overflow:auto; margin-top:15px}
+.tabWrap .tab-pane.active {display:block;}
+
+.tabWrap .tab-pane > .unit:nth-of-type(1) > .unit_tit:nth-of-type(1) {margin-top:-10px;}
+
 
 /*************************************/
 /* loginBox */
@@ -599,3 +641,7 @@ body	 {min-height:600px;}
 /*************************************/
 /* dvTojiUseRegul 토지 이용 규제 현황 보기 */
 .dvTojiUseRegul {}
+
+.drawingLegend {}
+.drawingLegend li {padding:2px 0;}
+.drawingLegend li * {vertical-align:middle;}

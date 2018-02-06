@@ -1,0 +1,95 @@
+<script type="text/javascript">
+$(document).ready( function() {
+});
+</script>
+
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				토지 이용 규제 현황 보기
+				<span class="sText">( 소재지 : 서울특별시 강남구 논현동 24 )</span>
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="tabWrap dvTojiUseRegul">
+				
+				<div class="tab-head">
+					<ul class="nav-tabs">
+						<li class="tabLink active">
+							<button href="#tabBox01" data-toggle="tab"><span class="text">기본정보</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabBox02" data-toggle="tab"><span class="text">토지대장</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabBox03" data-toggle="tab"><span class="text">건축물대장</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabBox04" data-toggle="tab"><span class="text">토지이용계획</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabBox05" data-toggle="tab"><span class="text">개별공시지가</span></button>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tab-content" style="min-height:740px;"> <!-- 해당 부분은 실제ㅔ 컨텐츠를 넣어보고 수정보완함 -->
+
+					<!-- ----------------------- -->
+					<!-- 기본정보 -->
+					<div id="tabBox01" class="tab-pane active">	
+						<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+						<!--#include virtual="10_04_tojiUseRegul_tab01.html" -->						
+					</div>
+
+					
+					<!-- ----------------------- -->
+					<!-- 토지대장 -->
+					<div id="tabBox02" class="tab-pane">
+						<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+						<!--#include virtual="10_04_tojiUseRegul_tab02.html" -->
+					</div>
+
+
+					<!-- ----------------------- -->
+					<!-- 건축물대장 -->
+					<div id="tabBox03" class="tab-pane">
+						<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+						<!--#include virtual="10_04_tojiUseRegul_tab03.html" -->						
+					</div>
+
+					
+					<!-- ----------------------- -->
+					<!-- 토지이용계획 -->
+					<div id="tabBox04" class="tab-pane">
+						<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+						<!--#include virtual="10_04_tojiUseRegul_tab04.html" -->						
+					</div>
+
+					
+					<!-- ----------------------- -->
+					<!-- 개별공시지가 -->
+					<div id="tabBox05" class="tab-pane">
+						<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+						<!--#include virtual="10_04_tojiUseRegul_tab05.html" -->	
+					</div>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+
+
+		<!--
+		<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-dismiss="modal">등록</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">취소</button>
+		</div>
+		-->
+	</div>
+</div>

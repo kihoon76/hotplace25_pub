@@ -12,6 +12,13 @@
 		//commonPopup2('url', 'param', 'width');
 		commonPopup('z_modalTest.html', '', '300');
 	});
+
+	//alert modal test
+	$('#alert01').on('click', function(e) {
+		var param = new Object();
+		//commonPopup2('url', 'param', 'width');
+		alertPopup('00_01_alert.html', '', '');
+	});
 </script>
 <div class="modal-dialog" role="document">
 	<div class="modal-content">
@@ -30,6 +37,11 @@
 
 
 			<a href="#" id="testBtn2" class="btnstyle middle blue" >자기 자신교체 띄우기 테스트</a>
+
+			<br/><br/>
+
+
+			<a href="#" id="alert01" class="btnstyle middle blue" >alert 띄울때</a>
 			</div>
 		</div>
 		<div class="modal-footer">

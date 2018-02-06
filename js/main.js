@@ -136,6 +136,11 @@ $(function() {
 		$('#btnMapNormal').removeClass('active');
 	});
 
+
+	//Bootstrap tabs 이벤트
+	$('button[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+	});
+
 	
 	
 });

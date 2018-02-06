@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8" lang="ko"><![endif]-->
+<!--[if IE 9]><html class="ie9" lang="ko"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="ko"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+
+<title>퍼블리싱 작업현황 리스트</title>
+
+<!-- 모든 디자인을 재선언하는 css -->
+<link rel="stylesheet" href="css/style.css" />
+
+<script type="text/javascript" src="jquery/3.2.1/jquery.min.js" ></script>
+<script type="text/javascript" src="jquery-ui/1.12.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="bootstrap/bootstrap.min.js" ></script>
+
+
+<!-- //공통 부분 -->
+
+<style type="text/css">
+body,html {font-size:12px;}
+h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
+.codeList ul {margin:20px; display:table; width:97%;}
+.codeList ul li {clear:both; border-bottom:1px solid #f1f1f1;}
+.codeList ul li:hover {color:#000; font-weight:bold; background:#f1f1f1;}
+.codeList ul li.ulHead {background:#f1f1f1; border-color:#aaa;}
+.codeList ul li span {display:table-cell;padding:5px ; border-right:1px solid #f1f1f1;}
+.codeList ul li span:nth-child(1) {width:200px;}
+.codeList ul li span:nth-child(2) {width:250px;}
+/*.codeList ul li span.name {width:360px;}*/
+.codeList ul li span.link {cursor:pointer; width:350px;}
+.codeList ul li span.ex {color:#aaa; font-size:11px; width:350px;}
+.codeList ul li span.end {width:100px;}
+.codeList ul li span.date {font-weight:bold; width:100px; text-align:center;}
+.codeList ul li span.etc {width:300px; border-right:none;}
+
+.codeList ul li a {color:#000;}
+.codeList ul li.ulHead span.ex {color:#000 !important; font-size:12px;}
+.tab {border-bottom:1px solid #aaa; display:block; clear:both; margin:20px 15px;}
+.tab li {display:inline-block; position:relative;}
+.tab li a {display:block; border:1px solid #aaa; border-bottom:0; padding:10px 10px;}
+.tab li.active a {background:#000; color:#fff; border-color:#000;}
+
+.tab li a span.new {display:inline-block; width:16px; height:16px; background:red; color:#fff; font-weight:600; margin-left:3px; text-align:center;}
+.tab li a span.new {display:none;}
+.tab li a span.new.open {display:inline-block;}
+</style>
+</head>
+
+<body class="" style="min-width:1280px;">
+<h1>퍼블리싱 작업 현황 리스트</h1>
+<ul class="tab">
+	<li class="active" ><a href="#" class="inc_99" name="inc_99">DefaultGuide<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_00" name="inc_00">로그인,회원가입<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_01" name="inc_01">주소검색<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_02" name="inc_02">투자유망 지역검색<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_03" name="inc_03">경•공매 물건 검색<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_04" name="inc_04">물건보기<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_05" name="inc_05">히트맵보기<span class="new">N</span></a></li>
+
+	<li class=""><a href="#" class="inc_06" name="inc_06">contact us<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_07" name="inc_07">My Page<span class="new">N</span></a></li>
+	<li class=""><a href="#" class="inc_08" name="inc_08">공지사항//인트로<span class="new">N</span></a></li>
+
+
+	<li class="" style="margin:0 0px 0 30px; background:#f1f1f1;"><a href="#" class="inc_30" name="inc_30">css, js<span class="new">N</span></a></li>
+	<li class="" style="background:#f1f1f1;"><a href="#" class="inc_32" name="inc_31">이미지<span class="new">N</span></a></li>
+</ul>
+<div id="inc_99" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>기본 레이아웃</span>
+			<span class="link">index.html</span>
+			<span class="ex">기본 레이아웃 디자인</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+
+		<li>
+			<span>커스텀 alert // message</span>
+			<span class="link" data-type="modal" data-width="">00_01_alert.html</span>
+			<span class="ex">alert//message</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.05</span>
+			<span class="etc"></span>
+		</li>
+
+		<li>
+			<span>modal 샘플</span>
+			<span class="link" data-type="modal" data-width="600">z_modalTest.html</span>
+			<span class="ex">modal 샘플</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>modal 샘플2</span>
+			<span class="link" data-type="modal" data-width="full">z_modalTest_full.html</span>
+			<span class="ex">modal 샘플</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!-- 로그인,회원가입 -->
+<div id="inc_00" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>로그인</span>
+			<span class="link" data-type="modal" data-width="410">01_01_login.html</span>
+			<span class="ex">로그인</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>회원가입</span>
+			<span class="link" data-type="modal" data-width="600">02_01_join_agree.html</span>
+			<span class="ex">회원가입</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!-- 주소검색 -->
+<div id="inc_01" class="codeList" style="">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>좌메뉴 주소검색</span>
+			<span class="link" data-type="inc">lnbCont_01.html</span>
+			<span class="ex">좌메뉴 주소검색 - index.html에 inculde되는 좌메뉴</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+
+		<li>
+			<span>주소검색 > 관심물건 등록</span>
+			<span class="link" data-type="modal" data-width="500">10_02_cateGwansim.html</span>
+			<span class="ex">관심물건 등록</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.05</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>주소검색 > 컨설팅 요청</span>
+			<span class="link" data-type="modal" data-width="500">10_03_consultRequest.html</span>
+			<span class="ex">컨설팅 요청</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.05</span>
+			<span class="etc"></span>
+		</li>
+
+		<li>
+			<span>주소검색 > 토지 이용 규제 현황 보기</span>
+			<span class="link" data-type="modal" data-width="1000">10_04_tojiUseRegul.html</span>
+			<span class="ex">토지 이용 규제 현황 보기</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+
+		<li>
+			<span>주소검색 > 토지 이용 규제 현황 보기 > tab01</span>
+			<span class="link" data-type="inc">10_04_tojiUseRegul_tab01.html</span>
+			<span class="ex">토지 이용 규제 현황 보기 > 기본정보</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>주소검색 > 토지 이용 규제 현황 보기 > tab02</span>
+			<span class="link" data-type="inc">10_04_tojiUseRegul_tab02.html</span>
+			<span class="ex">토지 이용 규제 현황 보기 > 토지대장</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>주소검색 > 토지 이용 규제 현황 보기 > tab03</span>
+			<span class="link" data-type="inc">10_04_tojiUseRegul_tab03.html</span>
+			<span class="ex">토지 이용 규제 현황 보기 > 건축물대장</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>주소검색 > 토지 이용 규제 현황 보기 > tab04</span>
+			<span class="link" data-type="inc">10_04_tojiUseRegul_tab04.html</span>
+			<span class="ex">토지 이용 규제 현황 보기 > 토지이용계획</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>주소검색 > 토지 이용 규제 현황 보기 > tab05</span>
+			<span class="link" data-type="inc">10_04_tojiUseRegul_tab05.html</span>
+			<span class="ex">토지 이용 규제 현황 보기 > 개별공시지가</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+
+
+	</ul>
+</div>
+
+<!-- 투자유망 지역검색 -->
+<div id="inc_02" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>좌메뉴 투자유망 지역검색</span>
+			<span class="link" data-type="inc">lnbCont_02.html</span>
+			<span class="ex">좌메뉴 투자유망 지역검색 - index.html에 inculde되는 좌메뉴</span>
+			<span class="end"></span>
+			<span class="date"></span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!-- 경•공매 물건 검색 -->
+<div id="inc_03" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>좌메뉴 경•공매 물건 검색</span>
+			<span class="link" data-type="inc">lnbCont_03.html</span>
+			<span class="ex">좌메뉴 경•공매 물건 검색 - index.html에 inculde되는 좌메뉴</span>
+			<span class="end"></span>
+			<span class="date"></span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!-- 물건보기 -->
+<div id="inc_04" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>좌메뉴 물건보기</span>
+			<span class="link" data-type="inc">lnbCont_04.html</span>
+			<span class="ex">좌메뉴 물건보기 - index.html에 inculde되는 좌메뉴</span>
+			<span class="end"></span>
+			<span class="date"></span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+
+<!-- 히트맵보기 -->
+<div id="inc_05" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		<li>
+			<span>좌메뉴 히트맵보기</span>
+			<span class="link" data-type="inc">lnbCont_05.html</span>
+			<span class="ex">좌메뉴 히트맵보기 - index.html에 inculde되는 좌메뉴</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!-- contact us -->
+<div id="inc_06" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+	</ul>
+</div>
+
+<!-- My Page -->
+<div id="inc_07" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+	</ul>
+</div>
+
+<!-- 공지사항//인트로 -->
+<div id="inc_08" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+	</ul>
+</div>
+
+
+<!---------------->
+<!---------------->
+<!---------------->
+<!---------------->
+<div id="inc_30" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		
+		<li>
+			<span>css파일 </span>
+			<span class="link">../css/iconfont.css</span>
+			<span class="ex">아이콘 폰트 속성 정의</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>css파일 </span>
+			<span class="link">../css/reset.css</span>
+			<span class="ex">html 테그 속성 모바일용으로  reset, 공통 class명 포함</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>css파일 </span>
+			<span class="link">../css/style.css</span>
+			<span class="ex">iconfont, reset,map 등 실제 ui를 관여하는 css import하는 css</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+		<!--------------------->
+		<li>
+			<span>css파일 <strong>●</strong> </span>
+			<span class="link">../css/map.css</span>
+			<span class="ex">실제 컨텐츠를 제어하는 css<br/> 실제 모습을 재정의의 가장 많이 수정되는 파일</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.06</span>
+			<span class="etc"></span>
+		</li>
+		
+		<!-----------js ------->
+		
+		<!------------------>
+		<li  style="border-top:1px solid #222;">
+			<span>js파일 </span>
+			<span class="link">../js/main.js</span>
+			<span class="ex">실제 컨텐츠를 제어하는 js<br/> 실제 모습을 재정의의 가장 많이 수정되는 파일</span>
+			<span class="end">완성</span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!---------------->
+<div id="inc_31" class="codeList" style="display:none;">
+	<ul>
+		<li class="ulHead">
+			<span>구분</span>
+			<span class="link">파일명</span>
+			<span class="ex">설명</span>
+			<span class="end">작업현황</span>
+			<span class="date">최종 수정일</span>
+			<span class="etc">비고</span>
+		</li>
+
+		
+		<li>
+			<span>이미지파일 </span>
+			<span class="link">../img/이하모두</span>
+			<span class="ex"></span>
+			<span class="end"></span>
+			<span class="date">2018.01.18</span>
+			<span class="etc"></span>
+		</li>
+	</ul>
+</div>
+
+<!---------------->
+<!---------------->
+<!---------------->
+<!---------------->
+<!---------------->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.codeList span.link').each(function() {
+			var url = $(this).text();
+			var type = $(this).data('type');
+			$(this).wrapInner('<a href="#"></a>');
+
+			if (type == 'modal'){
+				$(this).children('a').attr("href", '');
+
+			} else if(type == 'inc') {
+				$(this).children('a').removeAttr("href");
+				$(this).children('a').attr("title","inc파일입니다");
+				$(this).children('a').append("<strong>&nbsp;&nbsp;(inculde파일)</strong>");
+			} else {
+				$(this).children('a').attr("href", url);
+				$(this).children('a').attr("target", '_blank');
+			}				
+		});
+	});
+
+	$(document).on("click", ".codeList span.link>a", function(){
+		var parent = $(this).parent('span');
+		var type = parent.data('type');
+		var width = parent.data('width');
+
+		var url = $(this).text();
+
+		//alert(type);
+		if (type == 'modal'){
+			var win = window.open('index.html');
+			$(win).on('load', function() {
+				win.commonPopup(url, '', width);
+			});
+			
+		} else {
+			return;
+		}
+
+	});
+
+
+	$(document).on("click", "ul.tab>li>a", function(){
+		var parent = $(this).parent('li');
+		var tagetId = $(this).attr('name');
+		parent.siblings('li').removeClass('active');
+		parent.addClass('active');
+		$('body').find('.codeList').css('display','none');
+		$('#' + tagetId).css('display','block');
+
+	});
+
+	$(document).ready(function(){
+		$('.codeList li span.end').each(function() {
+			var text = $(this).text();
+			if (text == '완성') {
+				$(this).css( {
+					'background':'red',
+					'color':'#fff',
+					'font-weight':'bold'
+				});
+			} else if (text == '미완성 / 2차오픈') {
+				$(this).css( {
+					'background':'orange',
+					'color':'#fff',
+					'font-weight':'bold'
+				});
+			}			
+		});
+
+		$('.codeList li span.date').each(function() {
+			var text = $(this).text();
+			if (text == '2018.02.06') {
+				$(this).css( {
+					'background':'black',
+					'color':'#fff',
+					'font-weight':'bold'
+				});
+			}
+		});
+	});
+
+	$(document).ready( function(){
+		$('span.new').removeClass('open');
+		$('.codeList span.date').each(function() {
+			var text = $(this).text();			
+			if (text == '2018.02.06') {
+				var parents = $(this).parents('.codeList').attr('id');				
+				$('.' + parents).find('span.new').addClass('open');
+				return;
+			} 	
+		});
+
+	});
+</script>
+
+</body>
+</html>
+
+
+
