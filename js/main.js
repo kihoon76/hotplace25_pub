@@ -103,7 +103,7 @@ $(function() {
 
 	var  acceptbuildingStr = [
         '<div class="mapInnerBox">',
-        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청</div>',
+        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청<input type="button" onclick="window.acceptbuildingHan()" value="X"></div>',
         '   <div class="mibBody">',
 		'		<div class="munuType">',
         '			<span class="link"><button type="button" class="mibIcon_01" onclick="javascript:mapInfowindowLink(this)" data-name="수지분석">수지분석</button></span>',
@@ -126,15 +126,18 @@ $(function() {
 		pixelOffset: new naver.maps.Point(0, -12)
 	});
 
+	
+	window.acceptbuildingHan = function() {
+			if (acceptbuildingInfowindow.getMap()) {
+				acceptbuildingInfowindow.close();
+			} else {
+				acceptbuildingInfowindow.open(map, acceptbuildingMarker);
+			}
+		
+	}
+
 	//건축허가 마커 클릭 이벤트
-	naver.maps.Event.addListener(acceptbuildingMarker, "click", function(e) {
-		if (acceptbuildingInfowindow.getMap()) {
-			console.log('pp');
-			acceptbuildingInfowindow.close();
-		} else {
-			acceptbuildingInfowindow.open(map, acceptbuildingMarker);
-		}
-	});	
+	naver.maps.Event.addListener(acceptbuildingMarker, "click",window.acceptbuildingHan);	
 
 	var bosangMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9734147),
