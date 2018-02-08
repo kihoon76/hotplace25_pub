@@ -1,15 +1,66 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	rdchBoxSetId('dvToojaBox','chkJagMi');
+
+	//장기미집행도시계획시설물건조건 > HP등급
+	$("#jangmiToojaHpGrade").rangeSlider({
+		arrows: false,
+	});
+});
+</script>
+
 <!-- 출력되는 기본 구조 -->
 <div class="headArea">
-	<h2>메뉴제목이 들어가는곳 menuCont02</h2>
+	<h2>투자 유망 지역 검색</h2>
 	<button type="button" class="close" onClick="javascript:hideLnbCont(this);">
 		<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 	</button>
 </div>
 <div class="bodyArea">
-	<div class="" style="height:800px;">
+	<div class="tabWrap dvTooja">
+		<div class="tab-head">
+			<ul class="nav-tabs">
+				<li class="tabLink active">
+					<button href="#toojaTabBox01" data-toggle="tab"><span class="text">장기 미집행 도시계획시설</span></button>
+				</li>
+				<li class="tabLink">
+					<button href="#toojaTabBox02" data-toggle="tab"><span class="text">토지이용규제 해소물건</span></button>
+				</li>
+				<li class="tabLink">
+					<button href="#toojaTabBox03" data-toggle="tab"><span class="text">개발적성 필지 검색</span></button>
+				</li>
+			</ul>
+		</div>
+
+		<div id="dvToojaBox" class="tab-content"> <!-- 해당 부분은 실제ㅔ 컨텐츠를 넣어보고 수정보완함 -->
+
+			<!-- ----------------------- -->
+			<!-- 기본정보 -->
+			<div id="toojaTabBox01" class="tab-pane active">	
+				<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+				<!--#include virtual="20_01_dvTooja_tab01.html" -->						
+			</div>
+
+			
+			<!-- ----------------------- -->
+			<!-- 토지대장 -->
+			<div id="toojaTabBox02" class="tab-pane">
+				<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+				<!--#include virtual="20_01_dvTooja_tab02.html" -->
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 건축물대장 -->
+			<div id="toojaTabBox03" class="tab-pane">
+				<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
+				<!--#include virtual="20_01_dvTooja_tab03.html" -->						
+			</div>
+
+		</div>
 	</div>
 </div>
 <div class="footArea">
 	<button type="button" class="btnstyle middle blue">검색</button>
-	<button type="button" class="btnstyle middle gray" onClick="javascript:hideLnbCont(this);">닫기</button>
+	<button type="button" class="btnstyle middle gray">선택해제</button>
 </div>

@@ -49,6 +49,7 @@ $(function() {
 		'			<span class="link"><button type="button" class="mibIcon_02" onclick="javascript:mapInfowindowLink(this)" data-name="관심물건 등록">관심물건 등록</button></span>',
 		'			<span class="link"><button type="button" class="mibIcon_03" onclick="javascript:mapInfowindowLink(this)" data-name="컨설팅 요청">컨설팅 요청</button></span>',
 		'			<span class="link"><button type="button" class="mibIcon_04" onclick="javascript:mapInfowindowLink(this)" data-name="토지 이용 규제 현황 보기">토지 이용<br/>규제 현황 보기</button></span>',
+		'			<span class="link"><button type="button" class="mibIcon_05" onclick="javascript:mapInfowindowLink(this)" data-name="매물등록">매물등록</button></span>',
 		'		</div>',
         '   </div>',
         '</div>'
@@ -102,16 +103,47 @@ $(function() {
 	});
 
 	var  acceptbuildingStr = [
-        '<div class="mapInnerBox">',
-        '   <div class="mibHeader">서울특별시 중구 세종대로 110 서울특별시청<input type="button" onclick="acceptbuildingHan()" value="X"></div>',
+        '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
+		'   <div class="mibHeader"><span class="titIcon acceptbuilding">건축허가</span></div>', 
         '   <div class="mibBody">',
-		'		<div class="munuType">',
-        '			<span class="link"><button type="button" class="mibIcon_01" onclick="javascript:mapInfowindowLink(this)" data-name="수지분석">수지분석</button></span>',
-		'			<span class="link"><button type="button" class="mibIcon_02" onclick="javascript:mapInfowindowLink(this)" data-name="관심물건 등록">관심물건 등록</button></span>',
-		'			<span class="link"><button type="button" class="mibIcon_03" onclick="javascript:mapInfowindowLink(this)" data-name="컨설팅 요청">컨설팅 요청</button></span>',
-		'			<span class="link"><button type="button" class="mibIcon_04" onclick="javascript:mapInfowindowLink(this)" data-name="토지 이용 규제 현황 보기">토지 이용<br/>규제 현황 보기</button></span>',
-		'		</div>',
-        '   </div>',
+		'		<div class="tableType">',
+        '			<table class="tableStyle borderStyle left">',
+		'				<tbody>',
+		'					<tr>',
+		'						<th>물건소재지</th>',
+		'						<td>강원도 철원군 동송읍 이평리 866-3</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고기관</th>',
+		'						<td>철원군청</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고일</th>',
+		'						<td>170622</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업명</th>',
+		'						<td>금학약수터 주민휴게공간(하늘숲땅숲) 조성사업 실시계획인가 열람,공고</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고번호</th>',
+		'						<td>철원군 공고 제2017-710호</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>시설종류</th>',
+		'						<td>휴게공간</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업시행자</th>',
+		'						<td>철원군수</td>',
+		'					</tr>',
+		'			    </tbody>',
+		'			</table>',
+		'		</div>',       
+		'   </div>',
+		'	<div class="mibfooter">',
+		'		<button type="button" class="close" onclick="acceptbuildingHan()">닫기</button>',
+		'  	</div>',
         '</div>'
     ].join('');
 ;
@@ -125,20 +157,20 @@ $(function() {
 		anchorSkew: false,  
 		pixelOffset: new naver.maps.Point(0, -12)
 	});
-
 	
 	window.acceptbuildingHan = function() {
 			if (acceptbuildingInfowindow.getMap()) {
 				acceptbuildingInfowindow.close();
 			} else {
 				acceptbuildingInfowindow.open(map, acceptbuildingMarker);
-			}
-		
+			}		
 	}
 
 	//건축허가 마커 클릭 이벤트
-	naver.maps.Event.addListener(acceptbuildingMarker, "click",window.acceptbuildingHan);	
+	naver.maps.Event.addListener(acceptbuildingMarker, "click",window.acceptbuildingHan);
 
+
+	////////////////////////////////////////////
 	var bosangMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9734147),
 		map: map,
@@ -152,6 +184,76 @@ $(function() {
 		}
 	});
 
+	var  bosangStr = [
+        '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
+		'   <div class="mibHeader"><span class="titIcon bosang">보상물건</span></div>', 
+        '   <div class="mibBody">',
+		'		<div class="tableType">',
+        '			<table class="tableStyle borderStyle left">',
+		'				<tbody>',
+		'					<tr>',
+		'						<th>물건소재지</th>',
+		'						<td>강원도 철원군 동송읍 이평리 866-3</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고기관</th>',
+		'						<td>철원군청</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고일</th>',
+		'						<td>170622</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업명</th>',
+		'						<td>금학약수터 주민휴게공간(하늘숲땅숲) 조성사업 실시계획인가 열람,공고</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고번호</th>',
+		'						<td>철원군 공고 제2017-710호</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>시설종류</th>',
+		'						<td>휴게공간</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업시행자</th>',
+		'						<td>철원군수</td>',
+		'					</tr>',
+		'			    </tbody>',
+		'			</table>',
+		'		</div>',       
+		'   </div>',
+		'	<div class="mibfooter">',
+		'		<button type="button" class="close" onclick="bosangHan()">닫기</button>',
+		'  	</div>',
+        '</div>'
+    ].join('');
+;
+	//보상물건 윈도우 창
+	var bosangInfowindow = new naver.maps.InfoWindow({
+		content: bosangStr,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+	
+	window.bosangHan = function() {
+			if (bosangInfowindow.getMap()) {
+				bosangInfowindow.close();
+			} else {
+				bosangInfowindow.open(map, bosangMarker);
+			}		
+	}
+
+	//보상물건 마커 클릭 이벤트
+	naver.maps.Event.addListener(bosangMarker, "click",window.bosangHan);
+
+
+
+	////////////////////////////////////////////
 	var gongmaeMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9764147),
 		map: map,
@@ -165,6 +267,73 @@ $(function() {
 		}
 	});
 
+	var  gongmaeStr = [
+        '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
+        '   <div class="mibHeader"><span class="titIcon gongmae">공매</span></div>', 
+        '   <div class="mibBody">',
+		'		<div class="tableType">',
+        '			<table class="tableStyle borderStyle left">',
+		'				<tbody>',
+		'					<tr>',
+		'						<th>소재지</th>',
+		'						<td>강원도 철원군 동송읍 이평리 1345</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th> 용도</th>',
+		'						<td>전답</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>감정평가액</th>',
+		'						<td>19,708,670</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>유찰</th>',
+		'						<td>2</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>매각기일</th>',
+		'						<td>2017-12-19 10:30:00</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사진</th>',
+		'						<td><img src="img/photo_sample.jpg" style="width:100%;"></td>',
+		'					</tr>',
+		'			    </tbody>',
+		'			</table>',
+		'		</div>',
+        '   </div>',
+		'	<div class="mibfooter">',
+		'		<button type="button" class="link" onclick="javascript:mapInfowindowLink(this)" data-name="물건상세조회">물건상세조회</button>',
+		'		<button type="button" class="close" onclick="gongmaeHan()">닫기</button>',
+		'  	</div>',
+        '</div>'
+    ].join('');
+;
+	//경매 윈도우 창
+	var gongmaeInfowindow = new naver.maps.InfoWindow({
+		content: gongmaeStr,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+	
+	window.gongmaeHan = function() {
+			if (gongmaeInfowindow.getMap()) {
+				gongmaeInfowindow.close();
+			} else {
+				gongmaeInfowindow.open(map, gongmaeMarker);
+			}		
+	}
+
+	//경매 마커 클릭 이벤트
+	naver.maps.Event.addListener(gongmaeMarker, "click",window.gongmaeHan);
+
+
+
+	////////////////////////////////////////////
 	var gyeongmaeMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9794147),
 		map: map,
@@ -178,6 +347,74 @@ $(function() {
 		}
 	});
 
+	var  gyeongmaeStr = [
+        '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
+        '   <div class="mibHeader"><span class="titIcon gyeongmae">경매</span></div>', 
+			//경매, 공매만 <span class="titIcon gyeongmae">경매</span> 또는 <span class="titIcon gongmae">공매</span> 추가
+        '   <div class="mibBody">',
+		'		<div class="tableType">',
+        '			<table class="tableStyle borderStyle left">',
+		'				<tbody>',
+		'					<tr>',
+		'						<th>소재지</th>',
+		'						<td>강원도 철원군 동송읍 이평리 1345</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th> 용도</th>',
+		'						<td>전답</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>감정평가액</th>',
+		'						<td>19,708,670</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>유찰</th>',
+		'						<td>2</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>매각기일</th>',
+		'						<td>2017-12-19 10:30:00</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사진</th>',
+		'						<td><img src="img/photo_sample.jpg" style="width:100%;"></td>',
+		'					</tr>',
+		'			    </tbody>',
+		'			</table>',
+		'		</div>',
+        '   </div>',
+		'	<div class="mibfooter">',
+		'		<button type="button" class="link" onclick="javascript:mapInfowindowLink(this)" data-name="물건상세조회">물건상세조회</button>',
+		'		<button type="button" class="close" onclick="gyeongmaeHan()">닫기</button>',
+		'  	</div>',
+        '</div>'
+    ].join('');
+;
+	//경매 윈도우 창
+	var gyeongmaeInfowindow = new naver.maps.InfoWindow({
+		content: gyeongmaeStr,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+	
+	window.gyeongmaeHan = function() {
+			if (gyeongmaeInfowindow.getMap()) {
+				gyeongmaeInfowindow.close();
+			} else {
+				gyeongmaeInfowindow.open(map, gyeongmaeMarker);
+			}		
+	}
+
+	//경매 마커 클릭 이벤트
+	naver.maps.Event.addListener(gyeongmaeMarker, "click",window.gyeongmaeHan);
+
+
+
+	////////////////////////////////////////////
 	var pyeonibMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9824147),
 		map: map,
@@ -191,6 +428,76 @@ $(function() {
 		}
 	});
 
+	var  pyeonibStr = [
+        '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
+		'   <div class="mibHeader"><span class="titIcon pyeonib">편입물건</span></div>', 
+        '   <div class="mibBody">',
+		'		<div class="tableType">',
+        '			<table class="tableStyle borderStyle left">',
+		'				<tbody>',
+		'					<tr>',
+		'						<th>물건소재지</th>',
+		'						<td>강원도 철원군 동송읍 이평리 866-3</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고기관</th>',
+		'						<td>철원군청</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고일</th>',
+		'						<td>170622</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업명</th>',
+		'						<td>금학약수터 주민휴게공간(하늘숲땅숲) 조성사업 실시계획인가 열람,공고</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고번호</th>',
+		'						<td>철원군 공고 제2017-710호</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>시설종류</th>',
+		'						<td>휴게공간</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업시행자</th>',
+		'						<td>철원군수</td>',
+		'					</tr>',
+		'			    </tbody>',
+		'			</table>',
+		'		</div>',       
+		'   </div>',
+		'	<div class="mibfooter">',
+		'		<button type="button" class="close" onclick="pyeonibHan()">닫기</button>',
+		'  	</div>',
+        '</div>'
+    ].join('');
+;
+	//편입물건 윈도우 창
+	var pyeonibInfowindow = new naver.maps.InfoWindow({
+		content: pyeonibStr,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+	
+	window.pyeonibHan = function() {
+			if (pyeonibInfowindow.getMap()) {
+				pyeonibInfowindow.close();
+			} else {
+				pyeonibInfowindow.open(map, pyeonibMarker);
+			}		
+	}
+
+	//편입물건 마커 클릭 이벤트
+	naver.maps.Event.addListener(pyeonibMarker, "click",window.pyeonibHan);
+
+
+
+	////////////////////////////////////////////
 	var silgeolaeMarker = new naver.maps.Marker({
 		position: new naver.maps.LatLng(37.5620005, 126.9854147),
 		map: map,
@@ -203,6 +510,73 @@ $(function() {
 			anchor: new naver.maps.Point(11, 33),
 		}
 	});
+
+	var  silgeolaeStr = [
+        '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
+		'   <div class="mibHeader"><span class="titIcon silgeolae">실거래가</span></div>', 
+        '   <div class="mibBody">',
+		'		<div class="tableType">',
+        '			<table class="tableStyle borderStyle left">',
+		'				<tbody>',
+		'					<tr>',
+		'						<th>물건소재지</th>',
+		'						<td>강원도 철원군 동송읍 이평리 866-3</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고기관</th>',
+		'						<td>철원군청</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고일</th>',
+		'						<td>170622</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업명</th>',
+		'						<td>금학약수터 주민휴게공간(하늘숲땅숲) 조성사업 실시계획인가 열람,공고</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>공고번호</th>',
+		'						<td>철원군 공고 제2017-710호</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>시설종류</th>',
+		'						<td>휴게공간</td>',
+		'					</tr>',
+		'					<tr>',
+		'						<th>사업시행자</th>',
+		'						<td>철원군수</td>',
+		'					</tr>',
+		'			    </tbody>',
+		'			</table>',
+		'		</div>',       
+		'   </div>',
+		'	<div class="mibfooter">',
+		'		<button type="button" class="close" onclick="silgeolaeHan()">닫기</button>',
+		'  	</div>',
+        '</div>'
+    ].join('');
+;
+	//실거래가 윈도우 창
+	var silgeolaeInfowindow = new naver.maps.InfoWindow({
+		content: silgeolaeStr,
+		backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)
+	});
+	
+	window.silgeolaeHan = function() {
+			if (silgeolaeInfowindow.getMap()) {
+				silgeolaeInfowindow.close();
+			} else {
+				silgeolaeInfowindow.open(map, silgeolaeMarker);
+			}		
+	}
+
+	//실거래가 마커 클릭 이벤트
+	naver.maps.Event.addListener(silgeolaeMarker, "click",window.silgeolaeHan);
 
 	////////////////////////////////////////////
 
@@ -284,6 +658,14 @@ var mapInfowindowLink = function(obj){
 	else if (linkName == '토지 이용 규제 현황 보기'){
 		commonPopup('10_04_tojiUseRegul.html', '', '1000');
 	}
+	else if (linkName == '매물등록'){
+		commonPopup('10_05_cateMaemul.html', '', '500');
+	}
+	/////
+	else if (linkName == '물건상세조회'){
+		commonPopup('z_modalTest_full.html', '', 'full');
+	}
+	
 	
 }
 ///////////////////////////////////////////////////////////////
