@@ -906,3 +906,16 @@ $(window).resize(function() {
 });
 
 
+// 좌메뉴 컨텐츠 부분 tab 아래의 Tabulator max height 재정의 하는 스크립트 // 사용않할예정
+var lnbTabulatorMaxheight = function(element){
+	this.$element     = $(element);  
+	var bodyAreaH     = this.$element.parents('.bodyArea').innerHeight();
+	var tabHeadH      = this.$element.parents('.tab-content').prev('.tab-head').outerHeight();
+	var height        = bodyAreaH - tabHeadH - 40 - 25;
+
+	this.$element.css({'max-height': height, 'height': height });
+	
+	//var tableHeadH    = this.$element.find('.tabulator-header').outerHeight(); 
+	//this.$tableBody   = this.$element.find('.tabulator-tableHolder');	
+	//this.$tableBody.css({'max-height':'calc(100% - ' + tableHeadH + 'px)', 'min-height':'calc(100% - ' + tableHeadH + 'px)'});
+}

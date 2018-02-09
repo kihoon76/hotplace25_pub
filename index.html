@@ -104,20 +104,41 @@ $(document).ready( function() {
 	$('a[data-toggle="tab"], button[data-toggle="tab"]').on('shown.bs.tab', function() {
 		var target = $(this).attr('href'); //
 		rangeSliderResize(target); // rangeSlider Resize 스크립트
+
+		
+		// 좌메뉴 검색 Tab별 각각의 검색버튼 영역을 위한 스크립트 
+		var isTarget = $(this).is('[otherTarget]');
+		var idTarget = $(this).attr('otherTarget');
+
+		var isWarp = $(this).is('[otherTargetWrap]');
+		var idWarp = $(this).attr('otherTargetWrap');
+		
+		//alert(is);
+		if(isTarget == true && isWarp == true && !idTarget == '' && !idWarp == ''){
+			$(idWarp + ' .tab-pane-other').removeClass('active');
+			$(idTarget).addClass('active');
+		} else {
+			return;
+		}
+
 	});
 
 
 	/////////////////////////////////////////////////
 	slideToggleShow();
-	
-	
- 
 
 	
 	//////////////////////////////////////////////////
 	//////////////////////////////////////////////////	
 	//modal 레이어 팝업 샘플
 	$('#modalTest').on('click', function(e) {	
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('z_modalTest_full.html', '', '');
+	});
+
+	//modal 레이어 팝업 샘플
+	$('#modalTest2').on('click', function(e) {	
 		var param = new Object();
 		//commonPopup('url', 'param', 'width');
 		commonPopup('z_modalTest_full.html', '', 'full');
@@ -250,9 +271,21 @@ var rdchBoxSetId = function(tId, name) {
 		</div>
 
 		<div class="dvEtc">
-			<button type="button" class="unit contact" id="modalTest" title="contact us"><span class="hidden">contact us</span></button>
-			<button type="button" class="unit login"  id="loginBtn"   title="로그인"><span class="hidden">로그인</span></button>
-			<button type="button" class="unit logout"  id="logoutBtn"   title="로그아웃"><span class="hidden">로그아웃</span></button>
+			<span class="boxUnit">
+				<button type="button" class="unit contact" title="contact us"><span class="hidden">contact us</span></button>
+
+				<div class="dropMenu">
+					<ul class="dropMenuBox">
+						<li><a href="#" class="link">회사소개</a></li>
+						<li><a href="#" class="link" id="modalTest">modal test</a></li>
+						<li><a href="#" class="link" id="modalTest2">modal test full</a></li>
+					</ul>
+				</div>
+			</span>
+			<span class="boxUnit">
+				<button type="button" class="unit login"  id="loginBtn"   title="로그인"><span class="hidden">로그인</span></button>
+				<button type="button" class="unit logout"  id="logoutBtn"   title="로그아웃"><span class="hidden">로그아웃</span></button>
+			</span>
 		</div>
 	</div>
 	
@@ -286,7 +319,7 @@ var rdchBoxSetId = function(tId, name) {
 			<!--#include virtual="lnbCont_01.html" -->
 		</div>
 
-		<div id="menuCont02" class="lnbContWrap" style="display:; width:600px;">
+		<div id="menuCont02" class="lnbContWrap" style="display:; width:650px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_02.html" -->
 		</div>

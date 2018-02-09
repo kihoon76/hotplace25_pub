@@ -149,6 +149,8 @@ button:disabled,
 input:focus {outline:none;}
 input:disabled {opacity:0.5; cursor:not-allowed;}
 .inp {border:1px solid #ccc; background:#fff; height:30px; line-height:30px; padding:0 5px;}
+input[type="text"],
+input[type="search"] {border:1px solid #ccc; background:#fff; height:30px; line-height:30px; padding:0 5px;}
 
 input.inp:focus,
 select.inp:focus,
@@ -396,7 +398,7 @@ body	 {min-height:600px;}
 /* GNB  Area */
 .gnbArea {clear:both; text-align:right;}
 .gnbArea h1{display:inline-block; height:100%; width:auto; margin:0 30px 0 7px; vertical-align:middle; float:left; border:0px solid #fff;}
-.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat;}
+.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat; display:;}
 
 .gnbArea .dvNoticeTicker {display:inline-block; display:none; width:400px; overflow:hidden; position:relative; vertical-align:middle;}
 .gnbArea .dvNoticeTicker:before {display:inline-block; content:''; position:absolute; left:0; top:0; width:30px; height:30px;
@@ -411,8 +413,8 @@ body	 {min-height:600px;}
 .gnbArea .dvNoticeTicker .newsTotalBtn {display:block; position:absolute; left:32px; top:3px; width:; height:30px; height:24px; line-height:22px; border-radius:22px; padding:0 10px; border:1px solid #ccc; background:#f9f9f9;}
 .gnbArea .dvNoticeTicker .newsTotalBtn:hover {background:#47494e; color:#fff; border-color:#000;}
 
-.gnbArea .dvEtc {display:inline-block;  height:100%;}
-.gnbArea .dvEtc .unit { display:inline-block; border-left:1px solid rgba(255,255,255,0.2); line-height:50px; padding:0 8px;}
+.gnbArea .dvEtc {display:inline-block;  height:100%; clear:both;}
+.gnbArea .dvEtc .unit {display:inline-block; border-left:1px solid rgba(255,255,255,0.2); line-height:50px; padding:0 8px;}
 .gnbArea .dvEtc .unit:after {display:inline-block; content:''; width:30px; height:30px; vertical-align:middle; background:url('../img/gnb_icon.png'); line-height:0; margin-top:-4px;  opacity:0.6;}
 .gnbArea .dvEtc .unit.contact:after      {background-position:-30px 0px;}
 
@@ -422,6 +424,18 @@ body	 {min-height:600px;}
 
 .gnbArea .dvEtc .unit:hover:after {animation:ani_down2 0.2s ease-out 0s 1 alternate;}
 
+.gnbArea .dvEtc .boxUnit {display:inline-block; text-align:center; position:relative;}
+.gnbArea .dvEtc .boxUnit:hover .dropMenu {display:block;animation:ani_down2 0.2s ease-out 0s 1 alternate;}
+
+.gnbArea .dropMenu {display:none; position:absolute; right:0; top:49px; width:160px; z-index:11;}
+.gnbArea .dropMenu .dropMenuBox {display:block; background:#333; padding:10px 30px; margin-top:5px; position:relative; border-radius:4px;}
+.gnbArea .dropMenu .dropMenuBox:before {display:block; content:''; position:absolute; top:-5px; right:20px; width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:5px solid #333;}
+.gnbArea .dropMenu .dropMenuBox li {text-align:left; clear:both; position:relative;}
+
+.gnbArea .dropMenu .dropMenuBox li .link {display:block; margin:10px 0px; color:#ddd; position:relative;}
+.gnbArea .dropMenu .dropMenuBox li .link:before{display:block; content:''; position:absolute; top:8px; left:-10px; width:3px; height:3px; background:#ddd; border-radius:50%;}
+
+.gnbArea .dropMenu .dropMenuBox li:hover .link {animation:ani_down2 0.2s ease-out 0s 1 alternate;}
 
 /* GNB 지도 관련 버튼 */
 .dvBtnArea {font-size:13px; letter-spacing:-0.05em;  display:inline-block; position:relative; vertical-align:top; height:100%; margin-right:10px;}
@@ -547,7 +561,7 @@ body	 {min-height:600px;}
 .rowBox {clear:both;}
 .rowBox:after {display:block; content:''; height:0; line-height:0; padding:0; margin:0; clear:both;}
 
-.unit {overflow:auto; display:block;}
+.unit {overflow:; display:block;}
 .unit_tit {display:block; clear:both; margin-bottom:2px; min-height:30px;}
 .unit_cont {display:block; clear:both; margin-bottom:5px;}
 
@@ -598,11 +612,14 @@ body	 {min-height:600px;}
 .tabWrap .tab-pane {display:none; clear:both; position:relative; overflow:auto; margin-top:15px}
 .tabWrap .tab-pane.active {display:block;}
 
-.tabWrap .tab-pane > .unit:nth-of-type(1) > .unit_tit:nth-of-type(1) {margin-top:-10px;}
+.tabWrap .tab-pane .unit:nth-of-type(1) > .unit_tit:nth-of-type(1) {margin-top:-10px;}
 
 .lnbContWrap .tabWrap .nav-tabs .tabLink {height:35px;}
 .lnbContWrap .tabWrap .nav-tabs .tabLink > a, 
 .lnbContWrap .tabWrap .nav-tabs .tabLink > button {padding:0px 25px;}
+
+.tab-pane-other {display:none;}
+.tab-pane-other.active {display:block;}
 
 /*************************************/
 /* slideShow */
@@ -705,11 +722,122 @@ body	 {min-height:600px;}
 .alertCont .alertText {display:block; font-size:18px; padding:0px 20px; font-weight:500;}
 .alertCont .alertSubText {display:none; padding:15px 20px 0px; }
 
+/*************************************/
+/* tabulator  */
+.tabulatorWrap {margin:0 0px; position:relative; overflow:;}
+
+.tabulator {position:relative; background-color:transparent !important; overflow:hidden; font-size:13px; text-align:left; }
+.tabulator .tabulator-header {width:100%; border-bottom:0px solid #999; background-color:transparent; color:#333;}
+.tabulator .tabulator-header .tabulator-col {border-left:0px solid #ddd; border-right:0; border-top:1px solid #888; border-bottom:1px solid #888; background-color:#f5f6f7;}
+.tabulator .tabulator-header .tabulator-col.tabulator-moving {border:1px solid #999;  background: #e6e6e6;}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content {padding:8px 8px;}
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {text-align:center;}
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title .tabulator-title-editor {border:1px solid #999; padding:1px; background:#fff;}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-arrow {top:11px; right:5px; border-left:4px solid transparent;  border-right:4px solid transparent;  border-bottom:5px solid #bbb;}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-col-group .tabulator-col-group-cols {border-top:1px solid #888;}
+.tabulator .tabulator-header .tabulator-col.ui-sortable-helper {background-color:#e6e6e6 !important;  border:1px solid #888;}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter {margin-top:4px;}
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter input[type="search"],
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter input[type="text"],
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter select {border:1px solid #ccc; background:#fff; height:24px; line-height:24px; padding:0 5px; font-weight:normal;}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable .tabulator-col-title {padding-right:8px;}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover {background-color: #e6e6e6;}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="none"] .tabulator-col-content .tabulator-arrow {border-top:none;  border-bottom:5px solid #ccc;}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="asc"] .tabulator-col-content .tabulator-arrow {border-top:none;  border-bottom:5px solid #2a7cdd ;}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="desc"] .tabulator-col-content .tabulator-arrow {border-top:5px solid #2a7cdd;  border-bottom: none;}
+
+.tabulator .tabulator-header .tabulator-frozen.tabulator-frozen-left {border-right:2px solid #888;}
+.tabulator .tabulator-header .tabulator-frozen.tabulator-frozen-right {border-left:2px solid #888;}
+
+.tabulator .tabulator-header .tabulator-calcs-holder {background:#f2f2f2 !important;  border-top:1px solid #888;  border-bottom:1px solid #999;}
+.tabulator .tabulator-header .tabulator-calcs-holder .tabulator-row {background:#f2f2f2 !important;}
+
+.tabulator .tabulator-tableHolder {}
+.tabulator .tabulator-tableHolder::-webkit-scrollbar {width:10px; height:10px;}
+.tabulator .tabulator-tableHolder .tabulator-placeholder span {padding:10px;  color:#000;  font-weight:bold;  font-size:20px;}
+
+.tabulator .tabulator-tableHolder .tabulator-table {display:inline-block;  background-color:#fff;  overflow:visible;  color:#333;}
+
+.tabulator .tabulator-tableHolder .tabulator-table .tabulator-row.tabulator-calcs {font-weight:bold;  background: #f2f2f2 !important;}
+.tabulator .tabulator-tableHolder .tabulator-table .tabulator-row.tabulator-calcs.tabulator-calcs-top {border-bottom: 2px solid #888;}
+.tabulator .tabulator-tableHolder .tabulator-table .tabulator-row.tabulator-calcs.tabulator-calcs-bottom {border-top: 2px solid #888;}
+
+.tabulator .tabulator-row {min-height:34px;  background-color:#fff;  border-bottom:1px solid #ccc;}
+
+.tabulator .tabulator-row:nth-child(even) {background-color:#fff;}
+.tabulator .tabulator-row.tabulator-selectable:hover {background-color:#ddd; }
+
+.tabulator .tabulator-row.tabulator-selected {background-color:#9ABCEA;}
+.tabulator .tabulator-row.tabulator-selected:hover {background-color:#769BCC; }
+
+.tabulator .tabulator-row.tabulator-moving {border-top:1px solid #ccc;  border-bottom: 1px solid #ccc;}
+.tabulator .tabulator-row .tabulator-frozen.tabulator-frozen-left {border-right: 2px solid #888;}
+.tabulator .tabulator-row .tabulator-frozen.tabulator-frozen-right {border-left: 2px solid #888;}
+
+.tabulator .tabulator-row .tabulator-cell {display:inline-block;  padding:8px 8px;  border-right:0px solid #ccc;  vertical-align:middle;  color:#000; font-size:13px;}
+
+.tabulator .tabulator-row .tabulator-cell:last-of-type {border-right:none;}
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing {border:1px solid #1D68CD;  padding: 0;}
+
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing input, 
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing select {border:1px; background:transparent;}
+
+.tabulator .tabulator-row .tabulator-cell.tabulator-row-handle .tabulator-row-handle-bar {width:80%; height:3px; margin:2px 10% 0 10%; background:#666;}
+
+.tabulator .tabulator-row.tabulator-group {border-bottom:1px solid #999; border-right:1px solid #ccc; border-top:1px solid #999; padding:5px; padding-left:10px; background:#fafafa;}
+
+.tabulator .tabulator-row.tabulator-group:hover {background-color: rgba(0, 0, 0, 0.1);}
+.tabulator .tabulator-row.tabulator-group.tabulator-group-visible .tabulator-arrow {margin-right:10px;  border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid #666; border-bottom:0;}
+
+.tabulator .tabulator-row.tabulator-group.tabulator-group-level-1 .tabulator-arrow {margin-left:20px;}
+.tabulator .tabulator-row.tabulator-group.tabulator-group-level-2 .tabulator-arrow {margin-left:40px;}
+.tabulator .tabulator-row.tabulator-group.tabulator-group-level-3 .tabulator-arrow {margin-left:60px;}
+.tabulator .tabulator-row.tabulator-group.tabulator-group-level-4 .tabulator-arrow {margin-left:80px;}
+.tabulator .tabulator-row.tabulator-group.tabulator-group-level-5 .tabulator-arrow {margin-left:1000px;}
+
+.tabulator .tabulator-row.tabulator-group .tabulator-arrow {margin-right:16px; border-top:5px solid transparent; border-bottom:5px solid transparent; border-right:0; border-left:4px solid #666;}
+
+.tabulator .tabulator-row.tabulator-group span {margin-left:10px; color:#666;}
+
+.tabulator .tabulator-footer {padding:5px 10px;  border-top:1px solid #999; background-color:#fff;  text-align:right;  color:#555;  font-weight:bold;}
+
+.tabulator .tabulator-footer .tabulator-calcs-holder .tabulator-row {background:#f2f2f2 !important;}
+.tabulator .tabulator-footer .tabulator-calcs-holder:only-child {margin-bottom:-5px;  border-bottom:none;}
+
+.tabulator .tablulator-loader {background: rgba(0, 0, 0, 0.4); }
+
+.tabulator .tablulator-loader .tabulator-loader-msg {padding:10px 20px;  border-radius:2px;  background:#fff;  font-weight:500;  font-size:16px;}
+.tabulator .tablulator-loader .tabulator-loader-msg.tabulator-loading {border:1px solid #333;  color: #000;}
+.tabulator .tablulator-loader .tabulator-loader-msg.tabulator-error   {border:1px solid #D00;  color: #590000;}
+
+/*************************************/
+/* LNB  lnbCont - 공통부분  */
+.topInfoBox {padding:0px 10px 0px 28px; margin-bottom:20px; font-size:13px; line-height:1.6em; letter-spacing:-0.05em; position:relative;}
+.topInfoBox:before {
+	font-family: 'AMB-iconfont' !important; speak:none; font-style:normal; font-weight:normal; font-variant:normal; text-transform:none; line-height:1;
+	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+	display:block; width:30px; height:30px; color:#000; font-size:18px; line-height:30px;
+	position:absolute; left:0; top:-5px;
+	content:'\e92d'; color:#999;
+}
+
+.searchArea       {display:block; overflow:auto;}
+.searchResultArea {display:none; overflow:auto;}
+
+td .rangeSliderWrap {padding:0 25px 0 10px; position:relative;}
+td .rangeSliderWrap .rangeSlider {margin:0 0;}
+
 
 /*************************************/
 /* LNB  lnbCont -  주소 검색 */
 .adressSArea {margin:20px 20px; position:absolute; top:0; right:0; left:0; overflow:auto; z-index:1; }
-.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; padding:0 50px 0 20px; font-size:14px; font-weight:bold;}
+input.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; padding:0 50px 0 20px; font-size:14px; font-weight:bold;}
 .searchBtn {position:absolute; top:0px; right:0px; display:block; border:0px solid #000; width:54px; height:50px;}
 .searchBtn:before {
 	font-family: 'AMB-iconfont' !important; speak:none; font-style:normal; font-weight:normal; font-variant:normal; text-transform:none; line-height:1;
@@ -730,10 +858,9 @@ body	 {min-height:600px;}
 .dvTooja table td .rdchBox + .rdchBox {margin:0;}
 .dvTooja table td .rdchBox label {font-weight:normal;}
 
-.dvTooja.tabWrap .tab-pane > .unit:nth-of-type(1) > .unit_tit:nth-of-type(1) {margin-top:0;}
+.dvTooja.tabWrap .tab-pane .unit:nth-of-type(1) > .unit_tit:nth-of-type(1) {margin-top:-5px;}
 .dvTooja.tabWrap .tab-pane .unit {margin-bottom:10px;}
 
-.jangmiToojaHpGrade {}
 
 /*************************************/
 /* LNB  lnbCont  -  mulgunList 물건 보기  */
@@ -756,7 +883,6 @@ body	 {min-height:600px;}
 
 
 
-
 /*************************************/
 /*************************************/
 /*************************************/
@@ -773,20 +899,10 @@ body	 {min-height:600px;}
 /* dvConsultRequest // 컨설팅 요청 */
 .dvConsultRequest {}
 
-.topInfoBox {padding:0px 10px 0px 28px; margin-bottom:20px; font-size:13px; line-height:1.6em; letter-spacing:-0.05em; position:relative;}
-.topInfoBox:before {
-	font-family: 'AMB-iconfont' !important; speak:none; font-style:normal; font-weight:normal; font-variant:normal; text-transform:none; line-height:1;
-	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-	display:block; width:30px; height:30px; color:#000; font-size:18px; line-height:30px;
-	position:absolute; left:0; top:-5px;
-	content:'\e92d'; color:#999;
-}
-
 /*************************************/
 /* dvTojiUseRegul // 토지 이용 규제 현황 보기 */
 .dvTojiUseRegul {}
 
-.drawingLegend {}
 .drawingLegend li {padding:2px 0;}
 .drawingLegend li * {vertical-align:middle;}
 

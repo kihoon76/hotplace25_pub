@@ -2,11 +2,154 @@
 $(document).ready( function() {
 	rdchBoxSetId('dvToojaBox','chkJagMi');
 
-	//장기미집행도시계획시설물건조건 > HP등급
-	$("#jangmiToojaHpGrade").rangeSlider({
+	//장기미집행도시계획시설물건조건 > HP등급 rangeSlider
+	$('#jangmiToojaHpGrade').rangeSlider({
 		arrows: false,
 	});
+
+	///////////////////////////////////////
+	//장기 미집행 도시계획시설 검색 버튼 // 이전버튼
+	$('#toojaTabBox01_btn01').on('click', function() {		
+		$('#toojaTabBox01_btn01, #toojaTabBox01_btn02').hide();
+		$('#toojaTabBox01_btn03').show();
+		searchBtnClick('#toojaTabBox01');
+		testTable('example-table');
+
+	});
+	$('#toojaTabBox01_btn03').on('click', function() {
+		$(this).hide();
+		$('#toojaTabBox01_btn01, #toojaTabBox01_btn02').show();
+		prevBtnClick('#toojaTabBox01');
+	});
+
+	///////////////////////////////////////
+	//토지이용규제 해소물건 검색 버튼 // 이전버튼
+	$('#toojaTabBox02_btn01').on('click', function() {
+		$('#toojaTabBox02_btn01, #toojaTabBox02_btn02').hide();
+		$('#toojaTabBox02_btn03').show();
+		searchBtnClick('#toojaTabBox02');
+	});
+	$('#toojaTabBox02_btn03').on('click', function() {
+		$(this).hide();
+		$('#toojaTabBox02_btn01, #toojaTabBox02_btn02').show();
+		prevBtnClick('#toojaTabBox02');
+	});
+
+	///////////////////////////////////////
+	//개발적성 필지 검색 검색 버튼 // 이전버튼
+	$('#toojaTabBox03_btn01').on('click', function() {
+		$('#toojaTabBox03_btn01, #toojaTabBox03_btn02').hide();
+		$('#toojaTabBox03_btn03').show();
+		searchBtnClick('#toojaTabBox03');
+	});
+	$('#toojaTabBox03_btn03').on('click', function() {
+		$(this).hide();
+		$('#toojaTabBox03_btn01, #toojaTabBox03_btn02').show();
+		prevBtnClick('#toojaTabBox03');
+	});
 });
+
+var searchBtnClick = function(target){
+	var tid = target;
+	$(tid + ' > .searchArea').hide();
+	$(tid + ' > .searchResultArea').show();
+}
+
+var prevBtnClick = function(target){
+	var tid = target;
+	$(tid + ' > .searchArea').show();
+	$(tid + ' > .searchResultArea').hide();
+}
+
+//////////
+// tabulator test
+var testTable = function(resultId){
+	$('#' + resultId).tabulator({
+		height:519, // set height of table
+		fitColumns:true,
+		columns:[ //Define Table Columns
+			{title:"고유번호",    field:"num",     align:"center", width:90, },
+			{title:"구분",        field:"type",    align:"center", width:70, headerFilter:true, editor:_tabulatorSelectFilter(['G', 'K', 'R'])},
+			{title:"물건유형",    field:"gun",     align:"center", width:90, headerFilter:true, editor:_tabulatorSelectFilter(['대','전','답','임야','하천','도로','건물'])},
+			{title:"감정평가액",  field:"money",   align:"right", width:120, formatter:'money', formatterParams:{precision:"0"} },
+			{title:"주소",        field:"address", align:"left", headerFilter:'input', headerFilterPlaceholder:'주소검색' },
+			{title:"위도",        field:"lat",     visible: false,},
+			{title:"경도",        field:"lng",     visible: false,},
+		],
+	});
+
+	$('#' + resultId).tabulator('setData', tbData);
+}
+var tbData = [
+    {id:1, num:"11401", type:"G", gun:"대", money:"120250000", address:"서울시 송파구 잠실본동 40", lat:"127.32813", lng:"38.17754"},
+    {id:2, num:"11402", type:"K", gun:"전", money:"120362000", address:"서울시 송파구 잠실본동 41", lat:"127.32813", lng:"38.17754"},
+	{id:3, num:"11403", type:"R", gun:"답", money:"120000300", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
+	{id:4, num:"11404", type:"R", gun:"전", money:"120000000", address:"서울시 송파구 잠실본동 45", lat:"127.32813", lng:"38.17754"},
+	{id:5, num:"11405", type:"G", gun:"답", money:"121000000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
+	{id:6, num:"11406", type:"R", gun:"하천", money:"123000000", address:"서울시 송파구 잠실본동 40-1", lat:"127.32813", lng:"38.17754"},
+	{id:7, num:"11407", type:"K", gun:"대", money:"120120000", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
+	{id:8, num:"11408", type:"G", gun:"답", money:"127020000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
+	{id:9, num:"11409", type:"K", gun:"대", money:"120123000", address:"서울시 송파구 잠실본동 414", lat:"127.32813", lng:"38.17754"},
+	{id:10, num:"11410", type:"K", gun:"임야", money:"20456010", address:"서울시 송파구 잠실본동 00", lat:"127.32813", lng:"38.17754"},
+	{id:11, num:"11401", type:"G", gun:"대", money:"120250000", address:"서울시 송파구 잠실본동 40", lat:"127.32813", lng:"38.17754"},
+    {id:12, num:"11402", type:"K", gun:"전", money:"120362000", address:"서울시 송파구 잠실본동 41", lat:"127.32813", lng:"38.17754"},
+	{id:13, num:"11403", type:"R", gun:"답", money:"120000300", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
+	{id:14, num:"11404", type:"R", gun:"전", money:"120000000", address:"서울시 송파구 잠실본동 45", lat:"127.32813", lng:"38.17754"},
+	{id:15, num:"11405", type:"G", gun:"답", money:"121000000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
+	{id:16, num:"11406", type:"R", gun:"하천", money:"123000000", address:"서울시 송파구 잠실본동 40-1", lat:"127.32813", lng:"38.17754"},
+	{id:17, num:"11407", type:"K", gun:"대", money:"120120000", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
+	{id:18, num:"11408", type:"G", gun:"답", money:"127020000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
+	{id:19, num:"11409", type:"K", gun:"대", money:"120123000", address:"서울시 송파구 잠실본동 414", lat:"127.32813", lng:"38.17754"},
+	{id:20, num:"11410", type:"K", gun:"임야", money:"20456010", address:"서울시 송파구 잠실본동 00", lat:"127.32813", lng:"38.17754"},
+	{id:21, num:"11401", type:"G", gun:"대", money:"120250000", address:"서울시 송파구 잠실본동 40", lat:"127.32813", lng:"38.17754"},
+    {id:22, num:"11402", type:"K", gun:"전", money:"120362000", address:"서울시 송파구 잠실본동 41", lat:"127.32813", lng:"38.17754"},
+	{id:23, num:"11403", type:"R", gun:"답", money:"120000300", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
+	{id:24, num:"11404", type:"R", gun:"전", money:"120000000", address:"서울시 송파구 잠실본동 45", lat:"127.32813", lng:"38.17754"},
+	{id:25, num:"11405", type:"G", gun:"답", money:"121000000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
+	{id:26, num:"11406", type:"R", gun:"하천", money:"123000000", address:"서울시 송파구 잠실본동 40-1", lat:"127.32813", lng:"38.17754"},
+	{id:27, num:"11407", type:"K", gun:"대", money:"120120000", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
+	{id:28, num:"11408", type:"G", gun:"답", money:"127020000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
+	{id:29, num:"11409", type:"K", gun:"대", money:"120123000", address:"서울시 송파구 잠실본동 414", lat:"127.32813", lng:"38.17754"},
+	{id:30, num:"11410", type:"K", gun:"임야", money:"20456010", address:"서울시 송파구 잠실본동 00", lat:"127.32813", lng:"38.17754"},
+];
+
+var _tabulatorSelectFilter = function(arr) {
+	return function(cell, onRendered, success, cancel) {
+		var len = arr.length;
+		
+		var htmlStr = '';
+			
+		for(var i=0; i<len; i++) {
+			htmlStr += '<option value="' + arr[i] + '">' + arr[i] + '</option>';
+			console.log(htmlStr);
+		}
+			
+		var editor = $('<select><option value=""></option>' + htmlStr + '</select>');
+		editor.css({
+			'padding':'3px',
+			'width':'100%',
+			'box-sizing':'border-box',
+		});
+		 
+		//Set value of editor to the current value of the cell
+		editor.val(cell.getValue());
+		  
+		//set focus on the select box when the editor is selected (timeout allows for editor to be added to DOM)
+		onRendered(function(){
+			editor.focus();
+			editor.css('height','100%');
+		});
+		 
+		//when the value has been set, trigger the cell to update
+		editor.on('change blur', function(e){
+			success(editor.val());
+		});
+
+		//return the editor element
+		return editor;
+	}
+}
+
 </script>
 
 <!-- 출력되는 기본 구조 -->
@@ -21,13 +164,13 @@ $(document).ready( function() {
 		<div class="tab-head">
 			<ul class="nav-tabs">
 				<li class="tabLink active">
-					<button href="#toojaTabBox01" data-toggle="tab"><span class="text">장기 미집행 도시계획시설</span></button>
+					<button href="#toojaTabBox01" data-toggle="tab" otherTarget="#toojaTabBox01_footer" otherTargetWrap="#dvToojaBoxFooter"><span class="text">장기 미집행 도시계획시설</span></button>
 				</li>
 				<li class="tabLink">
-					<button href="#toojaTabBox02" data-toggle="tab"><span class="text">토지이용규제 해소물건</span></button>
+					<button href="#toojaTabBox02" data-toggle="tab" otherTarget="#toojaTabBox02_footer" otherTargetWrap="#dvToojaBoxFooter"><span class="text">토지이용규제 해소물건</span></button>
 				</li>
 				<li class="tabLink">
-					<button href="#toojaTabBox03" data-toggle="tab"><span class="text">개발적성 필지 검색</span></button>
+					<button href="#toojaTabBox03" data-toggle="tab" otherTarget="#toojaTabBox03_footer" otherTargetWrap="#dvToojaBoxFooter"><span class="text">개발적성 필지 검색</span></button>
 				</li>
 			</ul>
 		</div>
@@ -60,7 +203,23 @@ $(document).ready( function() {
 		</div>
 	</div>
 </div>
-<div class="footArea">
-	<button type="button" class="btnstyle middle blue">검색</button>
-	<button type="button" class="btnstyle middle gray">선택해제</button>
+<div id="dvToojaBoxFooter" class="footArea">
+	<div id="toojaTabBox01_footer" class="tab-pane-other active">
+		<button type="button" id="toojaTabBox01_btn01" class="btnstyle middle blue">tab01 검색</button>
+		<button type="button" id="toojaTabBox01_btn02" class="btnstyle middle gray">선택해제</button>
+
+		<button type="button" id="toojaTabBox01_btn03" class="btnstyle middle blue" style="display:none;">이전</button>
+	</div>
+	<div id="toojaTabBox02_footer" class="tab-pane-other">
+		<button type="button" id="toojaTabBox02_btn01" class="btnstyle middle blue">tab02 검색</button>
+		<button type="button" id="toojaTabBox02_btn02" class="btnstyle middle gray">선택해제</button>
+
+		<button type="button" id="toojaTabBox02_btn03" class="btnstyle middle blue" style="display:none;">이전</button>
+	</div>
+	<div id="toojaTabBox03_footer" class="tab-pane-other">
+		<button type="button" id="toojaTabBox03_btn01" class="btnstyle middle blue">tab03 검색</button>
+		<button type="button" id="toojaTabBox03_btn02" class="btnstyle middle gray">선택해제</button>
+
+		<button type="button" id="toojaTabBox03_btn03" class="btnstyle middle blue" style="display:none;">이전</button>
+	</div>
 </div>
