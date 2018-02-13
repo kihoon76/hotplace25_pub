@@ -24,11 +24,19 @@ $(function() {
 	//지도 마우스 우클릭
 	naver.maps.Event.addListener(map, "rightclick", function(e) {
 		$('#dvContextMenu').show();
+		$('#dvContextMenu').css({
+			'left': e.offset.x,
+			'top': e.offset.y,
+		});
 	});
 
 	naver.maps.Event.addListener(map, "mousedown", function(e) {
 		//contextmenu 숨김
 		$('#dvContextMenu').hide();
+	});
+
+	$(window).contextmenu(function(e) {
+		return false;
 	});
 
 
