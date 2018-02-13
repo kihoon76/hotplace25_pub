@@ -21,6 +21,18 @@ $(function() {
 	//map.mapTypes.set(naver.maps.MapTypeId.NORMAL, naver.maps.NaverMapTypeOption.getNormalMap());
 	//map.mapTypes.set(naver.maps.MapTypeId.HYBRID, naver.maps.NaverMapTypeOption.getHybridMap());
 	
+	//지도 마우스 우클릭
+	naver.maps.Event.addListener(map, "rightclick", function(e) {
+		$('#dvContextMenu').show();
+	});
+
+	naver.maps.Event.addListener(map, "mousedown", function(e) {
+		//contextmenu 숨김
+		$('#dvContextMenu').hide();
+	});
+
+
+
 	var cadastralLayer = new naver.maps.CadastralLayer();		
 
 	function showJijeokLayer(onOff, $btn) {		  
