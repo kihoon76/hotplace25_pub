@@ -1,4 +1,28 @@
 <script type="text/javascript">
+$(document).ready( function() {
+	$('#noticeTable .contView').on('click', function(e) {	
+		noticeContShowHide(this);
+	});
+});
+
+var noticeContShowHide = function(element){
+	this.$element   = $(element);  
+	this.$body      = this.$element.parents('tbody');
+	this.$cont      = this.$element.parents('tr').next('tr.contentViewBox');
+	
+	var isVisible = this.$cont.is(':visible');
+
+	this.$body.children('.contentViewBox').hide();
+	this.$body.find('a.contView').css('font-weight','normal');
+
+	if (isVisible === true){
+		this.$cont.hide();
+		this.$element.css('font-weight','normal');
+	} else {
+		this.$cont.show();
+		this.$element.css('font-weight','bold');
+	}
+}
 </script>
 
 <div class="modal-dialog" role="document">
@@ -24,7 +48,7 @@
 					</div>
 				</div>
 				<div class="unit_cont bgWhite dvNoticeList">
-					<table id="" class="tableStyle gridStyle center">
+					<table id="noticeTable" class="tableStyle gridStyle center">
 						<colgroup>
 							<col style="width:80px;">
 							<col style="">
@@ -46,94 +70,126 @@
 						<tbody>
 							<tr>
 								<td>1</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다. </a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>9999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
-							<tr class="contentView">
+							<tr class="contentViewBox">
 								<td colspan="6" >
-									여기에 내용일 들어갑니다.
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>1</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>9999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
-							<tr class="contentView">
+							<tr class="contentViewBox">
 								<td colspan="6" >
-									여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.
-									<br/>
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.여기에 내용일 들어갑니다.
+										<br/><br/><br/><br/><br/><br/><br/>
+										여기에 내용일 들어갑니다.
+									</div>
 								</td>
 							</tr>
 							<tr>
 								<td>1</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다. 길어질 경우 이와 같이 말줄임이 됩니다. 길어질 경우 이와 같이 말줄임이 됩니다.길어질 경우 이와 같이 말줄임이 됩니다.길어질 경우 이와 같이 말줄임이 됩니다.</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. 길어질 경우 이와 같이 말줄임이 됩니다. 길어질 경우 이와 같이 말줄임이 됩니다.길어질 경우 이와 같이 말줄임이 됩니다.길어질 경우 이와 같이 말줄임이 됩니다.</a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>9999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
+							<tr class="contentViewBox">
+								<td colspan="6" >
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
+								</td>
+							</tr>
+
 							<tr>
 								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>99999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
+							<tr class="contentViewBox">
+								<td colspan="6" >
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
+								</td>
+							</tr>
 							<tr>
 								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>99999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
+							<tr class="contentViewBox">
+								<td colspan="6" >
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
+								</td>
+							</tr>
 							<tr>
 								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>99999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
+							<tr class="contentViewBox">
+								<td colspan="6" >
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
+								</td>
+							</tr>
 							<tr>
 								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>99999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
+							<tr class="contentViewBox">
+								<td colspan="6" >
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
+								</td>
+							</tr>
 							<tr>
 								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
+								<td class="left ellipsis"><a href="#" class="contView">제목이 들어가는곳입니다. </a></td>
 								<td><a href="#" target="_blank" class="fileIcon"></a></td>
 								<td>2007-01-08</td>
 								<td>99999</td>
 								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
 							</tr>
-							<tr>
-								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
-								<td><a href="#" target="_blank" class="fileIcon"></a></td>
-								<td>2007-01-08</td>
-								<td>99999</td>
-								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
-							</tr>
-							<tr>
-								<td>9999</td>
-								<td class="left ellipsis"><a href="#">제목이 들어가는곳입니다.</a></td>
-								<td><a href="#" target="_blank" class="fileIcon"></a></td>
-								<td>2007-01-08</td>
-								<td>99999</td>
-								<td><button type="button" class="mapLink"><span class="hidden">위치이동</span></button></td>
+							<tr class="contentViewBox">
+								<td colspan="6" >
+									<div class="contentBox">
+										여기에 내용일 들어갑니다.
+									</div>
+								</td>
 							</tr>
 						</tbody>
 					</table>

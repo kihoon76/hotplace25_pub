@@ -412,7 +412,7 @@ body	 {min-height:600px;}
 /* context-menu // 지도 우클릭 컨텐츠 */
 .context-menu {width:180px; position:absolute; z-index:200; display:none; border:0px; animation:ani_down2 0.2s ease-out 0s 1 alternate;}
 .context-menu .context-menu-head {height:30px; color:#fff; display:none;}
-.context-menu .context-menu-body {background:#333; color:#e1e1e1; position:relative; margin-left:5px; margin-top:-15px; border-radius:4px;}
+.context-menu .context-menu-body {background:#333; color:#e1e1e1; position:relative; margin-left:5px; margin-top:-20px; border-radius:4px;}
 .context-menu .context-menu-body:after {display:block; content:''; position:absolute; z-index:1; top:14px; left:-5px; width:0px; height:0px; border-top:6px solid transparent; border-bottom:6px solid transparent; border-right:5px solid #333;}
 .context-btn {width:100%; text-align:left; padding:12px 15px 12px 22px; border-bottom:1px solid #000; position:relative; font-size:12px;}
 .context-btn:before {display:inline-block; content:''; width:2px; height:2px; border-radius:50%; background:#fff; position:absolute; left:13px; top:20px; opacity:0.6;}
@@ -425,7 +425,7 @@ body	 {min-height:600px;}
 /* GNB  Area */
 .gnbArea {clear:both; text-align:right;}
 .gnbArea h1{display:inline-block; height:100%; width:auto; margin:0 30px 0 7px; vertical-align:middle; float:left; border:0px solid #fff;}
-.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat; display:none;}
+.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat; display:;}
 
 .gnbArea .dvNoticeTicker {display:inline-block; display:none; width:400px; overflow:hidden; position:relative; vertical-align:middle;}
 .gnbArea .dvNoticeTicker:before {display:inline-block; content:''; position:absolute; left:0; top:0; width:30px; height:30px;
@@ -964,6 +964,15 @@ input.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; 
 
 .dvNoticeList table tbody tr:hover {background:#f5f5f5;}
 .dvNoticeList table tbody td a:hover {animation:ani_down 0.2s ease-out 0s 1 alternate; font-weight:500;}
+
+.dvNoticeList table tbody tr.contentViewBox:hover {background:transparent;}
+table tr.contentViewBox {display:none;}
+table tr.contentViewBox td {padding:0; position:relative; border-bottom:0;}
+table tr.contentViewBox td:before {display:block; content:''; width:0px; height:0px; position:absolute; top:-5px; left:100px; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:5px solid #aaa;}
+table tr.contentViewBox td .contentBox {border:1px solid #ccc; border-top:0; text-align:left; background:#f1f1f1; padding:20px 30px; overflow:auto; max-height:200px; position:relative; line-height:1.6em; color:#000;}
+table tr.contentViewBox td .contentBox img,
+table tr.contentViewBox td .contentBox input,
+table tr.contentViewBox td .contentBox select {max-width:100%;}
 
 ul.paginglist {display:inline-block; overflow:hidden; margin:10px 0px; vertical-align:middle; text-align:center; border-left:none; }
 ul.paginglist:before,
