@@ -22,12 +22,12 @@ $(function() {
 	//map.mapTypes.set(naver.maps.MapTypeId.HYBRID, naver.maps.NaverMapTypeOption.getHybridMap());
 	
 	var contextInfoWin = new naver.maps.InfoWindow({
-		/*backgroundColor: "transparent",
+		backgroundColor: "transparent",
 		borderColor: "#666",
 		borderWidth: 0,
 		anchorSize: new naver.maps.Size(0, 0),
 		anchorSkew: false,  
-		pixelOffset: new naver.maps.Point(0, -12)*/
+		pixelOffset: new naver.maps.Point(0, -12)
 	});
 
 	var _contextCoord;
@@ -73,10 +73,10 @@ $(function() {
 	        }
 
 	        contextInfoWin.setContent([
-				'<div class="mapInnerBox">',
+				'<div class="mapInnerBox onlyText">',
 				'   <div class="mibBody">',
 				htmlAddresses.join('<br />'),
-				' <button onclick="closeCoordWindow()">X</button>',
+				' <button class="closeBtn" onclick="closeCoordWindow()"><span class="hidden">닫기</span></button>',
 				'   </div>',
 				'</div>'
 	            ].join(''));
