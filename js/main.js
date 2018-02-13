@@ -21,16 +21,7 @@ $(function() {
 	//map.mapTypes.set(naver.maps.MapTypeId.NORMAL, naver.maps.NaverMapTypeOption.getNormalMap());
 	//map.mapTypes.set(naver.maps.MapTypeId.HYBRID, naver.maps.NaverMapTypeOption.getHybridMap());
 	
-	var contextMenuString = [
-        '<div class="mapInnerBox">',
-        '   <div class="mibBody">',
-        '   </div>',
-        '</div>'
-    ].join('');
-
-
 	var contextInfoWin = new naver.maps.InfoWindow({
-		content: contextMenuString,
 		/*backgroundColor: "transparent",
 		borderColor: "#666",
 		borderWidth: 0,
@@ -77,15 +68,18 @@ $(function() {
 
 	            if(item.isRoadAddress) continue;
 	            
-	            htmlAddresses.push(/*(i+1) +'. '+ */addrType +' '+ item.address + ' <button onclick="closeCoordWindow()">X</button>');
+	            htmlAddresses.push(/*(i+1) +'. '+ */addrType +' '+ item.address);
 	            //htmlAddresses.push('&nbsp&nbsp&nbsp -> '+ item.point.x +','+ item.point.y);
 	        }
 
 	        contextInfoWin.setContent([
-	                '<div style="padding:10px;min-width:200px;line-height:150%;">',
-	                htmlAddresses.join('<br />'),
-	                '</div>'
-	            ].join('\n'));
+				'<div class="mapInnerBox">',
+				'   <div class="mibBody">',
+				htmlAddresses.join('<br />'),
+				' <button onclick="closeCoordWindow()">X</button>',
+				'   </div>',
+				'</div>'
+	            ].join(''));
 
 			contextInfoWin.open(map, _contextCoord);
 			$('#dvContextMenu').hide();
