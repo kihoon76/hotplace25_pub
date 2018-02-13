@@ -85,7 +85,28 @@ $(function() {
 		} else {
 			infowindow.open(map, marker);
 		}
-	});	
+	});
+	
+
+	////////////////////////////////////////////
+	// 투자유망지역 검색 결과 클릭 이후 마커 
+	var tooJaMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5666805, 126.9854147),
+		map: map,
+		title: '투자유망지역 검색 결과',
+		icon: {
+			content:'<img src="'+ HOME_PATH +'/img/marker_search.png" alt="" ' +
+                 'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
+		}
+	});
+
+	//투자유망지역 검색 결과 클릭 이후 마커 클릭 이벤트
+	naver.maps.Event.addListener(tooJaMarker, "click", function(e) {
+		commonPopup('20_02_detailView.html', '', '800');
+	});
 
 
 	////////////////////////////////////////////
@@ -631,12 +652,7 @@ $(function() {
 	});
 
 
-	//Bootstrap tabs 이벤트
-	$('button[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-	});
-
-	
-	
+		
 });
 
 ///////////////////////////////////////////////////////////////

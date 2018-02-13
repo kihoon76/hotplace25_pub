@@ -1,15 +1,869 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	// checked id // for 만들기 귀찮아서 만들어둔것이 실개발시 다르게 표현바람
+	rdchBoxSetId('dvGyeonggongSearch','chkGyeonggong');
+
+	//투자유망물건조건 > HP등급 rangeSlider
+	$('#hopefulToojaHpGrade').rangeSlider({
+		arrows: false,
+	});
+
+	//투자유망물건조건 > 환경평가등급 rangeSlider
+	$('#environmentPyeonggaGrade').rangeSlider({
+		arrows: false,
+	});
+
+	//경•공매 물건 검색 버튼 // 이전버튼
+	$('#gyeonggongSearch_btn01').on('click', function() {		
+		$('#gyeonggongSearch_btn01, #gyeonggongSearch_btn02').hide();
+		$('#gyeonggongSearch_btn03').show();
+		searchBtnClick('#dvGyeonggongSearch');
+
+		//tabulator 만들기
+		makeTabulator_Gyeonggong('dvGyeonggongSearchResult');
+	});
+	$('#gyeonggongSearch_btn03').on('click', function() {
+		$(this).hide();
+		$('#gyeonggongSearch_btn01, #gyeonggongSearch_btn02').show();
+		prevBtnClick('#dvGyeonggongSearch');
+	});
+});
+
+//////////
+// tabulator test
+var makeTabulator_Gyeonggong = function(resultId){
+	$('#' + resultId).tabulator({
+		height:579, // set height of table
+		fitColumns:true,
+		columnVertAlign:"middle",
+		columns:[ //Define Table Columns
+			{title:"연번",            field:"num",        align:"center", width:70, },
+			
+			{title:"구분",            field:"type",       align:"center", width:60, },
+			{title:"물건유형",        field:"gun",        align:"center", width:80, },
+			{title:"주소",            field:"address",    align:"left",   width:170,},
+			{title:"감정평가액",      field:"price",      align:"right",  width:120, formatter:'money', formatterParams:{precision:"0"} },
+			{title:"최소입찰가",      field:"minPrice",   align:"right",  width:120, formatter:'money', formatterParams:{precision:"0"} },
+			{title:"최소입찰가율",    field:"minPrecent", align:"center", width:100,},
+			{title:"유찰횟수",        field:"yuchal",     align:"center", width:80,},
+			{title:"HP등급",          field:"hp",         align:"center", width:90,},
+			{
+				title:"보상/편입", 
+				columns:[
+					{title:"구분",    field:"bs_type",    align:"center", width:80},
+					{title:"사업명",  field:"bs_name",    align:"center", width:100},
+				],
+			},
+			
+			{title:"위도",        field:"lat",     visible: false,},
+			{title:"경도",        field:"lng",     visible: false,},
+		],
+	});
+
+	$('#' + resultId).tabulator('setData', tbData2);
+}
+var tbData2 = [
+    {id:1, num:"1", type:"경매", gun:"대", address:"서울시 송파구 잠실본동 40", price:"120250000",  minPrice:"120250000", minPrecent:"15%",  yuchal:"1", hp:"4등급",  bs_type:"보상",  bs_name:"수원천",  lat:"127.32813", lng:"38.17754"},
+	{id:2, num:"1", type:"경매", gun:"대", address:"서울시 송파구 잠실본동 40", price:"99999999999",  minPrice:"2522215451", minPrecent:"15%",  yuchal:"1", hp:"3등급",  bs_type:"보상",  bs_name:"도시계획",  lat:"127.32813", lng:"38.17754"},
+];
+
+</script>
+
+
 <!-- 출력되는 기본 구조 -->
 <div class="headArea">
-	<h2>메뉴제목이 들어가는곳 menuCont03</h2>
+	<h2>경•공매 물건 검색</h2>
 	<button type="button" class="close" onClick="javascript:hideLnbCont(this);">
 		<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 	</button>
 </div>
 <div class="bodyArea">
-	<div class="" style="height:800px;">
+	
+	<div id="dvGyeonggongSearch" class="dvGyeonggongSearch">
+
+		<!-- /////////////////////////////// -->
+		<!-- 검색영역 -->
+		<div class="searchArea" style="display:block;">
+			<!-- 일반사항 -->
+			<div class="unit">							
+				<div class="unit_tit">
+					<span class="sTit color_black">일반사항</span>
+					<button href="#gyeonggongToggle01" class="slideShow fr stateOn" data-role="slideShow">
+						<em class="on">펼침</em>
+						<em class="off">닫힘</em>
+					</button>
+				</div>
+				<div id="gyeonggongToggle01" class="unit_cont bgWhite slideShow-cont" style="display:block;">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>지역</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">서울특별시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">부산광역시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">대구광역시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">인천광역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">광주광역시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">대전광역시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">울산광역시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">세종특별자치시</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">경기도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">강원도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">충청북도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">충청남도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">전라북도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">전라남도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">경상북도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">경상남도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">제주도</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>물건종류</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">주거용</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">업무 및 상업용</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">토지(농지,임야 등)</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공장/창고</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">기타(종교용지,구거 등)</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>지목</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">전</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">임야</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공장</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">도로</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">구거</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공원</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">사적지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">답</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">광천지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">학교</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">유지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">체육용지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">묘지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">과수원</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">염전</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">주차장</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">제방</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">양어장</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">유원지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">잡종지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">목장</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">대</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">주유소</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">하천</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">수도용지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">종교용지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">창고</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>지분여부</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">지분물건 제외</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>감정가</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1천만원 미만</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1천만원~5천만원</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">5천만원~1억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1억~3억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">3억~5억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">5억~10억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">10억~20억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">20억원 이상</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>최소입찰가</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1천만원 미만</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1천만원~5천만원</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">5천만원~1억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1억~3억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">3억~5억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">5억~10억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">10억~20억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">20억원 이상</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>공시지가기준가격</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1천만원 미만</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1천만원~5천만원</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">5천만원~1억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">1억~3억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">3억~5억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">5억~10억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">10억~20억</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">20억원 이상</em></label>
+									</span>
+								</td>
+							</tr>
+							
+							<tr>
+								<th>최소입찰가율</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">100% 이상</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">100~75%</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">75~50%</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">50~25%</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">25% 미만</em></label>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+
+			<!-- 토지이용규제조건 -->
+			<div class="unit">							
+				<div class="unit_tit">
+					<span class="sTit color_black">토지이용규제조건</span>
+					<button href="#gyeonggongToggle02" class="slideShow fr" data-role="slideShow">
+						<em class="on">펼침</em>
+						<em class="off">닫힘</em>
+					</button>
+				</div>
+				<div id="gyeonggongToggle02" class="unit_cont bgWhite slideShow-cont">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>용도지역</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">주거지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">상업지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공업지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">녹지지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">관리지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">농림지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">자연환경보전지역</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>용도지구</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">경관지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">미관지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">고도지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">방화지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">방재지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">보존지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">시설보호지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">취락지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">개발진흥지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">특정용도제한지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">위락지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">리모델링지구</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>용도구역</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">시가화조정구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">개발제한구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">도시자연공원구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">수산자원보호구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">입지규제최소구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">지구단위계획구역</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>기타법률상규제</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">보전산지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">준보전산지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공익용산지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">임업용산지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">농업보호지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">농업진흥구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">상수원보호구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">배출시설설치제한지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">수질보전대책지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">접도구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공장설립제한구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">비오톱</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">개발행위허가제한지역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">정비구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">재개발구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">뉴타운지구</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">제한보호구역</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">문화재보존영향검토대상구역</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>기타참고사항</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">영농여건불리농지</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">토지거래허가구역</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>도시계획시설</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">도로</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">철도</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">기타교통</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공원</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">기타공간시설</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">공공문화체육시설</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">방재시설</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">보건위생시설</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">유통공급시설</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">환경기초시설</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>도시계획시설저촉상태</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">전필</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">저촉</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">접함</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>보상편입여부</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">보상</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">편입</em></label>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+							
+				</div>
+			</div>
+
+
+
+			<!-- 투자유망물건조건 -->
+			<div class="unit">							
+				<div class="unit_tit">
+					<span class="sTit color_black">투자유망물건조건</span>
+					<button href="#gyeonggongToggle03" class="slideShow fr" data-role="slideShow">
+						<em class="on">펼침</em>
+						<em class="off">닫힘</em>
+					</button>
+				</div>
+				<div id="gyeonggongToggle03" class="unit_cont bgWhite slideShow-cont">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>HP등급</td>
+								<td>							
+									<!-- HP등급 Range -->
+									<div class="rangeSliderWrap">
+										<div id="hopefulToojaHpGrade" class="hopefulToojaHpGrade rangeSlider"></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>경사도</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">25도 미만</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">25도 이상</em></label>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>접도현황</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">도로접함</em></label>
+									</span>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">맹지</em></label>
+									</span>
+
+								</td>
+							</tr>
+							<tr>
+								<th>환경평가등급</td>
+								<td>
+									<!-- 환경평가등급 Range -->
+									<div class="rangeSliderWrap">
+										<div id="environmentPyeonggaGrade" class="environmentPyeonggaGrade rangeSlider"></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th>토지이용규제해소물건</td>
+								<td>
+									<span class="rdchBox">
+										<input type="checkbox" id="" name="" />
+										<label for="" class="labelCh"><em class="text">토지이용규제 해소 필지</em></label>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+
+		</div>
+
+
+		<!-- /////////////////////////////// -->
+		<!-- 검색결과영역 -->
+		<div class="searchResultArea">
+			<div class="unit">	
+				<div class="unit_cont tabulatorWrap">
+					<!-- tabulator로 그리는 table 부분-->
+					<div id="dvGyeonggongSearchResult" class="tableStyle gridStyle center"></div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+
 </div>
+
 <div class="footArea">
-	<button type="button" class="btnstyle middle blue">검색</button>
-	<button type="button" class="btnstyle middle gray" onClick="javascript:hideLnbCont(this);">닫기</button>
+	<button type="button" id="gyeonggongSearch_btn01" class="btnstyle middle blue">검색</button>
+	<button type="button" id="gyeonggongSearch_btn01" class="btnstyle middle gray">선택해제</button>
+
+	<button type="button" id="gyeonggongSearch_btn03" class="btnstyle middle blue" style="display:none;">이전</button>
 </div>

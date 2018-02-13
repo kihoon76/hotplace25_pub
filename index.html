@@ -98,7 +98,6 @@ $(document).ready( function() {
 			$('body').addClass('modal-open');
 		}
 	});
-
 	
 	//bootstrap tab 이벤트 이후
 	$('a[data-toggle="tab"], button[data-toggle="tab"]').on('shown.bs.tab', function() {
@@ -130,20 +129,6 @@ $(document).ready( function() {
 	
 	//////////////////////////////////////////////////
 	//////////////////////////////////////////////////	
-	//modal 레이어 팝업 샘플
-	$('#modalTest').on('click', function(e) {	
-		var param = new Object();
-		//commonPopup('url', 'param', 'width');
-		commonPopup('z_modalTest_full.html', '', '');
-	});
-
-	//modal 레이어 팝업 샘플
-	$('#modalTest2').on('click', function(e) {	
-		var param = new Object();
-		//commonPopup('url', 'param', 'width');
-		commonPopup('z_modalTest_full.html', '', 'full');
-	});
-
 	//로그인 modal 샘플
 	$('#loginBtn').on('click', function(e) {
 		var param = new Object();
@@ -154,6 +139,24 @@ $(document).ready( function() {
 	//로그아웃 버튼 샘플
 	$('#logoutBtn').on('click', function(e) {		
 		logoutAction();
+	});
+
+
+	//////////////////////////////////////////////////	
+	//modal modalMypage
+	$('#modalMypage').on('click', function(e) {	
+		var param = new Object();
+		commonPopup('70_01_mypage.html', '', '600');
+	});
+
+	//modal modalNotice
+	$('#modalNotice').on('click', function(e) {	
+		commonPopup('70_02_noticeList.html', '', '1000');
+	});
+
+	//modal modalCompany
+	$('#modalCompany').on('click', function(e) {	
+		alert('작업중입니다');
 	});
 
 });
@@ -208,6 +211,19 @@ var rangeSliderResize = function(target) {
 			$('#' + id).rangeSlider('resize');
 		});
 	}
+}
+
+// 좌메뉴 하단 검색 //이전 버튼 클릭 시 show, hide대상
+var searchBtnClick = function(target){
+	var tid = target;
+	$(tid + ' > .searchArea').hide();
+	$(tid + ' > .searchResultArea').show();
+}
+
+var prevBtnClick = function(target){
+	var tid = target;
+	$(tid + ' > .searchArea').show();
+	$(tid + ' > .searchResultArea').hide();
 }
 
 /////////////////////////////////////////////////
@@ -276,9 +292,9 @@ var rdchBoxSetId = function(tId, name) {
 
 				<div class="dropMenu">
 					<ul class="dropMenuBox">
-						<li><a href="#" class="link">회사소개</a></li>
-						<li><a href="#" class="link" id="modalTest">modal test</a></li>
-						<li><a href="#" class="link" id="modalTest2">modal test full</a></li>
+						<li><a href="#" class="link" id="modalMypage">My Page</a></li>
+						<li><a href="#" class="link" id="modalNotice">공지사항</a></li>
+						<li><a href="#" class="link" id="modalCompany">회사소개</a></li>
 					</ul>
 				</div>
 			</span>
@@ -319,12 +335,12 @@ var rdchBoxSetId = function(tId, name) {
 			<!--#include virtual="lnbCont_01.html" -->
 		</div>
 
-		<div id="menuCont02" class="lnbContWrap" style="display:; width:650px;">
+		<div id="menuCont02" class="lnbContWrap" style="display:; width:750px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_02.html" -->
 		</div>
 
-		<div id="menuCont03" class="lnbContWrap">
+		<div id="menuCont03" class="lnbContWrap" style="display:; width:750px;">
 			<!-- ssi(Server Side Includes) 가 설정된 웹서버에서만 실행됨// 필요한 방식으로 호출하삼 -->
 			<!--#include virtual="lnbCont_03.html" -->
 		</div>

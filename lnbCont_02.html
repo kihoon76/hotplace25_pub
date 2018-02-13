@@ -1,5 +1,6 @@
 <script type="text/javascript">
 $(document).ready( function() {
+	// checked id // for 만들기 귀찮아서 만들어둔것이 실개발시 다르게 표현바람
 	rdchBoxSetId('dvToojaBox','chkJagMi');
 
 	//장기미집행도시계획시설물건조건 > HP등급 rangeSlider
@@ -13,7 +14,9 @@ $(document).ready( function() {
 		$('#toojaTabBox01_btn01, #toojaTabBox01_btn02').hide();
 		$('#toojaTabBox01_btn03').show();
 		searchBtnClick('#toojaTabBox01');
-		testTable('example-table');
+
+		//tabulator 만들기
+		makeTabulator_JangmiTooja('dvJangmiToojaResult');
 
 	});
 	$('#toojaTabBox01_btn03').on('click', function() {
@@ -49,30 +52,23 @@ $(document).ready( function() {
 	});
 });
 
-var searchBtnClick = function(target){
-	var tid = target;
-	$(tid + ' > .searchArea').hide();
-	$(tid + ' > .searchResultArea').show();
-}
-
-var prevBtnClick = function(target){
-	var tid = target;
-	$(tid + ' > .searchArea').show();
-	$(tid + ' > .searchResultArea').hide();
-}
 
 //////////
 // tabulator test
-var testTable = function(resultId){
+var makeTabulator_JangmiTooja = function(resultId){
 	$('#' + resultId).tabulator({
 		height:519, // set height of table
 		fitColumns:true,
 		columns:[ //Define Table Columns
-			{title:"고유번호",    field:"num",     align:"center", width:90, },
-			{title:"구분",        field:"type",    align:"center", width:70, headerFilter:true, editor:_tabulatorSelectFilter(['G', 'K', 'R'])},
-			{title:"물건유형",    field:"gun",     align:"center", width:90, headerFilter:true, editor:_tabulatorSelectFilter(['대','전','답','임야','하천','도로','건물'])},
-			{title:"감정평가액",  field:"money",   align:"right", width:120, formatter:'money', formatterParams:{precision:"0"} },
-			{title:"주소",        field:"address", align:"left", headerFilter:'input', headerFilterPlaceholder:'주소검색' },
+			{title:"연번",             field:"num",     align:"center", width:70, },
+			{title:"지번주소",         field:"address", align:"left", width:170,},
+			{title:"도시계획시설",     field:"type",    align:"center", width:100, },
+			{title:"용도지역",         field:"usage",   align:"center", width:80, },
+			{title:"HP등급",           field:"hp",      align:"center", width:80,},
+			{title:"경공매 진행 여부", field:"gong",    align:"center", width:120,},
+			{title:"보상편입여부",     field:"bosang",  align:"center", width:100,},
+			{title:"등기사건",         field:"deunggi", align:"center", width:80,},
+			
 			{title:"위도",        field:"lat",     visible: false,},
 			{title:"경도",        field:"lng",     visible: false,},
 		],
@@ -81,74 +77,17 @@ var testTable = function(resultId){
 	$('#' + resultId).tabulator('setData', tbData);
 }
 var tbData = [
-    {id:1, num:"11401", type:"G", gun:"대", money:"120250000", address:"서울시 송파구 잠실본동 40", lat:"127.32813", lng:"38.17754"},
-    {id:2, num:"11402", type:"K", gun:"전", money:"120362000", address:"서울시 송파구 잠실본동 41", lat:"127.32813", lng:"38.17754"},
-	{id:3, num:"11403", type:"R", gun:"답", money:"120000300", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
-	{id:4, num:"11404", type:"R", gun:"전", money:"120000000", address:"서울시 송파구 잠실본동 45", lat:"127.32813", lng:"38.17754"},
-	{id:5, num:"11405", type:"G", gun:"답", money:"121000000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
-	{id:6, num:"11406", type:"R", gun:"하천", money:"123000000", address:"서울시 송파구 잠실본동 40-1", lat:"127.32813", lng:"38.17754"},
-	{id:7, num:"11407", type:"K", gun:"대", money:"120120000", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
-	{id:8, num:"11408", type:"G", gun:"답", money:"127020000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
-	{id:9, num:"11409", type:"K", gun:"대", money:"120123000", address:"서울시 송파구 잠실본동 414", lat:"127.32813", lng:"38.17754"},
-	{id:10, num:"11410", type:"K", gun:"임야", money:"20456010", address:"서울시 송파구 잠실본동 00", lat:"127.32813", lng:"38.17754"},
-	{id:11, num:"11401", type:"G", gun:"대", money:"120250000", address:"서울시 송파구 잠실본동 40", lat:"127.32813", lng:"38.17754"},
-    {id:12, num:"11402", type:"K", gun:"전", money:"120362000", address:"서울시 송파구 잠실본동 41", lat:"127.32813", lng:"38.17754"},
-	{id:13, num:"11403", type:"R", gun:"답", money:"120000300", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
-	{id:14, num:"11404", type:"R", gun:"전", money:"120000000", address:"서울시 송파구 잠실본동 45", lat:"127.32813", lng:"38.17754"},
-	{id:15, num:"11405", type:"G", gun:"답", money:"121000000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
-	{id:16, num:"11406", type:"R", gun:"하천", money:"123000000", address:"서울시 송파구 잠실본동 40-1", lat:"127.32813", lng:"38.17754"},
-	{id:17, num:"11407", type:"K", gun:"대", money:"120120000", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
-	{id:18, num:"11408", type:"G", gun:"답", money:"127020000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
-	{id:19, num:"11409", type:"K", gun:"대", money:"120123000", address:"서울시 송파구 잠실본동 414", lat:"127.32813", lng:"38.17754"},
-	{id:20, num:"11410", type:"K", gun:"임야", money:"20456010", address:"서울시 송파구 잠실본동 00", lat:"127.32813", lng:"38.17754"},
-	{id:21, num:"11401", type:"G", gun:"대", money:"120250000", address:"서울시 송파구 잠실본동 40", lat:"127.32813", lng:"38.17754"},
-    {id:22, num:"11402", type:"K", gun:"전", money:"120362000", address:"서울시 송파구 잠실본동 41", lat:"127.32813", lng:"38.17754"},
-	{id:23, num:"11403", type:"R", gun:"답", money:"120000300", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
-	{id:24, num:"11404", type:"R", gun:"전", money:"120000000", address:"서울시 송파구 잠실본동 45", lat:"127.32813", lng:"38.17754"},
-	{id:25, num:"11405", type:"G", gun:"답", money:"121000000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
-	{id:26, num:"11406", type:"R", gun:"하천", money:"123000000", address:"서울시 송파구 잠실본동 40-1", lat:"127.32813", lng:"38.17754"},
-	{id:27, num:"11407", type:"K", gun:"대", money:"120120000", address:"서울시 송파구 잠실본동 600", lat:"127.32813", lng:"38.17754"},
-	{id:28, num:"11408", type:"G", gun:"답", money:"127020000", address:"서울시 송파구 잠실본동 30", lat:"127.32813", lng:"38.17754"},
-	{id:29, num:"11409", type:"K", gun:"대", money:"120123000", address:"서울시 송파구 잠실본동 414", lat:"127.32813", lng:"38.17754"},
-	{id:30, num:"11410", type:"K", gun:"임야", money:"20456010", address:"서울시 송파구 잠실본동 00", lat:"127.32813", lng:"38.17754"},
+    {id:1, num:"1", address:"서울시 송파구 잠실본동 40", type:"도로", usage:"자연녹지", hp:"4등급", gong:"2017타경0000", bosang:"보상", deunggi:"",  lat:"127.32813", lng:"38.17754"},
+	{id:2, num:"2", address:"서울시 송파구 잠실본동 40", type:"철도", usage:"주거지역", hp:"2등급", gong:"", bosang:"편입", deunggi:"근저당설정",  lat:"127.32813", lng:"38.17754"},
+	{id:3, num:"3", address:"서울시 송파구 잠실본동 40", type:"완충녹지", usage:"상업지역", hp:"3등급", gong:"", bosang:"보상", deunggi:"",  lat:"127.32813", lng:"38.17754"},
+	{id:4, num:"4", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"", deunggi:"근저당설정",  lat:"127.32813", lng:"38.17754"},
+	{id:5, num:"5", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"보상", deunggi:"",  lat:"127.32813", lng:"38.17754"},
+	{id:6, num:"6", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"편입", deunggi:"근저당설정",  lat:"127.32813", lng:"38.17754"},
+	{id:7, num:"7", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"", deunggi:"",  lat:"127.32813", lng:"38.17754"},
+	{id:8, num:"8", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"", deunggi:"",  lat:"127.32813", lng:"38.17754"},
+	{id:9, num:"9", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"보상", deunggi:"",  lat:"127.32813", lng:"38.17754"},
+	{id:10, num:"10", address:"서울시 송파구 잠실본동 40", type:"", usage:"", hp:"", gong:"", bosang:"편입", deunggi:"",  lat:"127.32813", lng:"38.17754"},
 ];
-
-var _tabulatorSelectFilter = function(arr) {
-	return function(cell, onRendered, success, cancel) {
-		var len = arr.length;
-		
-		var htmlStr = '';
-			
-		for(var i=0; i<len; i++) {
-			htmlStr += '<option value="' + arr[i] + '">' + arr[i] + '</option>';
-			console.log(htmlStr);
-		}
-			
-		var editor = $('<select><option value=""></option>' + htmlStr + '</select>');
-		editor.css({
-			'padding':'3px',
-			'width':'100%',
-			'box-sizing':'border-box',
-		});
-		 
-		//Set value of editor to the current value of the cell
-		editor.val(cell.getValue());
-		  
-		//set focus on the select box when the editor is selected (timeout allows for editor to be added to DOM)
-		onRendered(function(){
-			editor.focus();
-			editor.css('height','100%');
-		});
-		 
-		//when the value has been set, trigger the cell to update
-		editor.on('change blur', function(e){
-			success(editor.val());
-		});
-
-		//return the editor element
-		return editor;
-	}
-}
 
 </script>
 

@@ -1,0 +1,196 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	
+	//My Page Step01 동의 하단 다음버튼
+	$('#btnStep01').on('click', function(){
+		$('.joinBox').hide();
+		$('#myPage02').show();
+	});
+
+	//My Page Step02 정보입력 하단 이전버튼
+	$('#btnStep02').on('click', function(){
+		$('.joinBox').hide();
+		$('#myPage03').show();
+	});
+	
+	
+	//My Page Step03 수정완료 하단 로그인페이지로 이동 버튼
+	$('#btnStep03_login').on('click', function(){
+		var param = new Object();
+		//commonPopup('url', 'param', 'width');
+		commonPopup('01_01_login.html', '', '410'); //로그인 페이지는 항상 width가 410
+	});
+});
+</script>
+
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		
+		<div class="modal-header">
+			<h2 class="modal-title">My Page</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+
+		<div class="modal-body">
+
+			<!-- My Page step01 //////////////////// 가입정보 확인 -->
+			<div id="myPage01" class="rowBox joinBox joinStep03" >			
+				
+				<div class="unit">
+					<div class="unit_tit">
+						<span class="sTit">가입 정보확인</span>
+					</div>
+					<div class="unit_cont lineBox">
+						<table class="tableStyle formStyle left">
+							<colgroup>
+								<col style="width:120px;">
+								<col style="width:*;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>아이디</th>
+									<td>aaaaaaaaa</td>
+								</tr>
+								<tr>
+									<th>비밀번호</th>
+									<td>**********</td>
+								</tr>
+								<tr>
+									<th>이름</th>
+									<td>핫플레이스</td>
+								</tr>
+								<tr>
+									<th>이메일 주소</th>
+									<td>hotplace@hotplace.com</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>000-0000-0000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="joinOkText">위 입력정보를 수정하시겠습니까?</div>
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep01" class="btnstyle middle blue" style="width:80px;">수정</button>
+					<button type="button" id="btnStep01_cencel" class="btnstyle middle white" style="width:80px;" data-dismiss="modal">취소</button>
+				</div>
+
+			</div>
+			<!-- //My Page step01 // 가입정보 확인 -->
+			
+
+			<!-- My Page step02 //////////////////// 정보수정 -->
+			<div id="myPage02" class="rowBox joinBox joinStep02" style="display:none;">			
+				
+				<div class="unit">
+					<div class="unit_tit">
+						<span class="sTit">정보입력</span>
+					</div>
+					<div class="unit_cont lineBox">
+						<table class="tableStyle formStyle left">
+							<colgroup>
+								<col style="width:130px;">
+								<col style="width:*;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>아이디</th>
+									<td>aaaaaaaaa</td>
+								</tr>
+								<tr>
+									<th>현재 비밀번호</th>
+									<td>
+										<input type="text" id="input01" class="inp" style="width:100%;" />
+										<span class="helpCont">현재 비밀번호를 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>변경 비밀번호</th>
+									<td>
+										<input type="text" id="input02" class="inp" style="width:100%;" />
+										<span class="helpCont">비밀번호를 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>변경 비밀번호확인</th>
+									<td>
+										<input type="text" id="input03" class="inp" style="width:100%;" />
+										<span class="helpCont">비밀번호를 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>이메일 주소</th>
+									<td>
+										<div class="inputGroup">
+											<input type="text" id="input05" class="inp fl" style="width:50%;" value="aaaaa" />
+											<span class="inline center fl" style="width:5%;" >@</span>
+											<select class="inp fl" style="width:45%;">
+												<option>== 선택하세요 ==</option>
+												<option selected>naver.com</option>
+												<option>daum.net</option>
+												<option>nate.com</option>
+												<option>직접입력</option>
+											<select>											
+										</div>
+										<span class="helpCont">email을 입력하세요</span>
+									</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>
+										<div class="inputGroup">
+											<input type="text" id="input06" class="inp fl" style="width:30%;" value="010" />
+											<span class="inline center fl"  style="width:5%;">-</span>
+											<input type="text" id="input07" class="inp fl" style="width:30%;" value="0000" />
+											<span class="inline center fl"  style="width:5%;">-</span>
+											<input type="text" id="input08" class="inp fl" style="width:30%;" value="0000" />
+										</div>
+										<span class="helpCont">숫자를 입력해 주세요</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep02" class="btnstyle middle blue" style="width:80px;">수정</button>
+					<button type="button" id="btnStep02_cencel" class="btnstyle middle white" style="width:80px;" data-dismiss="modal">취소</button>
+				</div>
+
+			</div>
+			<!-- //My Page step02 // 정보수정 -->
+
+
+			
+
+
+			<!-- My Page step03 //////////////////// 정보수정 완료 -->
+			<div id="myPage03" class="rowBox joinBox joinStep04" style="display:none;">			
+				
+				<div class="joinEndText">
+					<strong>"수정이 완료되었습니다."</strong>
+					다시 로그인 해주세요
+				</div>
+
+				<div class="btnArea center mgT20">
+					<button type="button" id="btnStep03_login" class="btnstyle middle black" style="">로그인페이지로 이동</button>
+				</div>
+
+			</div>
+			<!-- //회원가입 step04 // 회원가입 완료 -->
+
+		</div>
+
+		<!--<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-dismiss="modal" onclick="javescript:alert('test');">Save changes</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">Close</button>
+		</div>-->
+	</div>
+</div>
