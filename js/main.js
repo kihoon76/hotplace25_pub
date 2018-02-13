@@ -21,8 +21,31 @@ $(function() {
 	//map.mapTypes.set(naver.maps.MapTypeId.NORMAL, naver.maps.NaverMapTypeOption.getNormalMap());
 	//map.mapTypes.set(naver.maps.MapTypeId.HYBRID, naver.maps.NaverMapTypeOption.getHybridMap());
 	
+	var contextMenuString = [
+        '<div class="mapInnerBox">',
+        '   <div class="mibBody">',
+        '   </div>',
+        '</div>'
+    ].join('');
+
+
+	var contextInfoWin = new naver.maps.InfoWindow({
+		content: contextMenuString,
+		/*backgroundColor: "transparent",
+		borderColor: "#666",
+		borderWidth: 0,
+		anchorSize: new naver.maps.Size(0, 0),
+		anchorSkew: false,  
+		pixelOffset: new naver.maps.Point(0, -12)*/
+	});
+
+	var _contextCoord;
+
 	//지도 마우스 우클릭
 	naver.maps.Event.addListener(map, "rightclick", function(e) {
+		_contextCoord = e.coord;
+		map.getPanes().overlayLayer.appendChild($('#dvContextMenu')[0]);
+	
 		$('#dvContextMenu').show();
 		$('#dvContextMenu').css({
 			'left': e.offset.x,
@@ -34,6 +57,44 @@ $(function() {
 		//contextmenu 숨김
 		$('#dvContextMenu').hide();
 	});
+
+	$('#btnContextLocAddress').on('click', function() {
+		var tm128 = naver.maps.TransCoord.fromLatLngToTM128(_contextCoord);
+		naver.maps.Service.reverseGeocode({
+	        location: tm128,
+	        coordType: naver.maps.Service.CoordType.TM128
+	    }, function(status, response) {
+	        if (status === naver.maps.Service.Status.ERROR) {
+	            return alert('Something wrong');
+	        }
+
+	        var items = response.result.items,
+	            htmlAddresses = [];
+
+	        for (var i=0, ii=items.length, item, addrType; i<ii; i++) {
+	            item = items[i];
+	            addrType = item.isRoadAddress ? '[도로명 주소]' : '[지번 주소]';
+
+	            if(item.isRoadAddress) continue;
+	            
+	            htmlAddresses.push(/*(i+1) +'. '+ */addrType +' '+ item.address + ' <button onclick="closeCoordWindow()">X</button>');
+	            //htmlAddresses.push('&nbsp&nbsp&nbsp -> '+ item.point.x +','+ item.point.y);
+	        }
+
+	        contextInfoWin.setContent([
+	                '<div style="padding:10px;min-width:200px;line-height:150%;">',
+	                htmlAddresses.join('<br />'),
+	                '</div>'
+	            ].join('\n'));
+
+			contextInfoWin.open(map, _contextCoord);
+			$('#dvContextMenu').hide();
+	    });
+	});
+
+	window.closeCoordWindow = function() {
+		contextInfoWin.close();
+	}
 
 	$(window).contextmenu(function(e) {
 		return false;
