@@ -754,7 +754,7 @@ var mapInfowindowLink = function(obj){
 	}
 	/////
 	else if (linkName == '물건상세조회'){
-		commonPopup('z_modalTest_full.html', '', 'full');
+		commonPopup('30_01_gyeongmaeDetail.html', '', 'full');
 	}
 	
 	
@@ -987,12 +987,23 @@ var setModalMaxHeight = function(element) {
 	});
 }
 
+var setModalMarginTop = function(element) {
+	this.$element     = $(element);  
+	this.$dialog      = this.$element.find('.modal-dialog');
+	var dialogHeight  = this.$dialog.height();
+	
+	this.$dialog.css({
+		'margin-top' : -dialogHeight/2
+	});
+}
+
 
 ////////////////////////////////////////////////////////////////////////
 // window resize시 액션
 $(window).resize(function() {
 	if ($('.modal.in').length != 0) {
 		setModalMaxHeight($('.modal.in'));
+		setModalMarginTop($('.modal.in'));
 	}
 });
 

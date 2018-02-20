@@ -32,6 +32,9 @@
 <script type="text/javascript" src="vendors/jQRangeSlider-5.7.2/jQAllRangeSliders-min.js"></script>
 <script type="text/javascript" src="vendors/tabulator/js/tabulator.min.js"></script>
 
+<!-- 이미지 슬라이드 갤러리 -->
+<script type="text/javascript" src="vendors/touchSlider/jquery.touchSlider.js"></script>
+
 <!-- uploadify -->
 <script type="text/javascript" src="vendors/jQuery-Upload-File/4.0.11/jquery.uploadfile.js"></script>
 
@@ -61,8 +64,9 @@ $(document).ready( function() {
 	/////////////////////////////////////////////////
 	//Modal 레이어팝업 오픈이벤트 이후
 	$('#modalPopup').on('shown.bs.modal', function() {
-		setModalMaxHeight($('#modalPopup'));
+		setModalMaxHeight($('#modalPopup'));		
 		$('.modal-backdrop').remove();
+		setModalMarginTop($('#modalPopup'));	
 	});
 
 	//Modal 레이어팝업 종료 이벤트이후
@@ -75,6 +79,8 @@ $(document).ready( function() {
 	$('#modalPopup2').on('shown.bs.modal', function() {
 		setModalMaxHeight($('#modalPopup2'));
 		$('.modal-backdrop').remove();
+		setModalMarginTop($('#modalPopup2'));
+
 	});
 
 	//Modal에 모달 레이어팝업 종료 이벤트이후
@@ -82,12 +88,14 @@ $(document).ready( function() {
 		$('#modalPopup2').removeClass('in').data('bs.modal', null);
 		$('#modalPopup2').empty();
 		$('body').addClass('modal-open');
+
 	});
 
 	//alrtPopup 모달 레이어팝업 오픈이벤트 이후
 	$('#alrtPopup').on('shown.bs.modal', function() {
 		setModalMaxHeight($('#alrtPopup'));
 		$('.modal-backdrop').remove();
+		setModalMarginTop($('#alrtPopup'));
 	});
 
 	//alrtPopup 모달 레이어팝업 종료 이벤트이후
@@ -98,6 +106,22 @@ $(document).ready( function() {
 			$('body').addClass('modal-open');
 		}
 	});
+	
+	//imagePopup 모달 레이어팝업 오픈이벤트 이후
+	$('#imagePopup').on('shown.bs.modal', function() {
+		setModalMaxHeight($('#imagePopup'));
+		$('.modal-backdrop').remove();
+		setModalMarginTop($('#imagePopup'));
+	});
+
+	//imagePopup 모달 레이어팝업 종료 이벤트이후
+	$('#imagePopup').on('hidden.bs.modal', function() {
+		$('#imagePopup').removeClass('in').data('bs.modal', null);
+		$('#imagePopup').empty();
+		if ($('#modalPopup').is(':visible') || $('#modalPopup2').is(':visible')){
+			$('body').addClass('modal-open');
+		}
+	})
 	
 	//bootstrap tab 이벤트 이후
 	$('a[data-toggle="tab"], button[data-toggle="tab"]').on('shown.bs.tab', function() {
@@ -125,6 +149,13 @@ $(document).ready( function() {
 
 	/////////////////////////////////////////////////
 	slideToggleShow();
+
+	/////////////////////////////////////////////////
+	/***************** 전체화면 버튼 ************************/
+	$('#gnbFullScreen').on('click', function() {
+		toggleFullScreen();
+		$(this).toggleClass('off');
+	});
 
 	
 	//////////////////////////////////////////////////
@@ -164,6 +195,34 @@ $(document).ready( function() {
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+var toggleFullScreen = function() {
+	if(!document.fullscreenElement &&    // alternative standard method
+		!document.mozFullScreenElement &&
+		!document.webkitFullscreenElement) {  // current working methods
+			if(document.documentElement.requestFullscreen) {
+				document.documentElement.requestFullscreen();
+			} 
+			else if(document.documentElement.mozRequestFullScreen) {
+				document.documentElement.mozRequestFullScreen();
+			}
+			else if(document.documentElement.webkitRequestFullscreen) {
+				document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+			}
+	}
+	else {
+		if(document.cancelFullScreen) {
+			document.cancelFullScreen();
+		}
+		else if(document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		}
+		else if(document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		}
+	}
+}
+
+
 var loginAction = function() {
 	$('#loginBtn').hide();
 	$('#logoutBtn').show();
@@ -288,6 +347,9 @@ var rdchBoxSetId = function(tId, name) {
 
 		<div class="dvEtc">
 			<span class="boxUnit">
+				<button type="button" class="unit fullScreen"  id="gnbFullScreen" title="전체화면"><span class="hidden">전체화면</span></button>
+			</span>
+			<span class="boxUnit">
 				<button type="button" class="unit contact" title="contact us"><span class="hidden">contact us</span></button>
 
 				<div class="dropMenu">
@@ -401,6 +463,9 @@ var rdchBoxSetId = function(tId, name) {
 
 	<!-- bootstrap modal에서 modal을 띄울때만 사용 영역 -->
 	<div class="modal" id="modalPopup2" tabindex="-1" role="dialog"></div>
+
+	<!-- bootstrap modal에서 imagePopup을 띄울때만 사용 영역 -->
+	<div class="modal" id="imagePopup" tabindex="-1" role="dialog"></div>
 
 	<!-- alert modal을 띄울때만 사용 영역 -->
 	<div class="modal" id="alrtPopup" tabindex="-1" role="dialog"></div>

@@ -1,0 +1,872 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	$('#touchSlider').touchSlider({
+		autoplay : {
+			enable : true,
+			pauseHover : true,
+			interval : 3500
+		},		
+		view : 4,
+		btn_prev : $("#touchSlider").next().find(".btn_prev"),
+		btn_next : $("#touchSlider").next().find(".btn_next"),
+	});
+
+	// 이미지 클릭시 이벤트
+	$('#touchSlider li > a').on('click', function() {
+		var $img   = $(this).children();
+		var img    = $img.prop('src');
+		var tit    = $img.data('gubun');
+		imagePopup('30_02_imageViewModal.html', '', '700', img, tit);		
+	});
+});
+
+
+// image modal 레이어팝업 띄울때
+var imagePopup = function(url, param, width, img, tit){
+	var eWidth = width; //레이어 팝업의  width 강제설정
+	
+	if(width == null){
+		eWidth = '';
+	}else if (width == 'full'){
+		eWidth = '96%';
+	}else{
+		eWidth = width;
+	}	
+
+	var img = img;
+	var tit = tit;
+	
+	$.ajax({
+		type : "get",
+		url : url,
+		data : param,
+		async: true,
+		success : function(data) {
+			$("#imagePopup").html(data);
+			$('#enlargeImageModalTitle').text(tit);
+			$('#enlargeImageModalSource').prop('src', img);
+		},		
+		complete : function(){
+			$('#imagePopup').removeClass('in').data('bs.modal', null);
+			$('#imagePopup')
+			.modal({
+				backdrop: 'static', 
+				keyboard: false
+			})
+			.find('.modal-dialog')
+			.css({
+				'width': eWidth
+			});
+		}
+	});	
+};
+;
+</script>
+
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				상세보기
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body dvGyeongmaeDetail">
+			
+			<!-- ----------------------- -->
+			<div class="unit">
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:10%;">
+							<col style="width:15%;">
+
+							<col style="width:10%;">
+							<col style="width:15%;">
+
+							<col style="width:10%;">
+							<col style="width:15%;">
+
+							<col style="width:10%;">
+							<col style="width:15%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>사건번호</td>
+								<td>2017타경7685</td>
+
+								<th>담당</td>
+								<td>의정부지방법원 | 경매17계</td>
+
+								<th>사건접수</td>
+								<td>2017-03-31</td>
+
+								<th>물건종류</td>
+								<td>기타</td>
+							</tr>
+							<tr>
+								<th>소재지</td>
+								<td colspan="3">강원도 철원군 갈말읍 문혜리 682-18</td>
+
+								<th>물건비고</td>
+								<td colspan="3">일괄매각. 제시외 건물 포함</td>
+							</tr>
+							<tr>
+								<th>매각기일</td>
+								<td>2017-11-03 10:30:00</td>
+
+								<th>입찰방법</td>
+								<td>기일입찰</td>
+
+								<th>유찰횟수</td>
+								<td>1</td>
+
+								<th>청구금액</td>
+								<td>18,000,000 원</td>
+							</tr>
+							<tr>
+								<th>감정평가액</td>
+								<td>679,182,600 원</td>
+
+								<th>최저매각가격</td>
+								<td>475,428,000 원</td>
+
+								<th>배당요구종기</td>
+								<td colspan="3">2017-06-13</td>
+							</tr>
+							<tr>
+								<th>
+									전경도(17)<br/>
+									지적도(1)<br/>
+									위치도(2)<br/>
+									관련사진(12)<br/>
+									내부구조(0)<br/>
+									기타(0)<br/>
+								</td>
+								<td colspan="7">
+									<div class="touchSliderWrap">
+										<div id="touchSlider" class="touchSlider" style="height:160px;">
+											<ul>
+												<li><a href="#"><img src="img/photo_sample.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample02.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample03.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample04.jpg" data-gubun="관련사진"></a></li>
+												<li><a href="#"><img src="img/photo_sample05.jpg" data-gubun="관련사진"></a></li>
+												<li><a href="#"><img src="img/photo_sample.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample02.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample03.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample04.jpg" data-gubun="기타"></a></li>
+												<li><a href="#"><img src="img/photo_sample05.jpg" data-gubun="기타"></a></li>
+											</ul>
+										</div>
+										<div class="tsBtnArea">
+											<button type="button" class="btn_prev"><span class="hidden">prev</span></button>
+											<button type="button" class="btn_next"><span class="hidden">next</span></button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			
+			<!-- ----------------------- -->
+			<!-- 기일내역 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">기일내역</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>기일</th>
+								<th>기일종류</th>
+								<th>기일장소</th>
+								<th>최저매각가격</th>
+								<th>기일결과</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2017-08-25 10:30:00</td>
+								<td>매각기일</td>
+								<td>6호 입찰법정</td>
+								<td>679,182,600</td>
+								<td>유찰</td>
+							</tr>
+							<tr>
+								<td>2017-08-25 10:30:00</td>
+								<td>매각기일</td>
+								<td>6호 입찰법정</td>
+								<td>679,182,600</td>
+								<td>유찰</td>
+							</tr>
+							<tr>
+								<td>2017-08-25 10:30:00</td>
+								<td>매각기일</td>
+								<td>6호 입찰법정</td>
+								<td>679,182,600</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 목록내역 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">목록내역</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:100px;">
+							<col style="width:150px;">
+							<col style=";">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>목록번호</th>
+								<th>목록구분</th>
+								<th>상세내역</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22 [도로명 주소]강원도 철원군 갈말읍 호국로 5170 위 지상 목조 스레트지붕 단층근린생활시설 33.52㎡ 부속 브록조 스레트지붕 단층창고 30.28㎡ 브록조 스레트지붕 단층위락시설(다방) 96.56㎡ 브록조 스레트지붕 단층점포 19.8㎡ 경량철골조 판넬지붕 단층주택 72.54㎡ 철골조 함석지붕 단층근린생활시설 46㎡ 제시외건물 1. (용도)통로,보일러실 (구조)벽체이용및파이프조 (면적)37.8㎡ 2. (용도)보일러실 (구조)판넬조 (면적)3㎡ 3. (용도)주택일부
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>건물</td>
+								<td class="left">
+									강원도 철원군 갈말읍 문혜리 682-22
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 인근매각물건사례 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">인근매각물건사례</span>
+				</div>
+				<div class="unit_cont tabWrap dvMaegagmulgeon">
+					<div class="tab-head">
+						<ul class="nav-tabs">
+							<li class="tabLink active">
+								<button href="#tabMaegagmulgeon01" data-toggle="tab"><span class="text">인근매각통계</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabMaegagmulgeon02" data-toggle="tab"><span class="text">인근매각물건</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabMaegagmulgeon03" data-toggle="tab"><span class="text">인근진행물건</span></button>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-content bgWhite" style="min-height:;"> <!-- 해당 부분은 실제ㅔ 컨텐츠를 넣어보고 수정보완함 -->
+
+					<!-- ----------------------- -->
+					<!-- 인근매각통계 -->
+					<div id="tabMaegagmulgeon01" class="tab-pane active">	
+						<table id="" class="tableStyle gridStyle center">
+							<colgroup>
+								<col style="width:15%;">
+								<col style="width:15%;">
+								<col style="width:25%;">
+								<col style="width:25%;">
+								<col style="width:10%;">
+								<col style="width:10%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>기간</th>
+									<th>매각건수</th>
+									<th>평균감정가</th>
+									<th>평균매각가</th>
+									<th>매각가율</th>
+									<th>평균유찰횟수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>12개월</td>
+									<td>22 건</td>
+									<td>855,900,032 원</td>
+									<td>776,462,464 원</td>
+									<td>0.0 %</td>
+									<td>0.9 회</td>
+								</tr>
+								<tr>
+									<td>6개월</td>
+									<td>22 건</td>
+									<td>855,900,032 원</td>
+									<td>776,462,464 원</td>
+									<td>0.0 %</td>
+									<td>0.9 회</td>
+								</tr>
+								<tr>
+									<td>3개월</td>
+									<td>22 건</td>
+									<td>855,900,032 원</td>
+									<td>776,462,464 원</td>
+									<td>0.0 %</td>
+									<td>0.9 회</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="center">해당사항없음</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					
+					<!-- ----------------------- -->
+					<!-- 인근매각물건 -->
+					<div id="tabMaegagmulgeon02" class="tab-pane">
+						<table id="" class="tableStyle gridStyle center">
+							<colgroup>
+								<col style="width:25%;">
+								<col style="width:10%;">
+								<col style="width:25%;">
+								<col style="width:15%;">
+								<col style="width:10%;">
+								<col style="width:15%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>사건번호</th>
+									<th>용도</th>
+									<th>소재지 및 내역</th>
+									<th>감정평가액</th>
+									<th>매각월</th>
+									<th>매각대금</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>서울동부지방법원20**타경*******</td>
+									<td>아파트</td>
+									<td>서울특별시 광진구 구의동[집합건물 철근콘크리트조 59.97㎡]</td>
+									<td>429,000,000 원</td>
+									<td>201612</td>
+									<td>415,555,000 원</td>
+								</tr>
+								<tr>
+									<td>서울동부지방법원20**타경*******</td>
+									<td>아파트</td>
+									<td>서울특별시 광진구 구의동[집합건물 철근콘크리트조 59.97㎡]</td>
+									<td>429,000,000 원</td>
+									<td>201612</td>
+									<td>415,555,000 원</td>
+								</tr>
+								<tr>
+									<td colspan="6" class="center">해당사항없음</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+
+					<!-- ----------------------- -->
+					<!-- 인근진행물건 -->
+					<div id="tabMaegagmulgeon03" class="tab-pane">	
+						<table id="" class="tableStyle gridStyle center">
+							<colgroup>
+								<col style="width:15%;">
+								<col style="width:10%;">
+								<col style="">
+								<col style="width:10%;">
+								<col style="width:10%;">
+								<col style="width:10%;">
+								<col style="width:10%;">
+							</colgroup>
+							<thead>
+								<tr>
+									<th>사건번호</th>
+									<th>물건번호 <br/> 용도</th>
+									<th>소재지 및 내역</th>
+									<th>비고</th>
+									<th>감정평가액 <br/> 최저매각가격</th>
+									<th>담당계 <br/> 매각기일 <br/> (입찰기간)</th>
+									<th>진행 상태</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="vertical-align:top;">서울동부지방법원2016타경3175</td>
+									<td style="vertical-align:top;">3 <br/> 아파트</td>
+									<td style="vertical-align:top;">
+										서울특별시 광진구 광나루로56길 85, 28층01호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 50.40㎡]
+										서울특별시 광진구 광나루로56길 85, 28층02호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층03호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층04호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층05호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층06호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층07호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층08호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층09호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층10호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 31.32㎡]
+										서울특별시 광진구 광나루로56길 85, 28층11호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 115.56㎡]
+										서울특별시 광진구 광나루로56길 85, 28층12호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 115.83㎡]
+										서울특별시 광진구 광나루로56길 85, 28층13호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 48.94㎡]
+										서울특별시 광진구 광나루로56길 85, 28층14호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 48.78㎡]
+										서울특별시 광진구 광나루로56길 85, 28층15호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 29.16㎡]
+										서울특별시 광진구 광나루로56길 85, 28층16호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 29.16㎡]
+										서울특별시 광진구 광나루로56길 85, 28층17호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 29.16㎡]
+										서울특별시 광진구 광나루로56길 85, 28층18호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 51.23㎡]
+										서울특별시 광진구 광나루로56길 85, 28층19호 (구의동,테크노-마트21)[집합건물 철골철근콘크리트조 35.48㎡]
+									</td>
+									<td style="vertical-align:top;">일괄매각</td>
+									<td style="vertical-align:top;">3,877,300,000원 <br/> 2,481,472,000원</td>
+									<td style="vertical-align:top;">경매1계 <br/> 2017.10.16</td>
+									<td style="vertical-align:top;">유찰2회</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+					
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 토지정보 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">토지정보</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>지목</th>
+								<th>면적(m)</th>
+								<th>고저</th>
+								<th>형상</th>
+								<th>방위</th>
+								<th>도로조건</th>
+								<th>토지이동(변동)사유</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>임야</td>
+								<td>3,555</td>
+								<td>완경사</td>
+								<td>부정형</td>
+								<td>남향</td>
+								<td>명지</td>
+								<td>분할되어 본변에 -1부함</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 소유 및 가격 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">소유 및 가격</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:16.66%;">
+							<col style="width:16.66%;">
+							<col style="width:16.66%;">
+							<col style="width:16.66%;">
+							<col style="width:16.66%;">
+							<col style="width:16.66%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>소유구분</th>
+								<th>소유권변동일자</th>
+								<th>소유권변동원인</th>
+								<th>공유인수</th>
+								<th>공시지가(원)</th>
+								<th>공시지가 기준일자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>개인</td>
+								<td>2000-00-00</td>
+								<td>소유권이전</td>
+								<td>1</td>
+								<td>4,200</td>
+								<td>2017-00</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- ----------------------- -->
+			<!-- 개별주택가격 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">개별주택가격</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle center">
+						<colgroup>
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+							<col style="width:14.28%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th rowspan="2">건물번호</th>
+								<th rowspan="2">기준년도</th>
+								<th colspan="2">대지면적(m)</th>
+								<th colspan="2">건물면적(m)</th>
+								<th rowspan="2">주택가격(원)</th>
+							</tr>
+							<tr>
+								<th>전체</th>
+								<th>산정</th>
+								<th>전체</th>
+								<th>산정</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>건물번호</td>
+								<td>기준년도</td>
+								<td>대지면적전체</td>
+								<td>대지면적산정</td>
+								<td>건물면적전체</td>
+								<td>건물면적산정</td>
+								<td>주택가격</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 토지이용계획 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">토지이용계획</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle topBold left">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="width:25%;">
+							<col style="width:30%;">
+							<col style="width:30%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th rowspan="3">지역·지구등 지정 여부</th>
+								<th>「국토의 계획 및 이용에 관한 법률」에 따른 지역·지구등</th>
+
+								<td colspan="2">도시지역, 제3종일반주거지역, 아파트지구, 중심미관지구, 도로(접함)</td>
+							</tr>
+							<tr>
+								<th>다른 법령 등에 따른 지역·지구 등</th>
+
+								<td>가축분뇨의 관리 및 이용에 관한 법률</td>
+								<td>가축사육제한구역</td>
+							</tr>
+							<tr>
+								<th>시행령 부칙 제3조에 다른 추가기재 확인내용</th>
+
+								<td colspan="2">산림하천 전원개발 항목은 관련부서 확인협의</td>
+							</tr>
+							<tr>
+								<th colspan="2">「토지이용규제 기본법 시행령」제9조제4항 각 호에 해당되는 사항</th>
+
+								<td colspan="2">중점경관관리구역(2016-11-24)(역사도심) [추가기재] 건축법 제2조제1항제11호나목에 따른 도로(도로일부포함)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<!-- ----------------------- -->
+			<div class="rowBox">
+
+				<div class="g_column w_2_1">
+
+					<!-- 토지이용계획도 -->
+					<div class="unit">
+						<div class="unit_tit">
+							<span class="sTit color_black">토지이용계획도</span>
+						</div>
+						<div class="unit_cont bgWhite">
+							<table id="" class="tableStyle gridStyle topBold center">
+								<colgroup>
+									<col style="width:70%;">
+									<col style="width:30%;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th class="center">도면</th>
+										<th class="center">범례</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<img src="img/map_drawing_sample.png" alt="확인도면으로 자세한 사항은 상기 지역지구등 지정여부의 내용 확인" width="419" height="326">
+										</td>
+										<td class="left">
+											<ul class="drawingLegend">
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">도시지역</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">제1종일반주거지역</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">제2종일반주거지역</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">제3종일반주거지역</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">아파트지구</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">공원</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">학교</span>
+												</li>
+												<li>
+													<img src="img/map_drawing_legend_sample.png" />
+													<span class="text">법정동</span>
+												</li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<span class="color_black">경계점좌표등록부 열람이 불가능한 지역입니다.</br>(경계점좌표등록부 열람은 수치지역만 가능합니다.)</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+
+				
+				<div class="g_column w_2_1">
+					<!-- 지적(임야)도 -->
+					<div class="unit">
+						<div class="unit_tit">
+							<span class="sTit color_black">지적(임야)도</span>
+						</div>
+						<div class="unit_cont bgWhite">
+							<table id="" class="tableStyle gridStyle topBold center">
+								<colgroup>
+									<col style="">
+								</colgroup>
+								<thead>
+									<tr>
+										<th class="center">도면</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<img src="img/map_drawing_sample.png" alt="확인도면으로 자세한 사항은 상기 지역지구등 지정여부의 내용 확인" width="419" height="326">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="color_black">경계점좌표등록부 열람이 불가능한 지역입니다.</br>(경계점좌표등록부 열람은 수치지역만 가능합니다.)</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 사업지구정보 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">사업지구정보</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle topBold left">
+						<colgroup>
+							<col style="width:15%;">
+							<col style="">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>지구정보</th>
+								<td><span class="color_red bold">해당지번에 속해 있는 사업지구정보가 없습니다</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+			<!-- ----------------------- -->
+			<!-- 건물기본정보 -->
+			<div class="unit">
+				<div class="unit_tit">
+					<span class="sTit color_black">건물기본정보</span>
+					<span class="etcText color_black">(도로명주소: 전라북도 전주시 덕진구 여은골1길 23-10(전북동))</span>
+				</div>
+				<div class="unit_cont bgWhite">
+					<table id="" class="tableStyle gridStyle topBold center">
+						<colgroup>
+							<col style="width:25%;">
+							<col style="width:25%;">
+							<col style="width:25%;">
+							<col style="width:25%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>대장종류</th>
+								<th>건축물명칭</th>
+								<th>동명칭/번호</th>
+								<th>연먼적(m)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="4">해당사항 없음</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+
+
+			<!-- ----------------------- -->
+			<!-- ----------------------- -->
+
+
+		</div>
+
+
+		<!--
+		<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-dismiss="modal">등록</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">취소</button>
+		</div>
+		-->
+	</div>
+</div>
