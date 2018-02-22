@@ -113,6 +113,7 @@ input.btnstyle,
 
 /* *******  amb_btnstyle에 직접 사이즈 class를 적용한 경우 ******* */
 /* 폰트 크기 부분 -  line-height와 height 2px 차이나는 이유 - border 1px로 인한 텍스트 middle 정렬 때문 */
+.btnstyle.small			  {font-size:13px; font-weight:; height:24px; line-height:22px; padding:0px 10px; font-weight:500;}
 .btnstyle.middle          {font-size:13px; font-weight:; height:30px; line-height:28px; padding:0px 10px; font-weight:500;}
 .btnstyle.large           {font-size:15px; font-weight:; height:40px; line-height:38px; padding:0px 14px; }
 
@@ -148,13 +149,19 @@ button:disabled,
 /* input */
 input:focus {outline:none;}
 input:disabled {opacity:0.5; cursor:not-allowed;}
-.inp {border:1px solid #ccc; background:#fff; height:30px; line-height:30px; padding:0 5px;}
+.inp {border:1px solid #ccc; background:#fff; height:30px; line-height:30px; padding:0 5px; max-width:100%;}
 input[type="text"],
 input[type="search"] {border:1px solid #ccc; background:#fff; height:30px; line-height:30px; padding:0 5px;}
+
+input:read-only,
+input[readonly]{background:#f1f1f1;}
 
 input.inp:focus,
 select.inp:focus,
 textarea.inp:focus{border:1px solid #666;}
+
+input.inp:read-only:focus,
+input.inp[readonly]:focus {border:1px solid #ccc;}
 
 textarea,
 textarea.inp {height:auto; padding:6px 5px; line-height:1.5em;}
@@ -397,8 +404,19 @@ body	 {min-height:600px;}
 	display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
 	content:'\e915'; position:absolute; top:0; left:0;
 }
+.mapInnerBox.type2 .mibfooter button.goList {}
+.mapInnerBox.type2 .mibfooter button.goList:after {
+	display:inline-block; width:30px; height:30px; color:; font-size:16px; line-height:30px;
+	content:'\e910'; position:absolute; top:0; left:0;
+}
 .mapInnerBox.type2 .mibfooter button:hover {animation:ani_down2 0.2s ease-out 0s 1 alternate; color:#2a7cdd;}
 
+/* 편입등 그룹 리스트 부분  */
+.mapInnerBox.type2 .mibBody .listType {overflow:auto; clear:both; height:97%; margin:1px 1px 0px 0px; padding:20px 20px 20px;}
+.mapInnerBox.type2 .mibBody .listType .listBox {overflow:hidden; clear:both;}
+.mapInnerBox.type2 .mibBody .listType .listBox li {padding:10px 5px; border-bottom:1px solid #555; overflow:hidden; clear:both; color:#fff; color:rgba(255,255,255,0.8); cursor:pointer;}
+.mapInnerBox.type2 .mibBody .listType .listBox li span {}
+.mapInnerBox.type2 .mibBody .listType .listBox li:hover span {animation:ani_down2 0.2s ease-out 0s 1 alternate;}
 
 /* onlyText 스타일 */
 .mapInnerBox.onlyText {width:auto; max-width:400px;}
@@ -428,7 +446,7 @@ body	 {min-height:600px;}
 /* GNB  Area */
 .gnbArea {clear:both; text-align:right;}
 .gnbArea h1{display:inline-block; height:100%; width:auto; margin:0 30px 0 7px; vertical-align:middle; float:left; border:0px solid #fff;}
-.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat; display:;}
+.gnbArea h1 .logo {display:block; width:150px; height:100%; background:url('../img/gnb_logo.png') no-repeat; display:none;}
 
 .gnbArea .dvNoticeTicker {display:inline-block; display:none; width:400px; overflow:hidden; position:relative; vertical-align:middle;}
 .gnbArea .dvNoticeTicker:before {display:inline-block; content:''; position:absolute; left:0; top:0; width:30px; height:30px;
@@ -638,7 +656,7 @@ body	 {min-height:600px;}
 
 .btnArea {display:block; margin:10px 0;}
 
-.inputGroup {display:block; clear:;}
+.inputGroup {display:block; clear:; margin:0 auto;}
 .inputGroup:after {display:block; content:''; height:0; line-height:0; clear:both;}
 .inputGroup span.inline {line-height:30px;}
 
@@ -897,6 +915,30 @@ body	 {min-height:600px;}
 .tabulator .tablulator-loader .tabulator-loader-msg.tabulator-error   {border:1px solid #D00;  color: #590000;}
 
 /*************************************/
+/* spinner  */
+.spinner {display:inline-block; border:1px solid #ccc; background:#fff; overflow:auto; padding-right:18px; position:relative; overflow:hidden;}
+.spinner input.inp {}
+.spinner input.inp {border:none !important; display:block; text-align:right; padding:0 10px 0 5px; width:100%;}
+.spinner .btn-vertical {display:inline-block; width:20px; height:30px; position:absolute; top:0; right:0; vertical-align:middle;}
+.spinner button.btn {display:block;  width:100%; height:15px; overflow:hidden; border-radius:0; position:absolute; padding:0; border-left:1px solid #ccc; text-align:center; background:#f5f5f5;}
+.spinner input.inp,
+.spinner button.btn:focus {outline:none;}
+.spinner button.btn:hover {background:#e1e1e1;}
+
+.spinner button.btn:first-of-type {top:0; border-bottom:1px solid #ccc;}
+.spinner button.btn:last-of-type  {bottom:0;}
+
+.spinner button.btn:after {display:block; content:''; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; position:absolute; right:5px;}
+.spinner button.btn:first-of-type:after {border-bottom:5px solid #333; top:4px;}
+.spinner button.btn:last-of-type:after  {border-top:5px solid #333; bottom:4px;}
+
+/*************************************/
+/* tooltip */
+.tooltip {}
+.tooltip .tooltip-inner {background-color:; padding:5px 10px; font-size:14px;}
+.tooltip .tooltip-arrow {border-top-color:;}
+
+/*************************************/
 /* LNB  lnbCont - 공통부분  */
 .topInfoBox {padding:0px 10px 0px 28px; margin-bottom:20px; font-size:13px; line-height:1.6em; letter-spacing:-0.05em; position:relative;}
 .topInfoBox:before {
@@ -977,7 +1019,13 @@ input.searchInp {display:block; width:100%; border:2px solid #ddd; height:50px; 
 /*************************************/
 /* modal 상세보기 영역 */
 
-/*  // 수지분석 */
+/*  dvProfit // 수지분석 */
+.dvProfit {}
+.dvProfit input.inp {font-weight:bold;}
+.dvProfit td .inputGroup > input,
+.dvProfit td .inputGroup > span.inline,
+.dvProfit td .inputGroup > .spinner {float:left;}
+.dvProfitDetail .slideShow {margin-left:10px;}
 
 
 /*************************************/

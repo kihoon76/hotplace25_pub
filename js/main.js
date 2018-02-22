@@ -527,8 +527,25 @@ $(function() {
 	var  pyeonibStr = [
         '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
 		'   <div class="mibHeader"><span class="titIcon pyeonib">편입물건</span></div>', 
-        '   <div class="mibBody">',
-		'		<div class="tableType">',
+        '   <div class="mibBody" style="height:305px;">',
+		'		<div class="listType" style="display:;">',
+        '			<ul class="listBox">',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3 길이가 길때의 표현은 이렇게 이렇게이렇게이렇게 보입니다</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
+		'			</ul>',
+		'		</div>',
+
+		'		<div class="tableType" style="display:none;">',
         '			<table class="tableStyle borderStyle left">',
 		'				<tbody>',
 		'					<tr>',
@@ -561,9 +578,11 @@ $(function() {
 		'					</tr>',
 		'			    </tbody>',
 		'			</table>',
-		'		</div>',       
+		'		</div>',
+			
 		'   </div>',
 		'	<div class="mibfooter">',
+		'		<button type="button" class="goList" onclick="javascript:goList(this);">목록으로</button>',
 		'		<button type="button" class="close" onclick="pyeonibHan()">닫기</button>',
 		'  	</div>',
         '</div>'
@@ -591,7 +610,7 @@ $(function() {
 	//편입물건 마커 클릭 이벤트
 	naver.maps.Event.addListener(pyeonibMarker, "click",window.pyeonibHan);
 
-
+	
 
 	////////////////////////////////////////////
 	var silgeolaeMarker = new naver.maps.Marker({
@@ -730,6 +749,33 @@ $(function() {
 		
 });
 
+
+///////////////////////////////////////////////////////////////
+//편입 마커 infoWindow 내부 링크클릭 테스트
+
+//목록으로 버튼 이벤트 처리
+var goList = function(obj){
+	var $this     = $(obj);
+	var $parents  = $this.parents('.mapInnerBox');
+	var $ctTable  = $parents.find('.tableType');
+	var $ctList   = $parents.find('.listType');
+
+	$ctList.show();
+	$ctTable.hide();	
+}
+
+//list 클릭 이벤트 처리
+var viewDetail = function(obj){
+	var $this     = $(obj);
+	var $parents  = $this.parents('.mapInnerBox');
+	var $ctTable  = $parents.find('.tableType');
+	var $ctList   = $parents.find('.listType');
+
+	$ctList.hide();
+	$ctTable.show();	
+}
+
+
 ///////////////////////////////////////////////////////////////
 //map 마커 infoWindow 내부 링크클릭 테스트
 var mapInfowindowLink = function(obj){
@@ -737,8 +783,8 @@ var mapInfowindowLink = function(obj){
 	var	linkName = $this.data('name');
 
 	if (linkName == '수지분석'){
-		alert('퍼블리싱 진행중입니다');
-		//commonPopup('z_modalTest_full.html', '', 'full');
+		//alert('퍼블리싱 진행중입니다');
+		commonPopup('10_01_profit.html', '', 'full');
 	} 
 	else if (linkName == '관심물건 등록'){
 		commonPopup('10_02_cateGwansim.html', '', '500');

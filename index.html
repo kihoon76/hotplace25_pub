@@ -66,7 +66,9 @@ $(document).ready( function() {
 	$('#modalPopup').on('shown.bs.modal', function() {
 		setModalMaxHeight($('#modalPopup'));		
 		$('.modal-backdrop').remove();
-		setModalMarginTop($('#modalPopup'));	
+		setModalMarginTop($('#modalPopup'));
+		slideToggleShow();
+
 	});
 
 	//Modal 레이어팝업 종료 이벤트이후
@@ -80,6 +82,7 @@ $(document).ready( function() {
 		setModalMaxHeight($('#modalPopup2'));
 		$('.modal-backdrop').remove();
 		setModalMarginTop($('#modalPopup2'));
+		slideToggleShow();
 
 	});
 
@@ -147,8 +150,7 @@ $(document).ready( function() {
 	});
 
 
-	/////////////////////////////////////////////////
-	slideToggleShow();
+	
 
 	/////////////////////////////////////////////////
 	/***************** 전체화면 버튼 ************************/
@@ -192,6 +194,10 @@ $(document).ready( function() {
 
 });
 
+//한번만 작동되어야하므로 그렇지 않으면 모달에서 듸워진 slideToggleShow은 먹히지 않거나 충돌나기 때문
+$(document).one('ready',function(event){  
+	slideToggleShow();
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -256,6 +262,8 @@ var slideToggleShow = function() {
 		}
 	});
 }
+
+
 
 // rangeSliderResize 스크립트
 var rangeSliderResize = function(target) {
