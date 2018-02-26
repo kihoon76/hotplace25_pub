@@ -19,48 +19,6 @@ $(document).ready( function() {
 		imagePopup('30_02_imageViewModal.html', '', '700', img, tit);		
 	});
 });
-
-
-// image modal 레이어팝업 띄울때
-var imagePopup = function(url, param, width, img, tit){
-	var eWidth = width; //레이어 팝업의  width 강제설정
-	
-	if(width == null){
-		eWidth = '';
-	}else if (width == 'full'){
-		eWidth = '96%';
-	}else{
-		eWidth = width;
-	}	
-
-	var img = img;
-	var tit = tit;
-	
-	$.ajax({
-		type : "get",
-		url : url,
-		data : param,
-		async: true,
-		success : function(data) {
-			$("#imagePopup").html(data);
-			$('#enlargeImageModalTitle').text(tit);
-			$('#enlargeImageModalSource').prop('src', img);
-		},		
-		complete : function(){
-			$('#imagePopup').removeClass('in').data('bs.modal', null);
-			$('#imagePopup')
-			.modal({
-				backdrop: 'static', 
-				keyboard: false
-			})
-			.find('.modal-dialog')
-			.css({
-				'width': eWidth
-			});
-		}
-	});	
-};
-;
 </script>
 
 <div class="modal-dialog" role="document">
@@ -73,7 +31,7 @@ var imagePopup = function(url, param, width, img, tit){
 				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 			</button>
 		</div>
-		<div class="modal-body dvGyeongmaeDetail">
+		<div class="modal-body dvGyeongmaeDetail detailWrap">
 			
 			<!-- ----------------------- -->
 			<div class="unit">
@@ -94,46 +52,46 @@ var imagePopup = function(url, param, width, img, tit){
 						</colgroup>
 						<tbody>
 							<tr>
-								<th>사건번호</td>
+								<th>사건번호</th>
 								<td>2017타경7685</td>
 
-								<th>담당</td>
+								<th>담당</th>
 								<td>의정부지방법원 | 경매17계</td>
 
-								<th>사건접수</td>
+								<th>사건접수</th>
 								<td>2017-03-31</td>
 
-								<th>물건종류</td>
+								<th>물건종류</th>
 								<td>기타</td>
 							</tr>
 							<tr>
-								<th>소재지</td>
+								<th>소재지</th>
 								<td colspan="3">강원도 철원군 갈말읍 문혜리 682-18</td>
 
-								<th>물건비고</td>
+								<th>물건비고</th>
 								<td colspan="3">일괄매각. 제시외 건물 포함</td>
 							</tr>
 							<tr>
-								<th>매각기일</td>
+								<th>매각기일</th>
 								<td>2017-11-03 10:30:00</td>
 
-								<th>입찰방법</td>
+								<th>입찰방법</th>
 								<td>기일입찰</td>
 
-								<th>유찰횟수</td>
+								<th>유찰횟수</th>
 								<td>1</td>
 
-								<th>청구금액</td>
+								<th>청구금액</th>
 								<td>18,000,000 원</td>
 							</tr>
 							<tr>
-								<th>감정평가액</td>
+								<th>감정평가액</th>
 								<td>679,182,600 원</td>
 
-								<th>최저매각가격</td>
+								<th>최저매각가격</th>
 								<td>475,428,000 원</td>
 
-								<th>배당요구종기</td>
+								<th>배당요구종기</th>
 								<td colspan="3">2017-06-13</td>
 							</tr>
 							<tr>
@@ -144,7 +102,7 @@ var imagePopup = function(url, param, width, img, tit){
 									관련사진(12)<br/>
 									내부구조(0)<br/>
 									기타(0)<br/>
-								</td>
+								</th>
 								<td colspan="7">
 									<div class="touchSliderWrap">
 										<div id="touchSlider" class="touchSlider" style="height:160px;">

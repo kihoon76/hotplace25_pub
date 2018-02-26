@@ -399,7 +399,7 @@ $(function() {
 		'		</div>',
         '   </div>',
 		'	<div class="mibfooter">',
-		'		<button type="button" class="link" onclick="javascript:mapInfowindowLink(this)" data-name="물건상세조회">물건상세조회</button>',
+		'		<button type="button" class="link" onclick="javascript:mapInfowindowLink(this)" data-name="공매 물건상세조회">물건상세조회</button>',
 		'		<button type="button" class="close" onclick="gongmaeHan()">닫기</button>',
 		'  	</div>',
         '</div>'
@@ -528,6 +528,7 @@ $(function() {
         '<div class="mapInnerBox type2">', //경매,공매,등록매물,보상물건,편입물건,실거래가,건축허가,영업허가 마커 window시 class명 type2 추가
 		'   <div class="mibHeader"><span class="titIcon pyeonib">편입물건</span></div>', 
         '   <div class="mibBody" style="height:305px;">',
+
 		'		<div class="listType" style="display:;">',
         '			<ul class="listBox">',
 		'				<li onClick="javascript:viewDetail(this);"><span>강원도 철원군 동송읍 이평리 866-3</span></li>',
@@ -745,14 +746,12 @@ $(function() {
 		$('#btnMapNormal').removeClass('active');
 	});
 
-
-		
 });
 
 
-///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 //편입 마커 infoWindow 내부 링크클릭 테스트
-
 //목록으로 버튼 이벤트 처리
 var goList = function(obj){
 	var $this     = $(obj);
@@ -776,7 +775,8 @@ var viewDetail = function(obj){
 }
 
 
-///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 //map 마커 infoWindow 내부 링크클릭 테스트
 var mapInfowindowLink = function(obj){
 	var $this     = $(obj);
@@ -802,11 +802,15 @@ var mapInfowindowLink = function(obj){
 	else if (linkName == '물건상세조회'){
 		commonPopup('30_01_gyeongmaeDetail.html', '', 'full');
 	}
-	
+	else if (linkName == '공매 물건상세조회'){
+		commonPopup('30_02_gongmaeDetail.html', '', 'full');
+	}
 	
 }
-///////////////////////////////////////////////////////////////
 
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 // 우측 버튼 active 관련
 var showRightBtn = function(onOff, $btn) {		  
 	if(onOff == 'on') {
@@ -831,6 +835,7 @@ var showTimeviewLayer = function(onOff, $btn) {
 }
 
 
+////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 // 좌메뉴 클릭시 해당 컨텐츠 노출
 var showLnbCont = function(element) {
@@ -904,6 +909,7 @@ var lnbContBodyAreaSet = function(){
 	}
 }
 
+////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 // modal 레이어팝업 띄우기
 var commonPopup = function(url, param, width){
@@ -1010,7 +1016,49 @@ var alertPopup = function(url, param, width){
 	});	
 };
 
+// image modal 레이어팝업 띄울때
+var imagePopup = function(url, param, width, img, tit){
+	var eWidth = width; //레이어 팝업의  width 강제설정
+	
+	if(width == null){
+		eWidth = '';
+	}else if (width == 'full'){
+		eWidth = '96%';
+	}else{
+		eWidth = width;
+	}	
 
+	var img = img;
+	var tit = tit;
+	
+	$.ajax({
+		type : "get",
+		url : url,
+		data : param,
+		async: true,
+		success : function(data) {
+			$("#imagePopup").html(data);
+			$('#enlargeImageModalTitle').text(tit);
+			$('#enlargeImageModalSource').prop('src', img);
+		},		
+		complete : function(){
+			$('#imagePopup').removeClass('in').data('bs.modal', null);
+			$('#imagePopup')
+			.modal({
+				backdrop: 'static', 
+				keyboard: false
+			})
+			.find('.modal-dialog')
+			.css({
+				'width': eWidth
+			});
+		}
+	});	
+};
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 // modal layerpopup window기준 max-height 재설정 // modal-body에 스크롤 생성
 var setModalMaxHeight = function(element) {
 	this.$element     = $(element);  
@@ -1044,6 +1092,7 @@ var setModalMarginTop = function(element) {
 }
 
 
+////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 // window resize시 액션
 $(window).resize(function() {

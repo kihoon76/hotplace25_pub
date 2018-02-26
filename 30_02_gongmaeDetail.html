@@ -1,0 +1,621 @@
+<script type="text/javascript">
+$(document).ready( function() {
+	$('#touchSlider').touchSlider({
+		autoplay : {
+			enable : true,
+			pauseHover : true,
+			interval : 3500
+		},		
+		view : 4,
+		btn_prev : $("#touchSlider").next().find(".btn_prev"),
+		btn_next : $("#touchSlider").next().find(".btn_next"),
+	});
+
+	// 이미지 클릭시 이벤트
+	$('#touchSlider li > a').on('click', function() {
+		var $img   = $(this).children();
+		var img    = $img.prop('src');
+		var tit    = $img.data('gubun');
+		imagePopup('30_02_imageViewModal.html', '', '700', img, tit);		
+	});
+});
+</script>
+
+<div class="modal-dialog" role="document">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h2 class="modal-title">
+				상세보기
+			</h2>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
+			</button>
+		</div>
+		<div class="modal-body dvGongmaeDetail detailWrap">
+			
+			<!-- ----------------------- -->
+			<div class="unit">
+				<div class="unit_cont bgWhite">
+					<table class="tableStyle borderStyle topBold left">
+						<colgroup>
+							<col style="width:13%;">
+							<col style="width:20.33%;">
+
+							<col style="width:13%;">
+							<col style="width:20.33%;">
+
+							<col style="width:13%;">
+							<col style="width:20.33%;">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th>처분방식 / 자산구분</th>
+								<td>매각 / 국유재산</td>
+
+								<th>용도</th>
+								<td>기타토지</td>
+
+								<th>면적</th>
+								<td>토지 35,538㎡ / 건물 35,538㎡</td>
+							</tr>
+							<tr>
+
+								<th>감정평가금액</th>
+								<td>3,796,246,300원</td>
+
+								<th>입찰방식</th>
+								<td>일반경쟁(최고가방식) / 총액</td>
+
+								<th>입찰기간 (회차/차수)</th>
+								<td>018-02-05 10:00 ~ 2018-03-06 16:00 (1/1)</td>
+							</tr>
+							<tr>
+								<th>유찰횟수/입찰진행횟수</th>
+								<td>2 회 / 0 회</td>
+
+								<th>집행기관</th>
+								<td>국방시설본부 경상시설단</td>
+
+								<th>담당자정보</th>
+								<td>재산1과 / 김성수 / 053-750-7123</td>
+							</tr>
+							<tr>
+								<th>최저입찰가(예정금액)</td>
+								<td colspan="5"><span class="bold color_blue font16">679,182,600 원</span></td>
+							</tr>
+							<tr>
+								<th>
+									전경도(17)<br/>
+									지적도(1)<br/>
+									위치도(2)<br/>
+									관련사진(12)<br/>
+									내부구조(0)<br/>
+									기타(0)<br/>
+								</th>
+								<td colspan="5">
+									<div class="touchSliderWrap">
+										<div id="touchSlider" class="touchSlider" style="height:160px;">
+											<ul>
+												<li><a href="#"><img src="img/photo_sample00.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample02.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample03.jpg" data-gubun="전경도"></a></li>
+												<li><a href="#"><img src="img/photo_sample00.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample02.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample03.jpg" data-gubun="내부구조"></a></li>
+												<li><a href="#"><img src="img/photo_sample04.jpg" data-gubun="기타"></a></li>
+												<li><a href="#"><img src="img/photo_sample05.jpg" data-gubun="기타"></a></li>
+											</ul>
+										</div>
+										<div class="tsBtnArea">
+											<button type="button" class="btn_prev"><span class="hidden">prev</span></button>
+											<button type="button" class="btn_next"><span class="hidden">next</span></button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+
+
+
+
+			<!-- ----------------------- -->
+			<!-- tab 부분 -->
+			<div class="unit mgT20">
+				<div class="unit_cont tabWrap dvGongmaeTab">
+					
+					
+					<div class="tab-head">
+						<ul class="nav-tabs">
+							<li class="tabLink active">
+								<button href="#tabGongmae01" data-toggle="tab"><span class="text">물건 세부 정보</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabGongmae02" data-toggle="tab"><span class="text">입찰 정보</span></button>
+							</li>
+							<li class="tabLink">
+								<button href="#tabGongmae03" data-toggle="tab"><span class="text">시세 및 낙찰 통계</span></button>
+							</li>
+						</ul>
+					</div>
+
+
+					<div class="tab-content" style="min-height:;"> <!-- 해당 부분은 실제ㅔ 컨텐츠를 넣어보고 수정보완함 -->
+
+						<!-- tab-pane ----------------------- -->
+						<!-- ----------------------- -->
+						<!-- 물건 세부 정보 -->
+						<div id="tabGongmae01" class="tab-pane active">	
+
+							<!-- 면적 정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">면적 정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle topBold left">
+										<colgroup>
+											<col style="width:12%;">
+											<col style="width:38%;">
+
+											<col style="width:12%;">
+											<col style="width:38%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>○ 토지면적:</th>
+												<td><span class="bold font15">1,152㎡</span></td>
+
+												<th>○ 건물면적:</th>
+												<td><span class="bold font15">1,152㎡</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="unit_cont bgWhite mgT10">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:10%;">
+											<col style="width:20%;">
+											<col style="width:*%;">
+											<col style="width:20%;">
+											<col style="width:20%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>종별(지목)</th>
+												<th>면적</th>
+												<th>지분</th>
+												<th>비고</th> 
+											</tr>
+										</thead>
+										<tbody>
+											<tr>	
+												<td>1</td>
+												<td>토지 &gt; 전 등 4개지목</td>
+												<td>35,538m²</td>
+												<td> - </td>
+												<td>-</td>
+											</tr>
+											<tr>	
+												<td>1</td>
+												<td>토지 &gt; 전 등 4개지목</td>
+												<td>35,538m²</td>
+												<td> - </td>
+												<td>-</td>
+											</tr>
+											<tr>	
+												<td colspan="5">조회된 데이타가 없습니다.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 위치 및 이용현황 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">위치 및 이용현황</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:10%;">
+											<col style="width:10%;">
+											<col style="width:*;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th rowspan="2">소재지</th>
+												<th>지번</th>
+
+												<td>서울특별시 송파구 방이동 88 만남의광장 A-3동</td>
+											</tr>
+											<tr>
+												<th>도로명</th>
+
+												<td>서울특별시 송파구 올림픽로 424, 만남의광장 A-3동 (방이동, 올림픽공원)</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:20%;">
+											<col style="width:*;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>위치 및 부근현황</th>
+												<td>올림픽선수촌기자촌아파트 및 지하철5호선 올림픽공원역과 인접</td>
+											</tr>
+											<tr>
+												<th>이용현황</th>
+												<td>월평균 457,530명 입장(2016년 기준)</td>
+											</tr>
+											<tr>
+												<th>기타사항</th>
+												<td>
+													- 층수 : 1/1<br/>
+													- 노후정도 : 상태양호<br/>
+													- 담당자 전화번호 : 02-2180-3683<br/>
+													- 2016년 기준 올림픽공원 월 평균 입장객 457,530명(체조경기장 리모델링 공사 완료 후 입장객은 증가할 것으로 예상)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 감정평가정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">감정평가정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:25%;">
+											<col style="width:25%;">
+											<col style="width:*%;">
+											<col style="width:25%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>감정평가기관</th>
+												<th>평가일</th>
+												<th>평가금액(원)</th>
+												<th>감정평가서</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>	
+												<td>(주)대화감정평가법인</td>
+												<td>2017-03-23</td>
+												<td class="right">2,347,375,690	</td>
+												<td>
+													<button type="button" class="btnstyle small white"><i class="ambicon-054_loard_down"></i> 감정평가서</button>
+												</td>
+											</tr>
+											<tr>	
+												<td colspan="4">조회된 데이타가 없습니다.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 위치 및 이용현황 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">명도이전책임 및 부대조건</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:20%;">
+											<col style="width:*;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>명도책임</th>
+												<td>낙찰자</td>
+											</tr>
+											<tr>
+												<th>부대조건</th>
+												<td>
+													- 층수 : 1/1<br/>
+													- 노후정도 : 상태양호<br/>
+													- 담당자 전화번호 : 02-2180-3683<br/>
+													- 2016년 기준 올림픽공원 월 평균 입장객 457,530명(체조경기장 리모델링 공사 완료 후 입장객은 증가할 것으로 예상)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+							
+						</div>
+						<!-- ----------------------- -->
+						<!-- ----------------------- -->
+
+						
+						<!-- tab-pane ----------------------- -->
+						<!-- ----------------------- -->
+						<!-- 입찰 정보 -->
+						<div id="tabGongmae02" class="tab-pane">
+							<!-- 입찰 방법 및 입찰 제한 정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">입찰 방법 및 입찰 제한 정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:12%;">
+											<col style="width:38%;">
+
+											<col style="width:12%;">
+											<col style="width:38%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th>전자보증서 사용여부</th>
+												<td>사용 불가능</td>
+												<th>차순위 매수신청<br> 가능여부</th>
+												<td>신청 가능</td>
+											</tr>
+											<tr>
+												<th>공동입찰 가능여부</th>
+												<td>공동입찰 불가능</td>
+												<th>2인 미만 유찰여부</th>
+												<td>1인이 입찰하더라도 유효한 입찰로 성립</td>
+											</tr>
+											<tr>
+												<th>대리입찰 가능여부</th>
+												<td>대리입찰 불가능</td>
+												<th>2회 이상 입찰 가능여부</th>
+												<td>동일물건 2회 이상 입찰 불가능</td>
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 회차별 입찰 정보 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">회차별 입찰 정보</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:12%;">
+											<col style="width:9%;">
+											<col style="width:7%;">
+											<col style="width:12%;">
+											<col style="width:15%;">
+											<col style="width:10%;">
+											<col style="width:19%;">
+											<col style="width:*;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>입찰번호</th>
+												<th>회차 / 차수</th>
+												<th>구분</th>
+												<th>대금납부 / 납부기한</th>
+												<th>입찰기간</th>
+												<th>개찰일시</th>
+												<th>개찰장소</th>
+												<th>최저입찰가(원)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>	
+												<td>0001</td>
+												<td>001 / 001</td>
+												<td>인터넷</td>
+												<td>일시불 / 낙찰 후 7일 이내</td>
+												<td>2018-02-21 16:30 ~ 2018-02-27 17:00</td>
+												<td>2018-02-28 10:00</td>
+												<td>당사 입찰집행관 PC</td>
+												<td class="right">2,112,638,121</td>
+											</tr>
+											<tr>	
+												<td colspan="8">조회된 데이타가 없습니다.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 첨부파일 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">첨부파일</span>
+								</div>
+								<div class="unit_cont">
+									<ul class="typeListBox fileDownBox">
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 제소전 화해조서작성 동의서.hwp (11.50 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 평면도.hwp (307.00 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 표준 임대차 계약서.hwp (28.00 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 청렴계약이행특수조건(입찰계약시).hwp (23.00 KB)</a></li>
+										<li><a href="#" class="fileDown"><i class="ambicon-087_flieadd"></i> 공고문(3차).hwp (24.00 KB)</a></li>
+									</ul>
+								</div>
+							</div>
+							<!-- //////// -->
+
+						</div>
+						<!-- ----------------------- -->
+						<!-- ----------------------- -->
+
+
+						<!-- tab-pane ----------------------- -->
+						<!-- ----------------------- -->
+						<!-- 시세 및 낙찰 통계 -->
+						<div id="tabGongmae03" class="tab-pane">
+
+							<!-- 인근 낙찰 통계 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">인근 낙찰 통계</span>
+									<span class="etcText">* 해당물건 지역과 용도를 바탕으로 나온 12개월간의 통계입니다.</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:14%;">
+											<col style="width:14%;">
+											<col style="width:14%;">
+											<col style="width:14%;">
+											<col style="width:22%;">
+											<col style="width:22%;">
+										</colgroup>
+										<thead>
+											<tr>
+												<th rowspan="2">통계기간</th>
+												<th rowspan="2">부찰건수</th>
+												<th rowspan="2">낙찰건수</th>
+												<th rowspan="2">낙찰율</th>
+												<th colspan="2">낙찰가율</th>
+											</tr>
+											<tr>
+												<th>감정가 대비</th>
+												<th>최저입찰가 대비</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>3개월</td>
+												<td>51</td>
+												<td>11</td>
+												<td>22%</td>
+												<td>116.15%</td>
+												<td>165.7%</td>
+											</tr>
+											<tr>
+												<td>6개월</td>
+												<td>92</td>
+												<td>19</td>
+												<td>21%</td>
+												<td>149.37%</td>
+												<td>169.36%</td>
+											</tr>
+											<tr>
+												<td>12개월</td>
+												<td>135</td>
+												<td>37</td>
+												<td>27%</td>
+												<td>144.08%</td>
+												<td>148.48%</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!-- //////// -->
+
+							<!-- 인근 낙찰 물건 -->
+							<div class="unit">
+								<div class="unit_tit">
+									<span class="sTit color_black">인근 낙찰 물건</span>
+									<span class="etcText">* 해당물건 지역과 용도를 바탕으로 나온 6개월간의 통계입니다.</span>
+								</div>
+								<div class="unit_cont bgWhite">
+									<table id="" class="tableStyle gridStyle center">
+										<colgroup>
+											<col style="width:50px">
+											<col style="width:*">
+											<col style="width:150px">
+										</colgroup>
+										<thead>
+											<tr>
+												<th>번호</th>
+												<th>물건명</th>
+												<th>낙찰금액(원)</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td class="left"><a href="#">잠실(2)역 216-111,112호 점포</a></td>
+												<td class="right">420,600,000</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td class="left"><a href="#">잠실(2)역 216-111,112호 점포</a></td>
+												<td class="right">420,600,000</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td class="left"><a href="#">잠실(2)역 216-111,112호 점포</a></td>
+												<td class="right">420,600,000</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td class="left"><a href="#">잠실(2)역 216-111,112호 점포</a></td>
+												<td class="right">420,600,000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="unit_cont center">
+									<ul class="paginglist">
+											
+										<li class="first"><a href="#"><i class="ambicon-006_arrow_first"></i></a></li>
+										<li class="prev"><a href="#"><i class="ambicon-002_arrow_left"></i></a></li>
+
+										<li><a href="#"> 1 </a></li>
+										<li><a href="#"> 2 </a></li>
+										<li class="active"><a href="#"> 3 </a></li>
+										<li><a href="#"> 4 </a></li>
+										<li><a href="#"> 5 </a></li>
+										<li><a href="#"> 6 </a></li>
+										<li><a href="#"> 7 </a></li>
+										<li><a href="#"> 8 </a></li>
+										<li><a href="#"> 9 </a></li>
+										<li><a href="#"> 10 </a></li>
+
+										<li class="next"><a href="#"><i class="ambicon-001_arrow_right"></i></a></li>
+										<li class="last"><a href="#"><i class="ambicon-005_arrow_last"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<!-- //////// -->
+
+						</div>
+						<!-- ----------------------- -->
+						<!-- ----------------------- -->
+
+					</div>
+					
+				</div>
+			</div>
+			<!-- ----------------------- -->
+			<!-- ----------------------- -->
+		</div>
+
+		<!--
+		<div class="modal-footer">
+			<button type="button" class="btnstyle middle blue" data-dismiss="modal">등록</button>
+			<button type="button" class="btnstyle middle gray" data-dismiss="modal">취소</button>
+		</div>
+		-->
+	</div>
+</div>

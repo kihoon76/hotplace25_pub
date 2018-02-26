@@ -81,7 +81,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span class="link">index.html</span>
 			<span class="ex">기본 레이아웃 디자인</span>
 			<span class="end">수정</span>
-			<span class="date">2018.02.09</span>
+			<span class="date">2018.02.26</span>
 			<span class="etc"></span>
 		</li>
 
@@ -180,8 +180,8 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span>주소검색 > 수지분석</span>
 			<span class="link" data-type="modal" data-width="full">10_01_profit.html</span>
 			<span class="ex">수지분석</span>
-			<span class="end">미완성</span>
-			<span class="date"></span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.23</span>
 			<span class="etc"></span>
 		</li>
 
@@ -341,11 +341,27 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span class="etc"></span>
 		</li>
 		<li>
-			<span>좌메뉴 경•공매 물건 상세보기</span>
+			<span>경매 물건 상세보기</span>
 			<span class="link" data-type="modal" data-width="full">30_01_gyeongmaeDetail.html</span>
-			<span class="ex">좌메뉴 경•공매 물건 상세보기</span>
+			<span class="ex">경매 물건 상세보기</span>
+			<span class="end">수정</span>
+			<span class="date">2018.02.23</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>공매 물건 상세보기</span>
+			<span class="link" data-type="modal" data-width="full">30_02_gongmaeDetail.html</span>
+			<span class="ex">공매 물건 상세보기</span>
+			<span class="end">수정</span>
+			<span class="date">2018.02.23</span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>사진보기 모달</span>
+			<span class="link" data-type="modal" data-width="700">30_02_imageViewModal.html</span>
+			<span class="ex">사진보기 모달</span>
 			<span class="end">완성</span>
-			<span class="date">2018.02.20</span>
+			<span class="date">2018.02.22</span>
 			<span class="etc"></span>
 		</li>
 	</ul>
@@ -428,10 +444,18 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 		</li>
 		<li>
 			<span>회사소개</span>
-			<span class="link"></span>
+			<span class="link"  data-type="modal" data-width="900">70_03_company.html</span>
 			<span class="ex">회사소개</span>
 			<span class="end">미완성</span>
 			<span class="date"></span>
+			<span class="etc"></span>
+		</li>
+		<li>
+			<span>Contact us</span>
+			<span class="link"  data-type="modal" data-width="600">70_04_contact.html</span>
+			<span class="ex">Contact us</span>
+			<span class="end">완성</span>
+			<span class="date">2018.02.26</span>
 			<span class="etc"></span>
 		</li>
 	</ul>
@@ -451,7 +475,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 
 		<li>
 			<span>intro</span>
-			<span class="link"></span>
+			<span class="link"  data-type="modal" data-width="600">80_01_intro.html</span>
 			<span class="ex">intro</span>
 			<span class="end">미완성</span>
 			<span class="date"></span>
@@ -507,7 +531,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span class="link">../css/map.css</span>
 			<span class="ex">실제 컨텐츠를 제어하는 css<br/> 실제 모습을 재정의의 가장 많이 수정되는 파일</span>
 			<span class="end">수정</span>
-			<span class="date">2018.02.20</span>
+			<span class="date">2018.02.26</span>
 			<span class="etc"></span>
 		</li>
 		
@@ -519,7 +543,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span class="link">../js/main.js</span>
 			<span class="ex">실제 컨텐츠를 제어하는 js<br/> 실제 모습을 재정의의 가장 많이 수정되는 파일</span>
 			<span class="end">수정</span>
-			<span class="date">2018.02.20</span>
+			<span class="date">2018.02.23</span>
 			<span class="etc"></span>
 		</li>
 
@@ -644,7 +668,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 
 		$('.codeList li span.date').each(function() {
 			var text = $(this).text();
-			if (text == '2018.02.20') {
+			if (text == '2018.02.26') {
 				$(this).css( {
 					'background':'black',
 					'color':'#fff',
@@ -658,7 +682,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 		$('span.new').removeClass('open');
 		$('.codeList span.date').each(function() {
 			var text = $(this).text();			
-			if (text == '2018.02.20') {
+			if (text == '2018.02.26') {
 				var parents = $(this).parents('.codeList').attr('id');				
 				$('.' + parents).find('span.new').addClass('open');
 				return;

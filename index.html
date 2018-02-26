@@ -189,8 +189,15 @@ $(document).ready( function() {
 
 	//modal modalCompany
 	$('#modalCompany').on('click', function(e) {	
-		alert('작업중입니다');
+		commonPopup('70_03_company.html', '', '900');
 	});
+
+
+	//modal modalCompany
+	$('#modalContactUs').on('click', function(e) {	
+		commonPopup('70_04_contact.html', '', '600');
+	});
+
 
 });
 
@@ -365,6 +372,7 @@ var rdchBoxSetId = function(tId, name) {
 						<li><a href="#" class="link" id="modalMypage">My Page</a></li>
 						<li><a href="#" class="link" id="modalNotice">공지사항</a></li>
 						<li><a href="#" class="link" id="modalCompany">회사소개</a></li>
+						<li><a href="#" class="link" id="modalContactUs">Contact us</a></li>
 					</ul>
 				</div>
 			</span>
@@ -441,8 +449,11 @@ var rdchBoxSetId = function(tId, name) {
 		</div>
 
 		<div id="dvStreetView" style="display:;">
-			<div id="dvStreetViewHeader"><a href="#" class="pano-close"><span>×</span></a></div>
-			<div id="dvStreetViewContent"></div>
+			<div id="dvStreetViewHeader">
+				<span class="tit">거리뷰보기</span>
+				<a href="#" class="pano-close"><i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span></i></a>
+			</div>
+			<div id="dvStreetViewContent">여기가 거리뷰 영역</div>
 		</div>
 
 		<!-- 마우스 우클릭시 메뉴-->
