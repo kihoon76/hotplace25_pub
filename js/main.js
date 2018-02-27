@@ -696,6 +696,18 @@ $(function() {
 
 	////////////////////////////////////////////
 
+	//보상 그룹핑
+	var bosangGroupMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9884147),
+		map: map,
+		title: '보상그룹',
+		icon: {
+			content:'<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url('+ HOME_PATH +'/img/marker/bosangC.png);background-size:contain;">12</div>',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
+		}
+	});
+
 
 	///////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////
