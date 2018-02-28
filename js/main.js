@@ -192,9 +192,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/acceptbuilding.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
 		}
 	});
 
@@ -274,9 +274,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/bosang.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
 		}
 	});
 
@@ -357,9 +357,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/gongmae.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
 		}
 	});
 
@@ -437,9 +437,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/gyeongmae.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
 		}
 	});
 
@@ -518,9 +518,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/pyeonib.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
 		}
 	});
 
@@ -621,9 +621,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/silgeolae.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(12, 34),
 		}
 	});
 
@@ -702,9 +702,21 @@ $(function() {
 		map: map,
 		title: '보상그룹',
 		icon: {
-			content:'<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url('+ HOME_PATH +'/img/marker/bosangC.png);background-size:contain;">12</div>',
-			size: new naver.maps.Size(22, 33),
-			anchor: new naver.maps.Point(11, 33),
+			content:'<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#fff; text-shadow:1px 1px 1px #444; text-align:center;font-weight:bold;background:url('+ HOME_PATH +'/img/marker/bosangC.png);background-size:contain;">12</div>',
+			size: new naver.maps.Size(40, 40),
+			anchor: new naver.maps.Point(20, 20),
+		}
+	});
+
+	//편입 그룹핑 test
+	var pyeonibGroupMarker = new naver.maps.Marker({
+		position: new naver.maps.LatLng(37.5620005, 126.9904147),
+		map: map,
+		title: '편입그룹',
+		icon: {
+			content:'<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#fff; text-shadow:1px 1px 1px #444; text-align:center;font-weight:bold;background:url('+ HOME_PATH +'/img/marker/pyeonibC.png);background-size:contain;">12</div>',
+			size: new naver.maps.Size(40, 40),
+			anchor: new naver.maps.Point(20, 20),
 		}
 	});
 

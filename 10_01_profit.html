@@ -122,6 +122,14 @@ String.prototype.getDecimalCount = function() {
 	
 	return s.length - (idx + 1);
 }
+
+
+/////////////////////////
+
+//pdf저장 modal 띄우기 자신의 모달 교체
+$('#pdfSave').on('click', function(e) {	
+	commonPopup('10_01_01_profit_result.html', '', 'full');
+});
 </script>
 
 <div class="modal-dialog" role="document">
@@ -1376,7 +1384,7 @@ String.prototype.getDecimalCount = function() {
 
 		
 		<div class="modal-footer">
-			<button type="button" class="btnstyle middle blue" data-dismiss="modal">파일저장(PDF)</button>
+			<button type="button" id="pdfSave"  class="btnstyle middle blue" data-dismiss="modal">파일저장(PDF)</button>
 		</div>
 	</div>
 </div>
