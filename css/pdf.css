@@ -328,13 +328,42 @@ table.tableStyle td img {max-width:100%;}
 
 
 /**/
-.pageA4 {width:21cm; min-height:29.7cm; padding:0cm 1cm; margin:1cm auto; background:#fff;}
+.pageA4 {width:21cm; padding:0cm 0.6cm; margin:1cm auto; background:#fff;}
 .reportPdf {border:0px solid #ccc;}
 .reportPdf img {max-height:300px;}
 
 .break-before {page-break-before:always; line-height:0; height:0.5cm; width:100%; clear:both;}/* 새페이지 시작시 */
 
-.indexPage {border:1px solid #ccc; /*min-height:28.5cm;*/}
+.indexPage {border:1px solid #ccc; position:relative; min-height:28.5cm;  height:28.5cm; overflow:auto; text-align:left; background:url('../img/pdfImg_bg.png') no-repeat; background-size:100% 100%; background-color:#f9f9f9;}
+.indexPage .indexUnit {position:absolute; border:0px solid #aaa; width:100%; margin:0 auto; padding:0 2cm;}
+.indexPage .indexTit{top:7cm; font-size:13px; color:#ddd;}
+.indexPage .indexDate{top:16cm; color:#ddd;}
+.indexPage .indexLogo{top:21.5cm;}
+.indexPage .indexFooter{position:absolute; bottom:1.7cm; padding:0 3.5cm;}
+
+.indexPage .indexTit span {display:block;}
+.indexPage .indexTit .juso  {font-size:20px; margin-bottom:20px; text-align:center;}
+.indexPage .indexTit .bTit  {font-size:52px; margin-bottom:20px; padding-bottom:20px; letter-spacing:-0.02em; text-align:center; position:relative; font-weight:500; overflow:hidden;}
+.indexPage .indexTit .bTit em {display:block;}
+.indexPage .indexTit .bTit i {display:block; position:; height:2px; background:#ff0000; margin:20px auto 0; width:9.5cm;}
+.indexPage .indexTit .bTit .kor {margin-bottom:10px;}
+.indexPage .indexTit .bTit .eng {font-size:14px; letter-spacing:0.3em; position:absolute; bottom:14px; width:7.6cm; left:50%; margin-left:-3.8cm; background:#1e2126;font-weight:400; color:#ccc; }
+.indexPage .indexTit .sText {font-size:12px; line-height:1.7em; color:#888; padding:0 3cm; margin-top:40px; text-align:center;}
+
+.indexPage .indexDate {text-align:right; font-size:13px;}
+
+.indexPage .indexLogo .logo {height:40px; display:block; text-align:center;}
+.indexPage .indexLogo .logo img {height:100%;}
+
+.indexPage .indexFooter span {display:block; color:#666;}
+.indexPage .indexFooter .logo {display:inline-block; width:; position:absolute; bottom:0;  height:1.2cm; }
+.indexPage .indexFooter .logo img {height:100%;}
+.indexPage .indexFooter .copyright {display:inline-block; position:relative; padding:0 0 0.1cm 2.2cm;}
+.indexPage .indexFooter .copyright span {display:inline-block; font-size:12px;}
+.indexPage .indexFooter .copyright .adress {width:100%; margin-bottom:5px;}
+.indexPage .indexFooter .copyright .tel {margin-right:10px;}
+.indexPage .indexFooter .copyright .fax {}
+
 
 .profitMainCont {clear:both; overflow:auto; border:1px solid #ccc; background:#f9f9f9;}
 .typeUnit {display:inline-block; float:left; width:33.33%; padding:10px 0 10px 80px;}

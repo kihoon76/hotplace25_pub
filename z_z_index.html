@@ -188,8 +188,8 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span>주소검색 > 수지분석</span>
 			<span class="link">10_01_01_profit_result.html</span>
 			<span class="ex">수지분석 결과</span>
-			<span class="end">미완성</span>
-			<span class="date"></span>
+			<span class="end">완성</span>
+			<span class="date">2018.03.02</span>
 			<span class="etc"></span>
 		</li>
 
@@ -536,10 +536,19 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 		<!--------------------->
 		<li>
 			<span>css파일 <strong>●</strong> </span>
+			<span class="link">../css/pdf.css</span>
+			<span class="ex">수진분석 결과 PDF관련 css</span>
+			<span class="end">완성</span>
+			<span class="date">2018.03.02</span>
+			<span class="etc"></span>
+		</li>
+		<!--------------------->
+		<li>
+			<span>css파일 <strong>●</strong> </span>
 			<span class="link">../css/map.css</span>
 			<span class="ex">실제 컨텐츠를 제어하는 css<br/> 실제 모습을 재정의의 가장 많이 수정되는 파일</span>
 			<span class="end">수정</span>
-			<span class="date">2018.02.26</span>
+			<span class="date">2018.03.02</span>
 			<span class="etc"></span>
 		</li>
 		
@@ -551,7 +560,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span class="link">../js/main.js</span>
 			<span class="ex">실제 컨텐츠를 제어하는 js<br/> 실제 모습을 재정의의 가장 많이 수정되는 파일</span>
 			<span class="end">수정</span>
-			<span class="date">2018.02.23</span>
+			<span class="date">2018.03.02</span>
 			<span class="etc"></span>
 		</li>
 
@@ -593,7 +602,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 			<span class="link">../img/이하모두</span>
 			<span class="ex"></span>
 			<span class="end"></span>
-			<span class="date">2018.02.13</span>
+			<span class="date">2018.03.02</span>
 			<span class="etc"></span>
 		</li>
 	</ul>
@@ -676,7 +685,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 
 		$('.codeList li span.date').each(function() {
 			var text = $(this).text();
-			if (text == '2018.02.26') {
+			if (text == '2018.03.02') {
 				$(this).css( {
 					'background':'black',
 					'color':'#fff',
@@ -690,7 +699,7 @@ h1 {padding:15px 20px; font-size:14px; background:#333336; color:#fff;}
 		$('span.new').removeClass('open');
 		$('.codeList span.date').each(function() {
 			var text = $(this).text();			
-			if (text == '2018.02.26') {
+			if (text == '2018.03.02') {
 				var parents = $(this).parents('.codeList').attr('id');				
 				$('.' + parents).find('span.new').addClass('open');
 				return;
