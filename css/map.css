@@ -906,7 +906,7 @@ body	 {min-height:600px;}
 
 /*************************************/
 /* spinner  */
-.spinner {display:inline-block; border:1px solid #ccc; background:#fff; overflow:auto; padding-right:18px; position:relative; overflow:hidden;}
+.spinner {display:inline-block; border:1px solid #ccc; background:#fff; padding-right:18px; position:relative;}
 .spinner input.inp {}
 .spinner input.inp {border:none !important; display:block; text-align:right; padding:0 10px 0 5px; width:100%;}
 .spinner .btn-vertical {display:inline-block; width:20px; height:30px; position:absolute; top:0; right:0; vertical-align:middle;}
@@ -924,6 +924,7 @@ body	 {min-height:600px;}
 
 /*************************************/
 /* tooltip */
+.tooltip {position:absolute; z-index:1;}
 .tooltip .tooltip-inner {background-color:; padding:5px 10px; font-size:14px;}
 .tooltip .tooltip-arrow {border-top-color:;}
 
@@ -1127,3 +1128,31 @@ ul.paginglist a:hover {color:#222;}
 .mapLink {display:inline-block; position:relative; height:18px; line-height:18px; }
 .mapLink:after {display:inline-block; content:''; width:20px; height:18px; background:url('../img/marker_search.png') no-repeat center center; background-size:auto 18px; text-align:center; vertical-align:middle; margin:;}
 .mapLink:hover:after {animation:ani_down 0.2s ease-out 0s 1 alternate;}
+
+/*************************************/
+/*************************************/
+/* dvCompany // 회사소개 */
+.dvCompany{}
+.tabWrap.dvCompany .tab-pane .unit:nth-of-type(1) > .unit_tit:nth-of-type(1) {margin-top:0;}
+.tabWrap.dvCompany .unit .unit_tit .sTit {font-size:14px; padding:0 0 0 18px; color:#000; font-weight:bold;}
+.tabWrap.dvCompany .unit .unit_tit .sTit:before {display:inline-block; content:'';border:none; border-radius:0; width:11px; height:11px; position:absolute; left:0; top:50%; margin-top:-6px; background:url('../img/bullet_01.png') no-repeat center center; background-size:100%; 100%;}
+
+.companyTextBox {margin:5px 18px 15px; font-size:13px; line-height:1.6em;}
+.bigText {font-size:18px; line-height:1.6em; font-weight:500;}
+
+.cpItemHotplaceis {clear:both; position:relative; padding:0 0 0 170px;}
+.cpItemHotplaceis .imgBox {position:absolute; left:0; top:0; width:150px; background:#333336; text-align:center; border-radius:6px; }
+.cpItemHotplaceis .imgBox img {max-width:100%;}
+
+.cpItemDevBack {}
+.cpItemDevBack .imgBox {position:relative; overflow:hidden; clear:both; text-align:center; margin:5px 15px 20px; background:#fff;}
+.cpItemDevBack .imgBox .contUnit {display:inline-block; float:left; width:33.33%; border:0px solid #aaa; position:relative;  padding:10px 0;}
+.cpItemDevBack .imgBox .contUnit .textBox {display:none; border:1px solid #ddd; width:; margin:0 10%; font-size:14px; text-align:left; word-wrap:break-word; word-break:keep-all;}
+.cpItemDevBack .imgBox .contUnit img {max-width:80%;}
+
+.serviceSec {overflow:hidden; clear:both;}
+.serviceSec dl {display:inline-block; float:left; padding:0 20px 0 0;}
+.serviceSec dl:last-of-type {padding-right:0;}
+.serviceSec dl dt {margin-bottom:10px; font-size:14px; font-weight:500; color:#2a7cdd;}
+.serviceSec dl dd {margin-bottom:8px; padding:0 0 0 15px; word-break:keep-all; position:relative;}
+.serviceSec dl dd:before {display:inline-block; content:'※'; position:absolute; left:0; top:0px;}
