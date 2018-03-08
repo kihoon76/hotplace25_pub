@@ -332,6 +332,11 @@ body	 {min-height:600px;}
 .btnStreetView          {width:32px; top:85px; right:10px; overflow:hidden; text-indent:1000px; background:url('../img/mapRight_icon.png') no-repeat; background-position:0px -60px;}
 .btnStreetView.active   {background-position:-30px -60px;}
 
+/* 주소검색 마커 관련 */
+.jusoMarker {position:relative;}
+.jusoMarker .close {position:absolute; top:-30px; font-size:16px; background:#000; color:#fff; border-radius:50%; width:24px; height:24px; line-height:26px; opacity:0.5;}
+.jusoMarker:hover .close{opacity:1.0;}
+
 /*************************************/
 /* mapInnerBox // naverMap custom overlay */
 .mapInnerBox {position:relative; overflow:; width:350px; animation:bounceIn 0.25s linear 0s 1 alternate; box-shadow:0 5px 2px rgba(0,0,0,0.5); background:transparent;}

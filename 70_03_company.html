@@ -7,17 +7,199 @@ $(document).ready( function() {
 	<div class="modal-content">
 		
 		<div class="modal-header">
-			<h2 class="modal-title">회사소개</h2>
+			<h2 class="modal-title">서비스 소개</h2>
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 			</button>
 		</div>
 
 		<div class="modal-body">
-			<div class="" style="height:300px;">
-				작업 준비중입니다
+
+			<div class="tabWrap dvCompany">				
+				
+				<div class="tab-head">
+					<ul class="nav-tabs">
+						<li class="tabLink active">
+							<button href="#tabBoxComapny01" data-toggle="tab"><span class="text">서비스 소개</span></button>
+						</li>
+						<li class="tabLink">
+							<button href="#tabBoxComapny02" data-toggle="tab"><span class="text">이용요금 안내</span></button>
+						</li>
+					</ul>
+				</div>
+
+				<div class="tab-content" style=""> <!-- 해당 부분은 실제 컨텐츠를 넣어보고 수정보완함 -->
+
+					<!-- ----------------------- -->
+					<!-- 서비스 소개 -->
+					<div id="tabBoxComapny01" class="tab-pane active">
+						
+						<!-- 핫플레이스25? -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black">1. 핫플레이스25?</span>
+							</div>
+							<div class="unit_cont cpItemHotplaceis">
+								<div class="companyTextBox">
+									<span class="imgBox"><img src="img/gnb_logo.png" /></span>
+									
+									<span class="text">
+										법률과 데이터에 기반하여 <strong>토지이용규제 해소 물건과 보상투자 물건</strong> 등 <strong class="color_blue">투자유망물건 정보</strong>를 <strong class="color_block">제공하는 서비스</strong>입니다.
+										<br/>
+										회원여러분들의 성공투자를 약속드립니다.
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- 서비스의 개발배경 -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black">2. 서비스의 개발배경(이런분들께 권장합니다)</span>
+							</div>
+							<div class="unit_cont cpItemDevBack">
+								<div class="companyTextBox">
+									투자유망물건을 쉽게 찾을 수 있는 서비스를 제공하기 위해 개발했습니다.
+								</div>
+								<div class="imgBox">
+									<div class="contUnit">
+										<span class="textBox">토지투자를 하려는데 어느지역에 투자해야하나요? 다들 얘이가 너무 달라요</span>
+										<img src="img/company_img_01.png" />
+									</div>
+
+									<div class="contUnit">
+										<span class="textBox">우리회사는 이런일을 하는데.. 혹시 이런정보(데이터)도 있나요? 이런 물건정보는 없나요?</span>
+										<img src="img/company_img_02.png" />
+									</div>
+
+									<div class="contUnit">
+										<span class="textBox">투자유망 부동산을 찾는 고객들은 많은데, 추천할 물건을 찾기 어려워요</span>
+										<img src="img/company_img_03.png" />
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+						<!-- 서비스의 특징 -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black">3. 서비스의 특징</span>
+							</div>
+							<div class="unit_cont">
+								<div class="companyTextBox">
+									<span class="bigText color_red">누구나 할수 있는 일이라면 시작하지도 않았습니다.</span>
+								</div>
+								<div class="companyTextBox serviceSec">
+									<dl style="width:33.33%;">
+										<dt>1. 실시간 테이터 수집/분석</dt>
+										<dd>부동산의 가치에 영향을 미치는 모든(정형/비정형) Data의 자동(실시간) 수진/분석 시트템구축</dd>
+										<dd>Data 정확성/신뢰도의 (자동)자체검증</dd>
+									</dl>
+
+									<dl style="width:33.33%;">
+										<dt>2. 미래 예측 가능(수익률 자동 분석 등)</dt>
+										<dd>시계열 Data 분석을 통해 1~2년후 부동산 가치 예측</dd>
+										<dd>예상 수익률 자동 분석</dd>
+										<dd>종합분석 결과 및 분석 인자별 시계열 Heat Map정보 제공</dd>
+									</dl>
+
+									<dl style="width:33.33%;">
+										<dt>3. 투자 유망지역(물건) 정보 서비스</dt>
+										<dd>투자 유망 지역 정보(실기간 단가 증가율 상승 지역 등) 제공</dd>
+										<dd>토지이용규제제도(도지계획시설 등) 해소 물건 등 투자유망 물건 정보(시차 활용 투자 등) 제공</dd>
+									</dl>
+								</div>
+								<div class="center">
+									<img src=""/>
+								</div>
+							</div>
+						</div>
+
+						<!-- 서비스의 개발배경 -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black">4. 활용방법</span>
+							</div>
+							<div class="unit_cont">
+								<div class="companyTextBox">
+									4-1 공인중계사 업무 범위 확대(매도자와 매수자 연계, 경공매물건 매수신청대리)
+								</div>
+								<div class="center">
+									<img src=""/>
+								</div>
+								<div class="companyTextBox">
+									4-2 자산운용사/투자자문사 업무(투자타당성조사 등) 지원 및 투자유망물건정보 제공
+								</div>
+								<div class="center">
+									<img src=""/>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+					<!-- //서비스 소개 -->
+
+					
+					<!-- ----------------------- -->
+					<!-- 이용요금 안내 -->
+					<div id="tabBoxComapny02" class="tab-pane">
+						<!-- 이용요금 안내 -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black noBullt">이용요금 안내</span>
+							</div>
+							<div class="unit_cont bgWhite">
+								<table class="tableStyle gridStyle  topBold center">
+									<colgroup>
+										<col style="width:25%;">
+										<col style="width:25%;">
+										<col style="width:25%;">
+										<col style="width:25%;">
+									</colgroup>
+									<thead>
+										<tr>
+											<th colspan="2" class="center">구분</th>
+											<th class="center">일반회원</th>
+											<th class="center">프리미엄회원</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th rowspan="2" class="center">서비스이용료<br/>(VAT별도)</th>
+											<td>연회비</td>
+											<td>-</td>
+											<td>1천만원</td>
+										</tr>
+										<tr>
+											<td>서비스</td>
+											<td>기본서비스</td>
+											<td>프리미엄서비스<br/>(자동수지분석 등)</td>
+										</tr>
+										<tr>
+											<th rowspan="2" class="center">특전<br/>(추가 혜택)</th>
+											<td>메일링서비스</td>
+											<td>-</td>
+											<td>투자유망물건정보<br/>메일링서비스</td>
+										</tr>
+										<tr>
+											<td>특강 수강료 감면</td>
+											<td>20% 할일</td>
+											<td>50% 할인</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- //이용요금 안내 -->
+				</div>
 			</div>
+
 		</div>
+
 		<!--<div class="modal-footer">
 			<button type="button" class="btnstyle middle blue" data-dismiss="modal" onclick="javescript:alert('test');">Save changes</button>
 			<button type="button" class="btnstyle middle gray" data-dismiss="modal">Close</button>

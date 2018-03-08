@@ -142,6 +142,7 @@ $(function() {
 
 	
 	var HOME_PATH = window.HOME_PATH || '.';
+	/*
 	var marker = new naver.maps.Marker({
 		position: cityhall,
 		map: map,
@@ -151,6 +152,24 @@ $(function() {
 			scaledSize: new naver.maps.Size(25, 34),
 			origin: new naver.maps.Point(0, 0),
 			anchor: new naver.maps.Point(12, 34)
+		}
+	});
+	*/
+
+	var marker = new naver.maps.Marker({
+		position: cityhall,
+		map: map,
+		icon: {
+			content: [
+                    '<div class="jusoMarker">',
+                        '<button type="button" class="close"><i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span></button>',
+                        '<span class="markerIocn">',
+							'<img src="img/marker_search.png" alt="" style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; -webkit-user-select: none; width: 25px; height: 34px;">',
+						'</span>',
+                    '</div>'
+                ].join(''),
+			size: new naver.maps.Size(25, 34),
+			anchor: new naver.maps.Point(13, 34)
 		}
 	});
 
