@@ -25,6 +25,9 @@ $(document).ready( function() {
 						<li class="tabLink">
 							<button href="#tabBoxComapny02" data-toggle="tab"><span class="text">이용요금 안내</span></button>
 						</li>
+						<li class="tabLink">
+							<button href="#tabBoxComapny03" data-toggle="tab"><span class="text">회사소개</span></button>
+						</li>
 					</ul>
 				</div>
 
@@ -62,6 +65,8 @@ $(document).ready( function() {
 									투자유망물건을 쉽게 찾을 수 있는 서비스를 제공하기 위해 개발했습니다.
 								</div>
 								<div class="imgBox">
+									<img src="img/company_img_00.png" />
+									<!--
 									<div class="contUnit">
 										<span class="textBox">토지투자를 하려는데 어느지역에 투자해야하나요? 다들 얘이가 너무 달라요</span>
 										<img src="img/company_img_01.png" />
@@ -76,6 +81,7 @@ $(document).ready( function() {
 										<span class="textBox">투자유망 부동산을 찾는 고객들은 많은데, 추천할 물건을 찾기 어려워요</span>
 										<img src="img/company_img_03.png" />
 									</div>
+									-->
 									
 								</div>
 							</div>
@@ -87,9 +93,6 @@ $(document).ready( function() {
 								<span class="sTit color_black">3. 서비스의 특징</span>
 							</div>
 							<div class="unit_cont">
-								<div class="companyTextBox">
-									<span class="bigText color_red">누구나 할수 있는 일이라면 시작하지도 않았습니다.</span>
-								</div>
 								<div class="companyTextBox serviceSec">
 									<dl style="width:33.33%;">
 										<dt>1. 실시간 테이터 수집/분석</dt>
@@ -110,35 +113,63 @@ $(document).ready( function() {
 										<dd>토지이용규제제도(도지계획시설 등) 해소 물건 등 투자유망 물건 정보(시차 활용 투자 등) 제공</dd>
 									</dl>
 								</div>
-								<div class="center">
-									<img src=""/>
+								<div class="center serviceSecImg">
+									<img src="img/company_img_10.png"/>
 								</div>
 							</div>
 						</div>
 
-						<!-- 서비스의 개발배경 -->
+						<!-- 주요기능 -->
 						<div class="unit">							
 							<div class="unit_tit">
-								<span class="sTit color_black">4. 활용방법</span>
+								<span class="sTit color_black">4. 주요기능</span>
 							</div>
-							<div class="unit_cont">
-								<div class="companyTextBox">
-									4-1 공인중계사 업무 범위 확대(매도자와 매수자 연계, 경공매물건 매수신청대리)
-								</div>
-								<div class="center">
-									<img src=""/>
-								</div>
-								<div class="companyTextBox">
-									4-2 자산운용사/투자자문사 업무(투자타당성조사 등) 지원 및 투자유망물건정보 제공
-								</div>
-								<div class="center">
-									<img src=""/>
-								</div>
+							<div class="unit_cont cpItemFunctionBox">
+								<dl class="cpItemFunction">
+									<dt>주소검색</dt>
+									<dd>전국 모든 필지의 주소검색을 통해 토지이용규제 변경이력 등 확인 가능</dd>
+									<dd>검색 필지 주변의 개발사업/행위허가 등 현황 파악 가능</dd>
+								</dl>
+
+								<dl class="cpItemFunction">
+									<dt>투자 유망 물건 검색</dt>
+									<dd>(장기미집행)도시계획시설 물건 등 토지이용규제 물건 검색</dd>
+									<dd>부동산 가치 제고가 가능한 개발적성 필지 검색</dd>
+								</dl>
+
+
+								<dl class="cpItemFunction">
+									<dt>경공매 물건 검색</dt>
+									<dd>토지이용규제 조건별 경공매 물건 검색</dd>
+									<dd>보상 및 편입 공고 물건과 매칭 물건 정보 제공</dd>
+								</dl>
+
+
+								<dl class="cpItemFunction">
+									<dt>위치보기</dt>
+									<dd>경공매 물건, 실거래가 물건 등 도면상에서 확인 가능</dd>
+									<dd class="noBullet">&nbsp;</dd>
+								</dl>
+
+								<dl class="cpItemFunction">
+									<dt>(자동)수지분석</dt>
+									<dd>부동산 빅데이터 분석 결과를 반영하여 물건에 대한 자동 수지분석</dd>
+									<dd>최소 2~3일 소요되던 수지분석이 클릭 몇 번으로 가능</dd>
+								</dl>
+
+								<dl class="cpItemFunction">
+									<dt>HeatMap 보기</dt>
+									<dd>전국 모든 필지를 위경도 좌표 기반 25m×25m 규모의 Cell단위로 분석</dd>
+									<dd>건축허가, 영업허가, 개발행위허가 등의 정보를 Cell 단위 Heat Map으로 분석</dd>
+								</dl>
+
+								<dl class="cpItemFunction">
+									<dt>컨설팅(투자타당성검토) 서비스</dt>
+									<dd>세부적인 물건분석 의뢰시 전문가 그룹의 투자타당성검토 서비스 제공</dd>
+									<dd class="noBullet">&nbsp;</dd>
+								</dl>
 							</div>
 						</div>
-
-
-
 					</div>
 					<!-- //서비스 소개 -->
 
@@ -154,40 +185,104 @@ $(document).ready( function() {
 							<div class="unit_cont bgWhite">
 								<table class="tableStyle gridStyle  topBold center">
 									<colgroup>
-										<col style="width:25%;">
-										<col style="width:25%;">
-										<col style="width:25%;">
-										<col style="width:25%;">
+										<col style="width:10%;">
+										<col style="width:30%;">
+										<col style="width:20%;">
+										<col style="width:20%;">
+										<col style="width:20%;">
 									</colgroup>
 									<thead>
 										<tr>
 											<th colspan="2" class="center">구분</th>
 											<th class="center">일반회원</th>
+											<th class="center">스마트회원</th>
 											<th class="center">프리미엄회원</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<th rowspan="2" class="center">서비스이용료<br/>(VAT별도)</th>
-											<td>연회비</td>
+											<th rowspan="8" class="center">서비스</th>
+											<th class="center">주소검색</th>
+											<td>○</td>
+											<td>○</td>
+											<td>○</td>
+										</tr>
+										<tr>
+											<th class="center">매물등록/관심물건등록</th>
+											<td>○</td>
+											<td>○</td>
+											<td>○</td>
+										</tr>
+										<tr>
+											<th class="center">(자동)수지분석</th>
+											<td>○</td>
+											<td>○</td>
+											<td>○</td>
+										</tr>
+										<tr>
+											<th class="center">컨설팅(투자타당성) 의뢰</th>
 											<td>-</td>
-											<td>1천만원</td>
+											<td>○</td>
+											<td>○</td>
 										</tr>
 										<tr>
-											<td>서비스</td>
-											<td>기본서비스</td>
-											<td>프리미엄서비스<br/>(자동수지분석 등)</td>
-										</tr>
-										<tr>
-											<th rowspan="2" class="center">특전<br/>(추가 혜택)</th>
-											<td>메일링서비스</td>
+											<th class="center">투자유망지역(물건) 검색</th>
 											<td>-</td>
-											<td>투자유망물건정보<br/>메일링서비스</td>
+											<td>○</td>
+											<td>○</td>
 										</tr>
 										<tr>
-											<td>특강 수강료 감면</td>
-											<td>20% 할일</td>
+											<th class="center">경공매물건 검색</th>
+											<td>-</td>
+											<td>-</td>
+											<td>○</td>
+										</tr>
+										<tr>
+											<th class="center">위치보기</th>
+											<td>○</td>
+											<td>○</td>
+											<td>○</td>
+										</tr>
+										<tr>
+											<th class="center">히트맵보기</th>
+											<td>-</td>
+											<td>○</td>
+											<td>○</td>
+										</tr>
+
+
+										<tr>
+											<th rowspan="3" class="center">특전(혜택)</th>
+											<th class="center">투자유망물건 정보 메일링 서비스</th>
+											<td>-</td>
+											<td>-</td>
+											<td>○</td>
+										</tr>
+										<tr>
+											<th class="center">투자타당성검토 보고서 지원</th>
+											<td>-</td>
+											<td>연 1회 무료</td>
+											<td>연 2회 무료</td>
+										</tr>
+										<tr>
+											<th class="center">전문가 강의 지원</th>
 											<td>50% 할인</td>
+											<td>50% 할인</td>
+											<td>○</td>
+										</tr>
+
+										<tr>
+											<th rowspan="2" class="center">이용요금</th>
+											<th class="center">연회비</th>
+											<td>360만원/1년</td>
+											<td>720만원/1년</td>
+											<td>1천만원/1년</td>
+										</tr>
+										<tr>
+											<th class="center">투자타당성검토</th>
+											<td>300만원/건</td>
+											<td>210만원/건(30%할인)</td>
+											<td>150만원/건(50% 할인)</td>
 										</tr>
 									</tbody>
 								</table>
@@ -195,6 +290,102 @@ $(document).ready( function() {
 						</div>
 					</div>
 					<!-- //이용요금 안내 -->
+
+					<!-- ----------------------- -->
+					<!-- 회사소개 -->
+					<div id="tabBoxComapny03" class="tab-pane">
+						<!-- 회사소개 -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black noBullt">회사소개</span>
+							</div>
+							<div class="unit_cont">
+								<div class="center companyImg">
+									<img src="img/company_img_30.png"/>
+								</div>
+								<div class="center companyImgTable bgWhite  mgT20">
+								
+									<table class="tableStyle gridStyle topBold left">
+										<colgroup>
+											<col style="width:15%;">
+											<col style="width:35%;">
+											<col style="width:15%;">
+											<col style="width:35%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th><span >상호</span></th>
+												<td>(주) 동림피엔디</td>
+												<th><span >대표자</span></th>
+												<td>이인재,박민대,이석우,김웅태</td>
+											</tr>
+											<tr>
+												<th><span >소재지</span></th>
+												<td>서울특별시 송파구 법원로 127<br>11층 1108호(문정동 대명벨리온)</td>
+												<th><span >전화번호 / FAX </span></th>
+												<td>02)407-1342 / 02)407-1394</td>
+											</tr>
+											<tr>
+												<th><span >설립일</span></th>
+												<td>2002. 7. 25</td>
+												<th><span >법인유형</span></th>
+												<td>주 식 회 사</td>
+											</tr>
+											<tr>
+												<th><span >사업내용</span></th>
+												<td>도시계획 / 교통 / 환경 / 조경</td>
+												<th><span >자본금</span></th>
+												<td>2억원</td>
+											</tr>
+											<tr>
+												<th><span >직원수</span></th>
+												<td colspan="3">총인원 55명, 임원 14명, 직원 41명</td>
+											</tr>
+											<tr>
+												<th><span >주요실적</span></th>
+												<td colspan="3">
+													은평구 지구단위계획 재정비 용역<br/>
+													미아균형발전촉진지구 실시계획 수립용역<br/>
+													인천 신현주공 주택재건축 정비구역 및 정비계획수립용역<br/>
+													제주묘산봉 관광지개발 제2종지구단위계획 수립용역<br/>
+													인천국제공항 유휴지개발사업기본계획 수립용역<br/>
+													서울시 중구 저동 도시환경정비사업 정비구역지정 및 정비계획 수립용역
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //회사소개 -->
+
+					<!-- 오시는길 -->
+						<div class="unit">							
+							<div class="unit_tit">
+								<span class="sTit color_black noBullt">오시는길</span>
+							</div>
+							<div class="unit_cont">
+								<div class="center companyMap bgWhite">
+									<img src="img/company_img_31.png"/>
+								</div>
+
+								<div class="companyMapText">
+										<strong class="color_blue"> 주소 :</strong> (우)05836	서울 송파구 법원로 127, 11층 1108호(문정동 대명벨리온)
+										<br/><br/>
+										<strong class="color_blue">TEL :</strong> 02)407-1342 
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										|
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<strong class="color_blue"> FAX : </strong> 02)407-1394
+									</div>
+								</div>
+
+								
+							</div>
+						</div>
+					</div>
+					<!-- //회사소개 -->
 				</div>
 			</div>
 

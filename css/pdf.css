@@ -306,12 +306,15 @@ table thead.colgroup tr th {height:0; padding:0; background:#aaa; line-height:0;
 .indexPage .indexFooter .copyright.telFax {padding:0 0 0 20px;}
 
 .profitMainCont {clear:both; overflow:auto; border:1px solid #ccc; background:#f9f9f9;}
-.typeUnit {display:inline-block; float:left; width:33.33%; padding:10px 0 10px 80px;}
-.typeUnit.pdfImg01 {background:url('../img/pdfImg_01.png') no-repeat 20px center; background-size:60px 60px;}
-.typeUnit.pdfImg02 {background:url('../img/pdfImg_02.png') no-repeat 20px center; background-size:60px 60px;}
-.typeUnit.pdfImg03 {background:url('../img/pdfImg_03.png') no-repeat 20px center; background-size:60px 60px;}
-.typeUnit .tit {display:inline-block; width:100%; font-size:14px; font-weight:500; color:#999; padding:15px 5px 5px;}
-.typeUnit .cont {display:inline-block; width:100%; font-size:16px; font-weight:500; padding:2px 5px 15px;}
+.profitMainCont td {padding:10px 0 10px 0px; text-align:left;}
+.profitMainCont .pdfImg01,
+.profitMainCont .pdfImg02,
+.profitMainCont .pdfImg03 {text-align:right; padding:30px 0px 30px 35px;}
+.profitMainCont .pdfImg01 div.icon {background:url('../img/pdfImg_01.png') no-repeat 20px center; font-size:16px; height:60px; width:60px; display:inline-block;}
+.profitMainCont .pdfImg02 div.icon {background:url('../img/pdfImg_02.png') no-repeat 20px center; font-size:16px; height:50px; width:50px; display:inline-block;}
+.profitMainCont .pdfImg03 div.icon {background:url('../img/pdfImg_03.png') no-repeat 20px center; font-size:16px; height:60px; width:60px; display:inline-block;}
+.profitMainCont .tit {width:100%; font-size:14px; font-weight:500; color:#999; padding:15px 5px 5px;}
+.profitMainCont .cont {width:100%; font-size:16px; font-weight:500; padding:2px 5px 15px;}
 
 .reportPdf table.pdfDetailTable thead th {border-bottom-color:#ccc;}
 
