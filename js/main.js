@@ -193,7 +193,7 @@ $(function() {
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
                  '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
 			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+			anchor: new naver.maps.Point(13, 34)
 		}
 	});
 
@@ -211,9 +211,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/acceptbuilding.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
 		}
 	});
 
@@ -293,9 +293,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/bosang.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
 		}
 	});
 
@@ -376,9 +376,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/gongmae.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
 		}
 	});
 
@@ -456,9 +456,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/gyeongmae.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
 		}
 	});
 
@@ -537,9 +537,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/pyeonib.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
 		}
 	});
 
@@ -640,9 +640,9 @@ $(function() {
 		icon: {
 			content:'<img src="'+ HOME_PATH +'/img/marker/silgeolae.png" alt="" ' +
                  'style="margin: 0px; padding: 0px; border: 0px solid transparent; display: block; max-width: none; max-height: none; ' +
-                 '-webkit-user-select: none; position: absolute; width: 25px; height: 34px; left: 0px; top: 0px;">',
-			size: new naver.maps.Size(25, 34),
-			anchor: new naver.maps.Point(12, 34),
+                 '-webkit-user-select: none; position: absolute; width: 22px; height: 33px; left: 0px; top: 0px;">',
+			size: new naver.maps.Size(22, 33),
+			anchor: new naver.maps.Point(11, 33),
 		}
 	});
 
@@ -960,10 +960,13 @@ var commonPopup = function(url, param, width){
 	
 	if(width == null){
 		eWidth = '';
+		newClass = '';
 	}else if (width == 'full'){
 		eWidth = '96%';
+		newClass = 'fullWidth';
 	}else{
 		eWidth = width;
+		newClass = '';
 	}	
 	
 	$.ajax({
@@ -973,6 +976,7 @@ var commonPopup = function(url, param, width){
 		async: true,
 		success : function(data) {
 			$("#modalPopup").html(data);
+			$("#modalPopup").find('.modal-dialog').addClass(newClass);
 		},		
 		complete : function(){
 			$('#modalPopup').removeClass('in').data('bs.modal', null);
@@ -1106,6 +1110,8 @@ var imagePopup = function(url, param, width, img, tit){
 var setModalMaxHeight = function(element) {
 	this.$element     = $(element);  
 	this.$content     = this.$element.find('.modal-content');
+	this.$dialog      = this.$element.find('.modal-dialog');
+
 	var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
     var dialogMargin  = $(window).width() < 768 ? 20 : 60;
     var contentHeight = $(window).height() - (dialogMargin + borderWidth);
@@ -1116,12 +1122,23 @@ var setModalMaxHeight = function(element) {
 	this.$content.css({
 		'overflow': 'hidden'
 	});
-  
-	this.$element
+
+	if(this.$dialog.hasClass('fullWidth')){
+		this.$element
+		.find('.modal-body').css({
+			'max-height': maxHeight,
+			'min-height': maxHeight,
+			'overflow-y': 'auto'
+		});
+	} else {
+		this.$element
 		.find('.modal-body').css({
 			'max-height': maxHeight,
 			'overflow-y': 'auto'
-	});
+		});
+	}
+  
+	
 }
 
 var setModalMarginTop = function(element) {
@@ -1140,8 +1157,17 @@ var setModalMarginTop = function(element) {
 // window resize시 액션
 $(window).resize(function() {
 	if ($('.modal.in').length != 0) {
-		setModalMaxHeight($('.modal.in'));
-		setModalMarginTop($('.modal.in'));
+		if ($('.modal.in').length > 1)
+		{
+			$('.modal.in').each(function(){
+				setModalMaxHeight(this);
+				setModalMarginTop(this);
+			});
+		} else {
+			setModalMaxHeight($('.modal.in'));
+			setModalMarginTop($('.modal.in'));
+		}
+		
 	}
 });
 

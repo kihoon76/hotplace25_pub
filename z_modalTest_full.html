@@ -1,12 +1,17 @@
 <script>
-	//로그인 modal
+	//commonPopup2 modal
 	$('#testBtn').on('click', function(e) {	
 		var param = new Object();
 		//commonPopup2('url', 'param', 'width');
 		commonPopup2('z_modalTest.html', '', '300');
 	});
 
-	//로그인 modal
+	//imagePopup modal
+	$('#testBtnImg').on('click', function(e) {	
+		imagePopup('30_02_imageViewModal.html', '', '700', 'img/noImg.png', 'test');
+	});
+
+	//commonPopup modal
 	$('#testBtn2').on('click', function(e) {
 		var param = new Object();
 		//commonPopup2('url', 'param', 'width');
@@ -32,6 +37,10 @@
 			<div style="height:800px;">Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.Modal body text goes here.
 			<br/><br/>
 			<a href="#" id="testBtn" class="btnstyle middle blue" >모달에서 모달 띄우기 테스트</a>
+
+			<br/><br/>
+
+			<a href="#" id="testBtnImg" class="btnstyle middle blue" >모달에서 이미지 팝업띄우기 테스트</a>
 
 			<br/><br/>
 
