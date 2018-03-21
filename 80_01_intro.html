@@ -6,12 +6,14 @@ $(document).ready( function() {
 <div class="modal-dialog" role="document">
 	<div class="modal-content">
 		
+		<!--
 		<div class="modal-header">
-			<!--<h2 class="modal-title">HOTPLACE25 Beta Open</h2>-->
+			
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<i class="ambicon-015_mark_times"></i><span class="hidden">닫기</span>
 			</button>
 		</div>
+		-->
 
 		<div class="modal-body">
 			<div class="dvIntro" style="height:540px;">
@@ -29,9 +31,12 @@ $(document).ready( function() {
 				</div>
 			</div>
 		</div>
-		<!--<div class="modal-footer">
-			<button type="button" class="btnstyle middle blue" data-dismiss="modal" onclick="javescript:alert('test');">Save changes</button>
-			<button type="button" class="btnstyle middle gray" data-dismiss="modal">Close</button>
-		</div>-->
+		<div class="modal-footer">
+			<span class="rdchBox fl">
+				<input type="checkbox" id="checkCookie" name="" />
+				<label for="checkCookie" class="labelCh"><em class="text">하루통안 보이지 않기</em></label>
+			</span>
+			<button type="button" class="btnstyle middle blue fr" data-dismiss="modal">닫기</button>
+		</div>
 	</div>
 </div>
